@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +20,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/products', function () {
+    return view('/products');
+});
+
+Route::get('/admin/dashboard', [AdminController::class, 'index']);
+Route::redirect('admin', 'admin/dashboard');
+
+Route::get('/admin/products', [AdminProductController::class, 'index']);
+
+Route::get('/admin/customers', [AdminCustomerController::class, 'index']);
+
+Route::get('/admin/orders', [AdminOrderController::class, 'index']);
