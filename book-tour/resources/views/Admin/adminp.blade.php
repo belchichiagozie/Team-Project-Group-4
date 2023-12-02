@@ -58,7 +58,6 @@
         </header>
 
         <main>
-
             <div class="cards">
                 <div class="card-single">
                     <div>
@@ -70,7 +69,7 @@
                     </div>
                 </div>
 
-            <div class="cards">
+            
                 <div class="card-single">
                     <div>
                         <h1>124</h1>
@@ -80,8 +79,9 @@
                         <span class="las la-users"></span>
                     </div>
                 </div>
+            
 
-            <div class="cards">
+            
                 <div class="card-single">
                     <div>
                         <h1>£100,000</h1>
@@ -91,28 +91,42 @@
                         <span class="las la-users"></span>
                     </div>
                 </div>
+            
 
-            <div class="cards">
-                <div class="card-single">
-                    <div>
-                        <h1>54</h1>
-                        <span>Customers</span>
-                    </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
-                </div>
-                
-            <div class="cards">
-                <div class="card-single">
-                    <div>
-                        <h1>54</h1>
-                        <span>Customers</span>
-                    </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
-                </div>
+            </div>
+
+            <div class="container">
+                <h2>Add Book</h2>
+                <form action="/admin/products" method="post" id="addBookForm">
+                @csrf
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required>
+                  </div>
+            
+                  <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" required>
+                  </div>
+            
+                  <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <input type="text" id="genre" name="genre" required>
+                  </div>
+            
+                  <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0" required>
+                  </div>
+            
+                  <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" name="stock" min="0" required>
+                  </div>
+            
+                  <input type="submit" value="Add Book">
+                </form>
+              </div>
 
         </main>
     </div>

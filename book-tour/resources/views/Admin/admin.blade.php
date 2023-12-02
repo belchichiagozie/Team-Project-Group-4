@@ -111,41 +111,20 @@
                                             <td>Book Title</td>
                                             <td>Author</td>
                                             <td>Genre</td>
-                                            <td>Status</td>
-                                            <td>Time of listing</td>
+                                            <td>Price</td>
+                                            <td>Stock</td>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($books as $book)
                                         <tr>
-                                            <td>Harry Potter</td>
-                                            <td>Jacqueline Wilson</td>
-                                            <td>Adventure</td>
-                                            <td>
-                                                <span class="status"></span>
-                                                review
-                                            </td>
-                                            <td>12/02/23 12:00</td>
+                                            <td>{{$book->Title}}</td>
+                                            <td>{{$book->Author}}</td>
+                                            <td>{{$book->Genre}}</td>
+                                            <td>{{$book->Price}}</td>
+                                            <td>{{$book->Stock}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>The Kite Runner</td>
-                                            <td>Khalid Hosseini</td>
-                                            <td>Adventure</td>
-                                            <td>
-                                                <span class="status"></span>
-                                                review
-                                            </td>
-                                            <td>12/02/23 12:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>A Short Intro To Game Theory</td>
-                                            <td>Kenn Binmore</td>
-                                            <td>Non-fictional</td>
-                                            <td>
-                                                <span class="status"></span>
-                                                complete
-                                            </td>
-                                            <td>12/02/23 12:00</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
