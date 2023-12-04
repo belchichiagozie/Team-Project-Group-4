@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $Genre
  * @property float $Price
  * @property string $Stock
+ * @property string $file
  * 
  * @property Basket $basket
  * @property Collection|Order[] $orders
@@ -41,7 +42,8 @@ class Book extends Model
 		'Author',
 		'Genre',
 		'Price',
-		'Stock'
+		'Stock',
+		'file'
 	];
 
 	public function basket()

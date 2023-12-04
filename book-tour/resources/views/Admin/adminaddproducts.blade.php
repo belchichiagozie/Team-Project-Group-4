@@ -58,44 +58,44 @@
         </header>
 
         <main>
-                <div class="projects">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>New Books</h2>
-                        </div>
-
-                        <div class="card-body">
-                            <table width="100%">
-                                <thead>
-                                    <tr>
-                                        <td>Book Title</td>
-                                        <td>Author</td>
-                                        <td>Genre</td>
-                                        <td>Price</td>
-                                        <td>Stock</td>
-                                        <td>Image</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($books as $book)
-                                    <tr>
-                                        <td>{{$book->Title}}</td>
-                                        <td>{{$book->Author}}</td>
-                                        <td>{{$book->Genre}}</td>
-                                        <td>{{$book->Price}}</td>
-                                        <td>{{$book->Stock}}</td>
-                                        <td><img src="/images/{{$book->file}}" width="60px" height="80px" alt="{{$book->Book_ID}}"></td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+            <div class="container">
+                <h2>Add Book</h2>
+                <form action="/admin/products" method="post" id="addBookForm" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required>
                     </div>
-                </div>
-
-            <div class="cards">
-                <a href="adminaddproducts" class="add-product-btn">Add New</a>
+            
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="genre">Genre</label>
+                        <input type="text" id="genre" name="genre" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" id="price" name="price" step="0.01" min="0" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" id="stock" name="stock" min="0" required>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="image">Upload Image</label>
+                        <input type="file" id="image" name="image" accept="image/*" required>
+                    </div>
+            
+                    <input type="submit" value="Add Book">
+                </form>
             </div>
+            
 
         </main>
     </div>
