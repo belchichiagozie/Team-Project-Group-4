@@ -33,7 +33,7 @@
     </div>
     <div class="header-2">
         <nav class="navbar">
-            <a href="#Home">Home</a>
+            <a href="/products">Home</a>
             <a href="#New Arrivals">New Arrivals</a>
             <a href="#Best Sellers">Best Sellers</a>
             <a href="#Genres">Genres</a>
@@ -89,314 +89,29 @@
 
     <div class="swiper arrivals-slider">
         <div class="swiper-wrapper">
+        @foreach ($books as $book)
+        <a href="#" class="box">
+            <div class="image">
+                <img src="/images/{{$book->file}}" alt="Book {{$book->Book_ID}}">
+            </div>
+            <div class="content">
+                <h3>{{$book->Title}}</h3>
+                <div class="price">£{{$book->Price}}<span>£12</span></div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+
+                </div>
+            </div>
+        </a>
+        @endforeach
         
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Rising Ashes</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
         
-    <div class="swiper arrivals-slider">
-        <div class="swiper-wrapper">
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover1.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Walk into the Shadow</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover2.png" alt="">
-            </div>
-            <div class="content">
-                <h3>In Your Eyes</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover3.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Hide And Seek</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover4.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Game of your Mind</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover5.png" alt="">
-            </div>
-            <div class="content">
-                <h3>The Spirit</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover6.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover7.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover8.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover9.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover10.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover11.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover12.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover13.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover14.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover15.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="box">
-            <div class="image">
-                <img src="/images/bookcover16.png" alt="">
-            </div>
-            <div class="content">
-                <h3>new arrivals</h3>
-                <div class="price">£10<span>£12</span></div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-
-                </div>
-            </div>
-        </a>
+    </div>
+</div>
 
 </section>
 <!-- Products: New Arrivals Section -->

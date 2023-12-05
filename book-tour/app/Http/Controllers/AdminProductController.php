@@ -45,7 +45,7 @@ class AdminProductController extends Controller
 
         $book->save();
 
-        return redirect('/admin/adminaddproducts');
+        return redirect('/admin/products');
     }
     //
 }
