@@ -7,21 +7,37 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Book Tour</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <!-- font link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- css file -->
+    <link rel="stylesheet" type="text/css" href="/css/products.css"/>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+<header class="header">
+        <div class="header-1">
+            <img src="/images/logo.png" alt="Your Logo" class="logo-image">
+            <a href="#" class="logo"> </i>BookTour</a>
+            <script src="/js/products.js">
+        </div>
+    </script>
+    </header>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Book Tour
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -71,6 +87,15 @@
                 </div>
             </div>
         </nav>
+        <nav class="lower-navbar">
+        <a href="#Home" class="fas fa-home"></a>
+        <a href="#Featured" class="fas fa-list"></a>
+        <a href="#New Arrivals" class="fas fa-tags"></a>
+        <a href="#Best Sellers" class="fas fa-heart"></a>
+        <a href="#Special Offers" class="fas fa-user"></a>
+        <a href="#Reviews" class="fas fa-comments"></a>
+
+    </nav>
 
         <main class="py-4">
             @yield('content')
