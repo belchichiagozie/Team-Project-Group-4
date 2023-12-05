@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
@@ -19,13 +20,9 @@ use App\Http\Controllers\AdminCustomerController;
 |
 */
 
-Route::get('/', function () {
-    return view('/products');
-});
 
-Route::get('/products', function () {
-    return view('/products');
-});
+Route::get('/products', [ProductController::class, 'index']);
+Route::redirect('/', '/products');
 
 # Admin routes
 Route::get('/admin/dashboard', [AdminController::class, 'index']);
