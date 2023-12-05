@@ -39,6 +39,10 @@ html::-webkit-scrollbar-thumb{
 
 }
 
+section{
+    padding: 5rem -9px;
+}
+
 .header .header-1{
     background:#106585;
     padding:0.5rem 2%;
@@ -120,7 +124,7 @@ html::-webkit-scrollbar-thumb{
 }
 
 .header .header-2 .navbar{
-    text-align: center;
+    text-align:center;
 }
 .header .header-2 .navbar a{
     color:#fff;
@@ -159,6 +163,105 @@ html::-webkit-scrollbar-thumb{
     background:#AED0DD;
 }
 
+.Home .row{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.Home .row .content{
+    flex:1 1 42rem;
+}
+
+.Home .row .books-slider{
+    flex:1 1 42rem;
+    text-align: center;
+    margin-top: 2.5rem;
+
+}
+
+
+
+.Home .row .books-slider a img{
+    height: 25rem;
+
+}
+
+.Home .row .books-slider a:hover img{
+    transform: scale(.9);
+}
+
+.Home .row .content h3{
+    color:var(--black);
+    font-size:4.5rem;
+
+}
+
+.Home .row .content p{
+    color:var(--light-color);
+    font-size:1.5rem;
+    line-height:2;
+    padding:1rem 0;
+}
+
+.Home .row .content{
+    text-align: center;
+}
+
+.Home .row .content h3{
+    font-size: 3.5rem;
+
+}
+
+.arrivals {
+    background:#106585;
+    color:#fff;
+}
+.arrivals .arrivals-slider .box{
+    display:flex;
+    background:#fff;
+    align-items:first baseline;
+    gap:0rem;
+    padding:2rem 1rem;
+    border:var(--border);
+    margin:0rem 0;
+
+}
+
+.arrivals .arrivals-slider .box:hover{
+    border:var(--border-hover);
+}
+
+.arrivals .arrivals-slider .box .image img{
+    height:15rem;
+}
+
+.arrivals .arrivals-slider .box .content h3{
+    font-size: 2rem;
+    color:var(--black);
+
+}
+
+.arrivals .arrivals-slider .box .content .price{
+    font-size: 2.2rem;
+    color:var(--black);
+    padding-bottom: .5rem;
+
+}
+
+.arrivals .arrivals-slider .box .content .price span{
+    font-size: 1.5rem;
+    color:var(--light-color);
+    text-decoration: line-through;
+
+}
+
+.arrivals .arrivals-slider .box .content .stars i{
+    font-size: 1.5rem;
+    color:var(--green);
+}
+
 /* media */
 
 @media (max-width:991px){
@@ -168,6 +271,10 @@ html::-webkit-scrollbar-thumb{
 
     .header .header-1{
         padding:2rem;
+    }
+
+    section{
+        padding:3rem 2rem;
     }
 }
 @media (max-width:768px){
