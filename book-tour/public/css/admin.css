@@ -178,6 +178,10 @@ table {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+#fullwidth {
+    width: 100%
+}
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -224,4 +228,16 @@ input[type="submit"]:hover {
 
 .add-product-btn:hover {
     background-color: var(--hover-color);
+}
+
+.projects table thead td {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.recent-grid table thead td {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
 }

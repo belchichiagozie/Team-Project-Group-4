@@ -23,6 +23,7 @@ use App\Http\Controllers\AdminCustomerController;
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::redirect('/', '/products');
+Route::get('/products/{id}', [ProductController::class, 'show']);
 
 # Admin routes
 Route::get('/admin/dashboard', [AdminController::class, 'index']);

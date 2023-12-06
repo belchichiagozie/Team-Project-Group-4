@@ -13,4 +13,10 @@ class ProductController extends Controller
         $books = Book::all();
         return view('/products', ['books' => $books]);
     }
+
+    public function show($id)
+    {
+        $book = Book::find($id);
+        return view('showproducts', ['book' => $book]);
+    }
 }
