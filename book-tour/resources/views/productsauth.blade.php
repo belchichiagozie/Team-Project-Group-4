@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- css file -->
     <link rel="stylesheet" type="text/css" href="/css/products.css"/>
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
 <body>
     <!-- header -->
     <header class="header">
         <div class="header-1">
             <img src="/images/logo.png" alt="Your Logo" class="logo-image">
-            <a href="#" class="logo"> </i> BookTour</a>
+            <a href="/products" class="logo"> </i> BookTour</a>
 
             <form action="{{ route('catalog.index') }}" method="GET" id="searchForm" class="search-form">
                 <input type="search" name="searchInput" placeholder="What's your next adventure? Search here..." id="search-box">

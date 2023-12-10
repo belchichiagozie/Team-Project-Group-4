@@ -42,10 +42,6 @@
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="fullwidth">
             <div class="container">
             <h2>
-                <label for="">
-                    <span class="las la-bars"></span>
-                </label>
-
                 Customers
             </h2>
             <div class="search-wrapper">
@@ -112,9 +108,7 @@
                         <h1>54</h1>
                         <span>Customers</span>
                     </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
+
                 </div>
 
             <div class="cards">
@@ -123,9 +117,7 @@
                         <h1>124</h1>
                         <span>Orders</span>
                     </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
+
                 </div>
 
             <div class="cards">
@@ -134,9 +126,7 @@
                         <h1>£100,000</h1>
                         <span>Income</span>
                     </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
+
                 </div>
 
             <div class="cards">
@@ -145,9 +135,7 @@
                         <h1>54</h1>
                         <span>Customers</span>
                     </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
+
                 </div>
                 
             <div class="cards">
@@ -156,9 +144,7 @@
                         <h1>54</h1>
                         <span>Customers</span>
                     </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
+
                 </div>
 
         </main>

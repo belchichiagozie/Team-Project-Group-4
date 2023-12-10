@@ -27,7 +27,7 @@
 <header class="header">
         <div class="header-1">
             <img src="/images/logo.png" alt="Your Logo" class="logo-image">
-            <a href="#" class="logo"> </i>BookTour</a>
+            <a href="/products" class="logo"> </i>BookTour</a>
             <div class="header-20">
                 <nav class="bavbar">
                     <a href="/products">Home</a>

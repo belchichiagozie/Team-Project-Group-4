@@ -17,7 +17,7 @@
     <header class="header">
         <div class="header-1">
             <img src="/images/logo.png" alt="Your Logo" class="logo-image">
-            <a href="#" class="logo"> </i> BookTour</a>
+            <a href="/products" class="logo"> </i> BookTour</a>
 
             <form action="{{ route('catalog.index') }}" method="GET" id="searchForm" class="search-form">
                 <input type="search" name="searchInput" placeholder="What's your next adventure? Search here..." id="search-box">

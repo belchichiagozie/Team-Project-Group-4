@@ -42,10 +42,6 @@
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="fullwidth">
             <div class="container">
             <h2>
-                <label for="">
-                    <span class="las la-bars"></span>
-                </label>
-
                 Products
             </h2>
             <div class="search-wrapper">
