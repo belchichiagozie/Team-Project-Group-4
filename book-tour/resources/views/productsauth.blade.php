@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- css file -->
     <link rel="stylesheet" type="text/css" href="/css/products.css"/>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <!-- header -->
@@ -33,8 +34,16 @@
             <a href="#" class="fas fa-shopping-cart"></a>
             <div id="login-btn" class="fas fa-user dropdown">
                 <div class="dropdown-content">
-                    <a href="/home" id="xstext">Log In</a>
+                    <a href="{{ route('logout') }}" id="xstext" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+       {{ __('Logout') }} </a>
+       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+                    
+                    
                 </div>
+            </div>
             </div>
         </div>
     </div>

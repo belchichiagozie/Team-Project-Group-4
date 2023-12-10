@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $books = Book::all();
+        $customers = Customer::all();
+        $role = Auth::user()->role;
+        if ($role == 1) {
+            return view('Admin/admin', ['books' => $books, 'customers' => $customers]);
+        } else {
+            return view('/productsauth', ['books' => $books]);
+        }
     }
 }

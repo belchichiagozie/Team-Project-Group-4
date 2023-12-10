@@ -123,10 +123,24 @@ section{
 
 }
 
+.header .header-20{
+    background:#106585;
+}
+
 .header .header-2 .navbar{
     text-align:center;
 }
 .header .header-2 .navbar a{
+    color:#fff;
+    display: inline-block;
+    padding:1.2rem;
+    font-size:1.7rem;
+}
+
+.header .header-20 .bavbar{
+    text-align:center;
+}
+.header .header-20 .bavbar a{
     color:#fff;
     display: inline-block;
     padding:1.2rem;
@@ -138,6 +152,17 @@ section{
 }
 
 .header .header-2.active{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index: 1000;
+
+}
+
+.header .header-20 .bavbar a:hover{
+    background:#AED0DD;
+}
+
+.header .header-20.active{
     position:fixed;
     top:0; left:0; right:0;
     z-index: 1000;
@@ -262,6 +287,59 @@ section{
     color:var(--green);
 }
 
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right:0;
+}
+
+#xstext {
+    font-size:12px;
+}
+
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
 /* media */
 
 @media (max-width:991px){
@@ -289,6 +367,9 @@ section{
 
 
     .header .header-2{
+        display:none;
+    }
+    .header .header-20{
         display:none;
     }
 

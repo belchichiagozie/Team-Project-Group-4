@@ -28,9 +28,19 @@
         <div class="header-1">
             <img src="/images/logo.png" alt="Your Logo" class="logo-image">
             <a href="#" class="logo"> </i>BookTour</a>
-            <script src="/js/products.js">
+            <div class="header-20">
+                <nav class="bavbar">
+                    <a href="/products">Home</a>
+                    <a href="#New Arrivals">New Arrivals</a>
+                    <a href="#Best Sellers">Best Sellers</a>
+                    <a href="#Genres">Genres</a>
+                    <a href="#Special Offers">Special Offers</a>
+                    <a href="#Reviews">Reviews</a>
+        
+                </nav>
+            </div>
+            <script src="/js/products.js"></script>
         </div>
-    </script>
     </header>
 
     <div id="app">
