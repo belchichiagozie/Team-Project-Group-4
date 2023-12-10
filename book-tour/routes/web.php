@@ -8,7 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
-
+use App\Http\Controllers\CatalogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +24,10 @@ use App\Http\Controllers\AdminCustomerController;
 Route::get('/products', [ProductController::class, 'index']);
 Route::redirect('/', '/products');
 Route::get('/products/{id}', [ProductController::class, 'show']);
+
+#Routes for Catalog
+
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
 # Admin routes
 Route::get('/admin/dashboard', [AdminController::class, 'index']);

@@ -19,13 +19,16 @@
             <img src="/images/logo.png" alt="Your Logo" class="logo-image">
             <a href="#" class="logo"> </i> BookTour</a>
 
-            <form action="" class="search-form">
-            <input type="search" name="" placeholder="what's your next adventure? search here..." id="search-box">
-            <label for="search-box" class="fas fa-search"></label>
-        </form>
+            <form action="{{ route('catalog.index') }}" method="GET" id="searchForm" class="search-form">
+                <input type="search" name="searchInput" placeholder="What's your next adventure? Search here..." id="search-box">
+                <label for="search-box" class="fas fa-search"></label>
+                
+                <input type="hidden" name="sort" value="title">
+            </form>
 
         <div class="icons">
-            <div id="search-btn" class="fas fa-search"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
             <div id="login-btn" class="fas fa-user"></div>
@@ -116,6 +119,8 @@
 
 </section>
 <!-- Products: New Arrivals Section -->
+
+
 
 
 

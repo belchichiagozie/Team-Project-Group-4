@@ -322,3 +322,66 @@ section{
         font-size: 50%;
     }
 }
+
+
+/*CATALOG CSS FILES */
+
+.catalog .book-box 
+{
+    padding: 2rem 1rem;
+    border: var(--border);
+    margin: 0rem 0;
+    display: flex;
+    background: #fff;
+    align-items: flex-start; 
+    gap: 0rem;
+    
+}
+
+.catalog .book-box:hover 
+{
+    border: var(--border-hover);
+}
+
+.catalog .book-box .image img 
+{
+    height: 15rem;
+}
+
+.catalog .book-box .content h3 
+{
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.catalog .book-box .content .price 
+{
+    color: var(--black);
+    padding-bottom: .5rem;
+    font-size: 2.2rem;
+}
+
+.catalog .book-box .content .price span 
+{
+    color: var(--light-color);
+    text-decoration: line-through;
+    font-size: 1.5rem;
+ 
+}
+
+.catalog .book-box .content .stars i 
+{
+    color: var(--green);
+
+    font-size: 1.5rem;
+}
+
+.catalog h1 
+{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #106585;
+  
+}
+
+
