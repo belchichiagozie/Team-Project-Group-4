@@ -465,6 +465,59 @@ section{
   
 }
 
+.add-to-favorites, .add-to-basket {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+.add-to-favorites:hover, .add-to-basket:hover {
+    background-color: #2980b9;
+}
+
+/* Custom styles for book details */
+.book-details {
+    position: relative;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px; /* Adjust as needed */
+}
+
+.image-details{
+    display:flex;
+    gap:50px 50px;
+}
+
+.right-side{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.details-top{
+    font-size:20px;
+}
+
+.details-middle{
+    font-size:15px;
+}
+.product-image{
+    padding:10px; 
+}
 
 
