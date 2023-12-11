@@ -24,14 +24,16 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
 	protected $table = 'reviews';
-	protected $primaryKey = 'Book_ID';
+	protected $primaryKey = ['Book_ID', 'Customer_ID'];
 	public $timestamps = false;
 
 	protected $casts = [
-		'Customer_ID' => 'int'
+		'Customer_ID' => 'int',
+		'Book_ID' => 'int'
 	];
 
 	protected $fillable = [
+		'Book_ID',
 		'Customer_ID',
 		'Title',
 		'Body'
