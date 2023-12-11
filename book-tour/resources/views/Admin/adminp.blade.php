@@ -107,7 +107,7 @@
                             <h2>New Books</h2>
                         </div>
 
-                        <div class="card-body">
+                        <div id="products-table" class="card-body">
                             <table width="100%">
                                 <thead>
                                     <tr>
@@ -127,7 +127,7 @@
                                         <td>{{$book->Genre}}</td>
                                         <td>{{$book->Price}}</td>
                                         <td>{{$book->Stock}}</td>
-                                        <td><img src="/images/{{$book->file}}" width="60px" height="80px" alt="{{$book->Book_ID}}"></td>
+                                        <td><div id="image"><img src="/images/{{$book->file}}" width="60px" height="80px" alt="{{$book->Book_ID}}"></div></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

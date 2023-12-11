@@ -1,19 +1,4 @@
-@extends('layouts.app')
-
-<!DOCTYPE html>
-<html lang="en"> <!-- header from main home page products blade aesthetic-->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookTour Catalogue</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
-    <!-- font link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- css file -->
-    <link rel="stylesheet" type="text/css" href="/css/products.css"/>
-</head>
+@extends('layouts.navbar')
 
 @section('content')
   
