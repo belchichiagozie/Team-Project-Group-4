@@ -47,9 +47,9 @@ class Book extends Model
 	];
 
 	public function basket()
-	{
-		return $this->hasOne(Basket::class, 'Book_ID');
-	}
+    {
+        return $this->hasMany(Basket::class, 'Book_ID');
+    }
 
 	public function orders()
 	{
@@ -66,4 +66,8 @@ class Book extends Model
 	{
 		return $this->hasOne(Review::class, 'Book_ID');
 	}
+	public function getAvailableBooks()
+    {
+        return Book::all();
+    }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BasketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,5 +42,10 @@ Route::get('/admin/orders', [AdminOrderController::class, 'index']);
 
 Route::get('/home', [HomeController::class, '_construct']);
 Route::get('/home', [HomeController::class, 'index']);
+
+Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('basket.view');
+Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
+Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
+Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
 
 Auth::routes();
