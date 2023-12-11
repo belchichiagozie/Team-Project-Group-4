@@ -31,6 +31,8 @@ class User extends Authenticatable
 	use HasApiTokens, HasFactory, Notifiable;
 	protected $table = 'users';
 
+	protected $primaryKey = 'id';
+
 	protected $casts = [
 		'email_verified_at' => 'datetime'
 	];
@@ -47,4 +49,9 @@ class User extends Authenticatable
 		'password',
 		'remember_token'
 	];
+
+	public function basket()
+    {
+        return $this->hasOne(Basket::class, 'Customer_ID');
+    }
 }

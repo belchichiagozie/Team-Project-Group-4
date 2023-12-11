@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
 class Basket extends Model
 {
 	protected $table = 'basket';
+	protected $primaryKey = ['Customer_ID', 'Book_ID'];
 	public $incrementing = false;
 	public $timestamps = false;
 
@@ -39,7 +40,7 @@ class Basket extends Model
 
 	public function customer()
 	{
-		return $this->belongsTo(Customer::class, 'Customer_ID');
+		return $this->belongsTo(User::class, 'Customer_ID', 'id');
 	}
 
 	public function book()

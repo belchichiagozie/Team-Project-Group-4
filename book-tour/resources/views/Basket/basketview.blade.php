@@ -16,10 +16,10 @@
             <tbody>
                 @foreach ($basketItems as $item)
                     <tr>
-                        <td>{{ $item->Title }}</td>
+                        <td>{{ $item->book ? $item->book->Title : $item->Title }}</td>
                         <td>{{ $item->quantity }}</td>
-                        <td>£{{ $item->Price }}</td>
-                        <td>£{{ $item->quantity * $item->Price }}</td>
+                        <td>£{{ $item->book ? $item->book->Price : $item->Price }}</td>
+                        <td>£{{ $item->quantity * ($item->book ? $item->book->Price : $item->Price) }}</td>
                     </tr>
                 @endforeach
             </tbody>

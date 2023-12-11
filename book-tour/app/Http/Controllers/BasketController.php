@@ -49,23 +49,26 @@ class BasketController extends Controller
 
     private function addToBasketUser($userId, $bookId, $quantity)
     {
-        $basketItem = Basket::where('customer_id', $userId)
-            ->where('book_id', $bookId)
+        //dd($userId,$bookId, $quantity);
+        $basketItem = Basket::where('Customer_ID', $userId)
+            ->where('Book_ID', $bookId)
             ->first();
+            //dd($basketItem);
         if ($basketItem) {
-            $basketItem->quantity += $quantity;
+            $basketItem->Quantity += $quantity;
             $basketItem->save();
         } else {
             Basket::create([
-                'customer_id' => $userId,
-                'book_id' => $bookId,
-                'quantity' => $quantity,
+                'Customer_ID' => $userId,
+                'Book_ID' => $bookId,
+                'Quantity' => $quantity,
             ]);
         }
     }
 
     private function addToBasketGuest($bookId, $quantity)
     {
+        //dd($bookId, $quantity);
         $basket = session()->get('basket', []);
 
         if (isset($basket[$bookId])) {
