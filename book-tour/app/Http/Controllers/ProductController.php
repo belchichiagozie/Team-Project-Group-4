@@ -13,11 +13,7 @@ class ProductController extends Controller
     {
         $books = Book::all();
         $user = Auth::user();
-        if (Auth::check()) {
-            return view('/productsauth', ['books' => $books, 'user' => $user]);
-        } else {
-            return view('/products', ['books' => $books]);
-        }
+        return view('/products', ['books' => $books, 'user' => $user]);
     }
 
     public function show($id)

@@ -32,7 +32,7 @@ class HomeController extends Controller
         if ($role == 1) {
             return view('Admin/admin', ['books' => $books, 'customers' => $customers]);
         } else {
-            return view('/productsauth', ['books' => $books]);
+            return view('/products', ['books' => $books]);
         }
     }
 }
