@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
 class Basket extends Model
 {
 	protected $table = 'basket';
+	protected $primaryKey = ['Customer_ID', 'Book_ID'];
 	public $incrementing = false;
 	public $timestamps = false;
 

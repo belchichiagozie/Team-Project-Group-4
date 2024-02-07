@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BasketController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -42,8 +43,12 @@ Route::redirect('/', '/products');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
 //Routes for Catalog page
-#Routes for Catalog
-
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+
+//Routes for Basket page
+Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('basket.view');
+Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
+Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
+Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
 
 require __DIR__.'/auth.php';
