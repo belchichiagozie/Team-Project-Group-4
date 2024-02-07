@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CatalogController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,5 +36,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+//Routes for main Products page
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::redirect('/', '/products');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
+//Routes for Catalog page
+#Routes for Catalog
+
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
 require __DIR__.'/auth.php';
