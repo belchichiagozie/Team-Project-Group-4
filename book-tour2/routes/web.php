@@ -7,7 +7,10 @@ use App\Http\Controllers\BasketController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminCustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,5 +53,15 @@ Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('baske
 Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
 Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
 Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
+
+//Routes for Admin Panel page
+Route::get('/admin/dashboard', [AdminController::class, 'index']);
+Route::redirect('admin', 'admin/dashboard');
+Route::get('/admin/products', [AdminProductController::class, 'index']);
+Route::post('/admin/adminaddproducts', [AdminProductController::class, 'store']);
+Route::post('/admin/products', [AdminProductController::class, 'store']);
+Route::get('/admin/adminaddproducts', [AdminProductController::class, 'add_index']);
+Route::get('/admin/customers', [AdminCustomerController::class, 'index']);
+Route::get('/admin/orders', [AdminOrderController::class, 'index']);
 
 require __DIR__.'/auth.php';
