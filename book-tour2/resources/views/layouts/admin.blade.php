@@ -18,26 +18,17 @@
     <!-- font link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- css file -->
-    <link rel="stylesheet" type="text/css" href="/css/products.css"/>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+ <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
 </head>
 <body>
     <div id="app">
-        <nav class="lower-navbar">
-        <a href="#Home" class="fas fa-home"></a>
-        <a href="#Featured" class="fas fa-list"></a>
-        <a href="#New Arrivals" class="fas fa-tags"></a>
-        <a href="#Best Sellers" class="fas fa-heart"></a>
-        <a href="#Special Offers" class="fas fa-user"></a>
-        <a href="#Reviews" class="fas fa-comments"></a>
-
-    </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>

@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,5 +64,6 @@ Route::post('/admin/products', [AdminProductController::class, 'store']);
 Route::get('/admin/adminaddproducts', [AdminProductController::class, 'add_index']);
 Route::get('/admin/customers', [AdminCustomerController::class, 'index']);
 Route::get('/admin/orders', [AdminOrderController::class, 'index']);
+
 
 require __DIR__.'/auth.php';
