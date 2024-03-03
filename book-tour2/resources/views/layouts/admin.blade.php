@@ -27,11 +27,6 @@
 <body>
 <div id="logo"></div>
 <div id="layout" class="bg-sky-200"></div>
-    <div id="app">
-        <main class="py-4">
             @yield('content')
-        </main>
-    </div>
-
 </body>
 </html>
