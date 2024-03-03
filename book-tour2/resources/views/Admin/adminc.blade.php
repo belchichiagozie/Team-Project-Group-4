@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/admin.css"/>
 </head>
 <body>
+    @section('content')
     <div class="sidebar">
         <div class="sidebar-menu">
             <ul>
@@ -150,5 +151,6 @@
         </main>
     </div>
 </div>
+@endsection
 </body>
 </html>

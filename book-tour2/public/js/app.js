@@ -24,10 +24,13 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 __webpack_require__.e(/*! import() */ "resources_js_components_AdminPage_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/AdminPage */ "./resources/js/components/AdminPage.jsx"));
 __webpack_require__.e(/*! import() */ "resources_js_components_Counter_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Counter */ "./resources/js/components/Counter.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_components_shared_Layout_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shared/Layout */ "./resources/js/components/shared/Layout.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_components_Dashboard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Dashboard */ "./resources/js/components/Dashboard.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_components_Products_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Products */ "./resources/js/components/Products.jsx"));
 
 
 
-var appName = /* unsupported import.meta.env.VITE_APP_NAME */ undefined.VITE_APP_NAME || 'Laravel';
+var appName = /* unsupported import.meta.env.VITE_APP_NAME */ undefined.VITE_APP_NAME || "Laravel";
 (0,_inertiajs_react__WEBPACK_IMPORTED_MODULE_3__.createInertiaApp)({
   title: function title(_title) {
     return "".concat(_title, " - ").concat(appName);
@@ -43,7 +46,7 @@ var appName = /* unsupported import.meta.env.VITE_APP_NAME */ undefined.VITE_APP
     root.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(App, _objectSpread({}, props)));
   },
   progress: {
-    color: '#4B5563'
+    color: "#4B5563"
   }
 });
 
@@ -46382,7 +46385,7 @@ const isThenable = (thing) =>
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_AdminPage_jsx":1,"resources_js_components_Counter_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_AdminPage_jsx":1,"resources_js_components_Counter_jsx":1,"resources_js_components_shared_Layout_jsx":1,"resources_js_components_Dashboard_jsx":1,"resources_js_components_Products_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

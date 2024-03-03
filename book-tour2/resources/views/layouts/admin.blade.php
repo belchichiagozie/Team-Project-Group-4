@@ -13,7 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
 
     <!-- font link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -21,14 +21,17 @@
 
     <!-- Scripts -->
  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+ <script src="{{ mix('js/app.js') }}" defer></script>
 
 </head>
 <body>
+<div id="logo"></div>
+<div id="layout" class="bg-sky-200"></div>
     <div id="app">
         <main class="py-4">
             @yield('content')
         </main>
     </div>
-    <script src="{{ mix('js/app.js') }}" defer></script>
+
 </body>
 </html>

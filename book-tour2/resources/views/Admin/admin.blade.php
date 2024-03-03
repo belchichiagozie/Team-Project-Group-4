@@ -9,11 +9,11 @@
     <title>Admin</title>
     <!-- font link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- css file -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
 </head>
+@section('content')
 <body>
-    <div id="hello-react"></div>
+    <div id="dashboard"></div>
     <div id="counter"></div>
 </body>
+@endsection
 </html>

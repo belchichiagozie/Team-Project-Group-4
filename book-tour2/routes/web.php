@@ -56,14 +56,20 @@ Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->na
 Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
 
 //Routes for Admin Panel page
-Route::get('/admin/dashboard', [AdminController::class, 'index']);
-Route::redirect('admin', 'admin/dashboard');
-Route::get('/admin/products', [AdminProductController::class, 'index']);
-Route::post('/admin/adminaddproducts', [AdminProductController::class, 'store']);
-Route::post('/admin/products', [AdminProductController::class, 'store']);
-Route::get('/admin/adminaddproducts', [AdminProductController::class, 'add_index']);
-Route::get('/admin/customers', [AdminCustomerController::class, 'index']);
-Route::get('/admin/orders', [AdminOrderController::class, 'index']);
+Route::prefix('admin/')->group(function() {
+    Route::get('dashboard', [AdminController::class, 'index']);
+    Route::get('products',[AdminProductController::class, 'index']);
+    Route::post('addproducts', [AdminProductController::class, 'store']);
+    Route::post('products', [AdminProductController::class, 'store']);
+    Route::get('addproducts', [AdminProductController::class, 'add_index']);
+    Route::get('customers', [AdminCustomerController::class, 'index']);
+    Route::get('orders', [AdminOrderController::class, 'index']);
+});
+
+
+
+
+Route::redirect('/admin','/admin/dashboard');
 
 
 require __DIR__.'/auth.php';
