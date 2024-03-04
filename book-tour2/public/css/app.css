@@ -802,6 +802,8 @@ video {
   border-right-width: 1px;
 }.border-t {
   border-top-width: 1px;
+}.border-solid {
+  border-style: solid;
 }.border-gray-100 {
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
@@ -886,6 +888,8 @@ video {
   padding: 1rem;
 }.p-6 {
   padding: 1.5rem;
+}.p-10 {
+  padding: 2.5rem;
 }.px-0 {
   padding-left: 0px;
   padding-right: 0px;

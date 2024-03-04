@@ -14,15 +14,32 @@ export default function Products() {
         fetchData();
     }, []);
     return (
-        <div>
+        <div className="border border-solid">
             <h1>Books</h1>
-            <ul>
+            <thead>
+                <tr>
+                    <td>Book Title</td>
+                    <td>Author</td>
+                    <td>Genre</td>
+                    <td>Price</td>
+                    <td>Stock</td>
+                    <td>Image</td>
+                </tr>
+            </thead>
+            <tbody>
                 {book &&
                     book.length > 0 &&
                     book.map((bookObj, index) => (
-                        <li key={index}>{bookObj.Title}</li>
+                        <tr>
+                            <td key={index}>{bookObj.Title}</td>
+                            <td key={index}>{bookObj.Author}</td>
+                            <td key={index}>{bookObj.Genre}</td>
+                            <td key={index}>{bookObj.Price}</td>
+                            <td key={index}>{bookObj.Stock}</td>
+                            <td key={index}>{bookObj.file}</td>
+                        </tr>
                     ))}
-            </ul>
+            </tbody>
         </div>
     );
 }

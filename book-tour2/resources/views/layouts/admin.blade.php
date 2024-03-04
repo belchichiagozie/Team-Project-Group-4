@@ -26,7 +26,7 @@
 </head>
 <body>
 <div id="logo"></div>
-<div id="layout" class="bg-sky-200"></div>
+<div id="layout"></div>
             @yield('content')
 </body>
 </html>

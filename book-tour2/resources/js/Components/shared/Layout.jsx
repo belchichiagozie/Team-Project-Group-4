@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Sidebar from "./Sidebar";
 import Products from "../Products";
+import LineChartComponent from "../Chart";
 
 export default function Layout() {
     const loc = window.location.href;
@@ -10,7 +11,7 @@ export default function Layout() {
             <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
                 <Sidebar />
                 <div className="p-4">
-                    <div className="bg-teal-200 text-xl">Products</div>
+                    <div className="text-xl">Products</div>
                     <Products />
                 </div>
             </div>
@@ -20,7 +21,8 @@ export default function Layout() {
             <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
                 <Sidebar />
                 <div className="p-4">
-                    <div className="bg-teal-200 text-xl">Dashboard</div>
+                    <div className="text-xl">Dashboard</div>
+                    <LineChartComponent />
                 </div>
             </div>
         );
@@ -29,7 +31,7 @@ export default function Layout() {
             <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
                 <Sidebar />
                 <div className="p-4">
-                    <div className="bg-teal-200 text-xl">Customers</div>
+                    <div className="text-xl">Customers</div>
                 </div>
             </div>
         );

@@ -24,38 +24,52 @@ export default function Sidebar() {
             </div>
 
             <div className="flex flex-col flex-1 gap-2">
-                <div className={sideItem}>
-                    <a href="/admin/dashboard">Dashboard </a>
-                    <span>
-                        <HiOutlineViewGrid />
-                    </span>
-                </div>
-                <div className={sideItem}>
-                    <a href="/admin/products">Products</a>
-                    <span>
-                        <HiOutlineCube />
-                    </span>
-                </div>
-                <div className={sideItem}>
-                    <a href="/admin/customers">Customers</a>
-                    <span>
-                        <HiOutlineUsers />
-                    </span>
-                </div>
-                <div className={sideItem}>
-                    Orders
-                    <span>
-                        <HiOutlineShoppingCart />
-                    </span>
-                </div>
-                <div className={sideItem}>
-                    Analytics
-                    <span>
-                        <HiChartPie />
-                    </span>
-                </div>
+                <a href="/admin/dashboard">
+                    <div className={sideItem}>
+                        Dashboard
+                        <span>
+                            <HiOutlineViewGrid />
+                        </span>
+                    </div>
+                </a>
+                <a href="/admin/products">
+                    <div className={sideItem}>
+                        Products
+                        <span>
+                            <HiOutlineCube />
+                        </span>
+                    </div>
+                </a>
+                <a href="/admin/customers">
+                    <div className={sideItem}>
+                        Customers
+                        <span>
+                            <HiOutlineUsers />
+                        </span>
+                    </div>
+                </a>
+                <a href="/admin/orders">
+                    <div className={sideItem}>
+                        Orders
+                        <span>
+                            <HiOutlineShoppingCart />
+                        </span>
+                    </div>
+                </a>
+                <a href="/admin/dashboard">
+                    <div className={sideItem}>
+                        Analytics
+                        <span>
+                            <HiChartPie />
+                        </span>
+                    </div>
+                </a>
             </div>
-            <div>BOTTOM</div>
+            <div>
+                <div className={sideItem}>Settings</div>
+                <div className={sideItem}>Help & Support</div>
+                <div className={sideItem}>Logout</div>
+            </div>
         </div>
     );
 }
