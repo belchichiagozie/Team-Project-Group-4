@@ -3,9 +3,13 @@ import "../css/app.css";
 import("./components/AdminPage");
 import("./components/Counter");
 import("./components/shared/Layout");
+import("./components/shared/SideBar");
 import("./components/Dashboard");
 import("./components/Products");
 import("./components/Chart");
+import("./components/BookStockChart");
+import("./components/BinButton");
+import("./Components/AddBook");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
@@ -14,7 +18,7 @@ const appName = import.meta.env.MIX_APP_NAME || "Laravel";
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => require(`./Pages/${name}`),
+    resolve: (name) => require(`./Pages/${name}.vue`),
     setup({ el, App, props }) {
         const root = createRoot(el);
 
