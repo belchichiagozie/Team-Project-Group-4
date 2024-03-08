@@ -19,4 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/addbook',[APIController::class,'store']);
+
 Route::get('/admin/products',[APIController::class, 'getBooks']);
+Route::get('/admin/favouritebooks',[APIController::class, 'getFavourites']);
+

@@ -85,7 +85,7 @@ export default function SideBar() {
         //     </div>
         // </div>
         <Sidebar aria-label="Sidebar with logo branding example">
-            <Sidebar.Logo href="#" img="/favicon.svg" imgAlt="BookTour Logo">
+            <Sidebar.Logo href="#" img="/logo.svg" imgAlt="BookTour Logo">
                 Book-Tour
             </Sidebar.Logo>
             <Sidebar.Items>

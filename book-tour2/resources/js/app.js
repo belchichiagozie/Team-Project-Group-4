@@ -9,7 +9,9 @@ import("./components/Products");
 import("./components/Chart");
 import("./components/BookStockChart");
 import("./components/BinButton");
-import("./Components/AddBook");
+import("./components/EditBook");
+import("./components/FavouriteButton");
+import("./components/AddBookButton");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";

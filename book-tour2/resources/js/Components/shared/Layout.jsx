@@ -14,18 +14,24 @@ export default function Layout() {
     const loc = window.location.href;
     if (loc.includes("admin/products")) {
         return (
-            <div className="flex flex-row">
-                <SideBar />
+            <div className="flex justify-between flex-row">
+                <div className="not(justify-between)">
+                    <SideBar />
+                </div>
                 <div className={page}>
                     <div className={header_text}>Products</div>
-                    <Products />
+                    <div className="p-4 shadow">
+                        <Products />
+                    </div>
                 </div>
             </div>
         );
     } else if (loc.includes("dashboard")) {
         return (
-            <div className="flex flex-row">
-                <SideBar />
+            <div className="flex justify-between flex-row">
+                <div className="not(justify-between)">
+                    <SideBar />
+                </div>
                 <div className={page}>
                     <div className={header_text}>Dashboard</div>
                     <div className="flex flex-row">
@@ -35,7 +41,9 @@ export default function Layout() {
                         <div className={chartsize}>
                             <LineChartComponent />
                         </div>
-                        <div>
+                    </div>
+                    <div>
+                        <div className="shadow">
                             <Products />
                         </div>
                     </div>

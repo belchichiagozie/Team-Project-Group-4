@@ -9,7 +9,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ AddBookButton)
+/* harmony export */   "default": () => (/* binding */ EditBookButton)
 /* harmony export */ });
 /* harmony import */ var flowbite_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! flowbite-react */ "./node_modules/flowbite-react/lib/esm/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -32,7 +32,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function AddBookButton() {
+function EditBookButton(_ref) {
+  var bookObj = _ref.bookObj;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     openModal = _useState2[0],
@@ -61,18 +62,18 @@ function AddBookButton() {
           className: "space-y-6",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
             className: "text-xl font-medium text-gray-900 dark:text-white",
-            children: "Sign in to our platform"
+            children: "Book Details"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "mb-2 block",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Label, {
-                htmlFor: "email",
-                value: "Your email"
+                htmlFor: "title",
+                value: "Book Title"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.TextInput, {
-              id: "email",
-              placeholder: "name@company.com",
-              value: email,
+              id: "Title",
+              placeholder: bookObj.Title,
+              value: bookObj.Title,
               onChange: function onChange(event) {
                 return setEmail(event.target.value);
               },
@@ -82,41 +83,36 @@ function AddBookButton() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "mb-2 block",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Label, {
-                htmlFor: "password",
-                value: "Your password"
+                htmlFor: "author",
+                value: "Author"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.TextInput, {
-              id: "password",
-              type: "password",
+              id: "author",
+              placeholder: bookObj.Author,
+              value: bookObj.Author,
               required: true
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "flex justify-between",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "flex items-center gap-2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Checkbox, {
-                id: "remember"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Label, {
-                htmlFor: "remember",
-                children: "Remember me"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-              href: "#",
-              className: "text-sm text-cyan-700 hover:underline dark:text-cyan-500",
-              children: "Lost Password?"
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+              className: "mb-2 block",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Label, {
+                htmlFor: "genre",
+                value: "Genre"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.TextInput, {
+              id: "genre",
+              placeholder: bookObj.Genre,
+              value: bookObj.Genre,
+              required: true
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             className: "w-full",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Button, {
-              children: "Log in to your account"
+              onClick: function onClick() {
+                return setOpenModal(false);
+              },
+              children: "Edit"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-            className: "flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300",
-            children: ["Not registered?\xA0", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-              href: "#",
-              className: "text-cyan-700 hover:underline dark:text-cyan-500",
-              children: "Create account"
-            })]
           })]
         })
       })]

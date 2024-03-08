@@ -31,7 +31,7 @@ class Book extends Model
 {
 	protected $table = 'books';
 	protected $primaryKey = 'Book_ID';
-	public $timestamps = true;
+	public $timestamps = false;
 
 	protected $casts = [
 		'Price' => 'float'
@@ -43,6 +43,7 @@ class Book extends Model
 		'Genre',
 		'Price',
 		'Stock',
+		'Favourite',
 		'file'
 	];
 

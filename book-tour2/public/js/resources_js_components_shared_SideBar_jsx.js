@@ -86,7 +86,7 @@ function SideBar() {
       "aria-label": "Sidebar with logo branding example",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Logo, {
         href: "#",
-        img: "/favicon.svg",
+        img: "/logo.svg",
         imgAlt: "BookTour Logo",
         children: "Book-Tour"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Items, {
