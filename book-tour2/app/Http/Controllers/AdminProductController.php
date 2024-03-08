@@ -16,7 +16,7 @@ class AdminProductController extends Controller
 
     public function add_index()
     {
-        return view('Admin/adminaddproducts');
+        return view('Admin/addproducts');
     }
 
     public function store(Request $request)

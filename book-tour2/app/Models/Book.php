@@ -43,6 +43,7 @@ class Book extends Model
 		'Genre',
 		'Price',
 		'Stock',
+		'Favourite',
 		'file'
 	];
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 use Reliese\Coders\CodersServiceProvider;
+use Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider;
 
 return [
 
