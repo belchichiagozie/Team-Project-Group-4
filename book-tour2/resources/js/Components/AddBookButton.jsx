@@ -55,14 +55,21 @@ export default function AddBookButton({ bookObj }) {
             });
     };
 
+    const formrow = "flex flex-col justify-center";
+
+    const forminput = "form-input text-black";
+
     const timeout = () => {
         setTimeout((window.location.href = "/admin/products"), 10000);
     };
     return (
         <>
-            <Button onClick={() => setOpenModal(true)}>Add New Book +</Button>
+            <Button className="bg-green-500" onClick={() => setOpenModal(true)}>
+                Add New Book +
+            </Button>
             <Modal
                 show={openModal}
+                className="text-white"
                 size="md"
                 onClose={() => setOpenModal(false)}
                 initialFocus={bookTitleRef}
@@ -191,7 +198,7 @@ export default function AddBookButton({ bookObj }) {
                                 id="addBookForm"
                                 encType="multipart/form-data"
                             >
-                                <div>
+                                <div className={formrow}>
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="title"
@@ -205,7 +212,7 @@ export default function AddBookButton({ bookObj }) {
                                         id="title"
                                         name="title"
                                         ref={bookTitleRef}
-                                        className="form-input"
+                                        className={forminput}
                                         placeholder="Title"
                                         value={book.title}
                                         onChange={handleInput}
@@ -213,7 +220,7 @@ export default function AddBookButton({ bookObj }) {
                                     />
                                     <span>{inputErrorList.title}</span>
                                 </div>
-                                <div>
+                                <div className={formrow}>
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="author"
@@ -226,7 +233,7 @@ export default function AddBookButton({ bookObj }) {
                                         type="text"
                                         id="author"
                                         name="author"
-                                        className="form-input"
+                                        className={forminput}
                                         placeholder="Author"
                                         value={book.author}
                                         onChange={handleInput}
@@ -234,7 +241,7 @@ export default function AddBookButton({ bookObj }) {
                                     />
                                     <span>{inputErrorList.author}</span>
                                 </div>
-                                <div>
+                                <div className={formrow}>
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="genre"
@@ -247,7 +254,7 @@ export default function AddBookButton({ bookObj }) {
                                         type="text"
                                         id="genre"
                                         name="genre"
-                                        className="form-input"
+                                        className={forminput}
                                         placeholder="Genre"
                                         value={book.genre}
                                         onChange={handleInput}
@@ -255,7 +262,7 @@ export default function AddBookButton({ bookObj }) {
                                     />
                                     <span>{inputErrorList.genre}</span>
                                 </div>
-                                <div>
+                                <div className={formrow}>
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="price"
@@ -268,7 +275,7 @@ export default function AddBookButton({ bookObj }) {
                                         type="number"
                                         id="price"
                                         name="price"
-                                        className="form-input"
+                                        className={forminput}
                                         placeholder="Price per Book"
                                         value={book.price}
                                         onChange={handleInput}
@@ -276,7 +283,7 @@ export default function AddBookButton({ bookObj }) {
                                     />
                                     <span>{inputErrorList.price}</span>
                                 </div>
-                                <div>
+                                <div className={formrow}>
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="stock"
@@ -289,7 +296,7 @@ export default function AddBookButton({ bookObj }) {
                                         type="number"
                                         id="stock"
                                         name="stock"
-                                        className="form-input"
+                                        className={forminput}
                                         placeholder="Stock Amount"
                                         value={book.stock}
                                         onChange={handleInput}

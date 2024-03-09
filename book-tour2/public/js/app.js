@@ -34,6 +34,7 @@ __webpack_require__.e(/*! import() */ "resources_js_components_BinButton_jsx").t
 __webpack_require__.e(/*! import() */ "resources_js_components_EditBook_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/EditBook */ "./resources/js/components/EditBook.jsx"));
 __webpack_require__.e(/*! import() */ "resources_js_components_FavouriteButton_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/FavouriteButton */ "./resources/js/components/FavouriteButton.jsx"));
 __webpack_require__.e(/*! import() */ "resources_js_components_AddBookButton_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/AddBookButton */ "./resources/js/components/AddBookButton.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_components_shared_Header_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shared/Header */ "./resources/js/components/shared/Header.jsx"));
 
 
 
@@ -46422,7 +46423,7 @@ const isThenable = (thing) =>
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_AdminPage_jsx":1,"resources_js_components_Counter_jsx":1,"resources_js_components_shared_Layout_jsx":1,"resources_js_components_shared_SideBar_jsx":1,"resources_js_components_Dashboard_jsx":1,"resources_js_components_Products_jsx":1,"resources_js_components_Chart_jsx":1,"resources_js_components_BookStockChart_jsx":1,"resources_js_components_BinButton_jsx":1,"resources_js_components_EditBook_jsx":1,"resources_js_components_FavouriteButton_jsx":1,"resources_js_components_AddBookButton_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_AdminPage_jsx":1,"resources_js_components_Counter_jsx":1,"resources_js_components_shared_Layout_jsx":1,"resources_js_components_shared_SideBar_jsx":1,"resources_js_components_Dashboard_jsx":1,"resources_js_components_Products_jsx":1,"resources_js_components_Chart_jsx":1,"resources_js_components_BookStockChart_jsx":1,"resources_js_components_BinButton_jsx":1,"resources_js_components_EditBook_jsx":1,"resources_js_components_FavouriteButton_jsx":1,"resources_js_components_AddBookButton_jsx":1,"resources_js_components_shared_Header_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

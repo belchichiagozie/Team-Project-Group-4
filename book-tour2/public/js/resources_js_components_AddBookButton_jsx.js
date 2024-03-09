@@ -108,17 +108,21 @@ function AddBookButton(_ref) {
       return _ref2.apply(this, arguments);
     };
   }();
+  var formrow = "flex flex-col justify-center";
+  var forminput = "form-input text-black";
   var timeout = function timeout() {
     setTimeout(window.location.href = "/admin/products", 10000);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Button, {
+      className: "bg-green-500",
       onClick: function onClick() {
         return setOpenModal(true);
       },
       children: "Add New Book +"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Modal, {
       show: openModal,
+      className: "text-white",
       size: "md",
       onClose: function onClose() {
         return setOpenModal(false);
@@ -249,6 +253,7 @@ function AddBookButton(_ref) {
             id: "addBookForm",
             encType: "multipart/form-data",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
@@ -261,7 +266,7 @@ function AddBookButton(_ref) {
                 id: "title",
                 name: "title",
                 ref: bookTitleRef,
-                className: "form-input",
+                className: forminput,
                 placeholder: "Title",
                 value: book.title,
                 onChange: handleInput,
@@ -270,6 +275,7 @@ function AddBookButton(_ref) {
                 children: inputErrorList.title
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
@@ -281,7 +287,7 @@ function AddBookButton(_ref) {
                 type: "text",
                 id: "author",
                 name: "author",
-                className: "form-input",
+                className: forminput,
                 placeholder: "Author",
                 value: book.author,
                 onChange: handleInput,
@@ -290,6 +296,7 @@ function AddBookButton(_ref) {
                 children: inputErrorList.author
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
@@ -301,7 +308,7 @@ function AddBookButton(_ref) {
                 type: "text",
                 id: "genre",
                 name: "genre",
-                className: "form-input",
+                className: forminput,
                 placeholder: "Genre",
                 value: book.genre,
                 onChange: handleInput,
@@ -310,6 +317,7 @@ function AddBookButton(_ref) {
                 children: inputErrorList.genre
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
@@ -321,7 +329,7 @@ function AddBookButton(_ref) {
                 type: "number",
                 id: "price",
                 name: "price",
-                className: "form-input",
+                className: forminput,
                 placeholder: "Price per Book",
                 value: book.price,
                 onChange: handleInput,
@@ -330,6 +338,7 @@ function AddBookButton(_ref) {
                 children: inputErrorList.price
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
@@ -341,7 +350,7 @@ function AddBookButton(_ref) {
                 type: "number",
                 id: "stock",
                 name: "stock",
-                className: "form-input",
+                className: forminput,
                 placeholder: "Stock Amount",
                 value: book.stock,
                 onChange: handleInput,

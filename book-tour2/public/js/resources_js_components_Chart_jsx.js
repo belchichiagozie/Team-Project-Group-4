@@ -20,19 +20,48 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function LineChartComponent() {
+function LineChartComponent(_ref) {
+  var isLightMode = _ref.isLightMode;
+  var options = {
+    scales: {
+      x: {
+        ticks: {
+          color: isLightMode ? "black" : "white"
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.1)"
+        }
+      },
+      y: {
+        ticks: {
+          color: isLightMode ? "black" : "white"
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.1)"
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: isLightMode ? "black" : "white"
+        }
+      }
+    }
+  };
   var chartData = {
     labels: ["January", "February", "March", "April", "May"],
     datasets: [{
       label: "Users Gained",
       data: [65, 59, 80, 81, 56],
       fill: false,
-      backgroundColor: "rgb(75, 192, 192)",
-      borderColor: "rgba(75, 192, 192, 0.2)"
+      backgroundColor: "#a5f3fc",
+      borderColor: "#a5f3fc"
     }]
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Line, {
-    data: chartData
+    data: chartData,
+    options: options
   });
 }
 

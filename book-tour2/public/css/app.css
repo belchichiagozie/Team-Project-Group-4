@@ -1025,6 +1025,15 @@ video {
 }.my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}.mx-\[50\%\] {
+  margin-left: 50%;
+  margin-right: 50%;
+}.mx-\[20\%\] {
+  margin-left: 20%;
+  margin-right: 20%;
+}.mx-\[80\%\] {
+  margin-left: 80%;
+  margin-right: 80%;
 }.-mb-px {
   margin-bottom: -1px;
 }.-me-0 {
@@ -1235,6 +1244,8 @@ video {
   width: 100%;
 }.w-screen {
   width: 100vw;
+}.w-\[100\%\] {
+  width: 100%;
 }.max-w-2xl {
   max-width: 42rem;
 }.max-w-3xl {
@@ -1354,6 +1365,8 @@ video {
   flex-direction: column;
 }.flex-wrap {
   flex-wrap: wrap;
+}.place-content-center {
+  place-content: center;
 }.items-start {
   align-items: flex-start;
 }.items-end {
@@ -1823,6 +1836,12 @@ video {
 }.bg-yellow-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(159 88 10 / var(--tw-bg-opacity));
+}.bg-\[\#1e40af\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 64 175 / var(--tw-bg-opacity));
+}.bg-\[\#106585\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(16 101 133 / var(--tw-bg-opacity));
 }.bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }.bg-gradient-to-br {
@@ -2329,6 +2348,12 @@ video {
 }.text-yellow-900 {
   --tw-text-opacity: 1;
   color: rgb(99 49 18 / var(--tw-text-opacity));
+}.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}.text-blue-900 {
+  --tw-text-opacity: 1;
+  color: rgb(35 56 118 / var(--tw-text-opacity));
 }.underline {
   text-decoration-line: underline;
 }.antialiased {
@@ -2645,6 +2670,9 @@ video {
 }.hover\:bg-yellow-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(252 233 106 / var(--tw-bg-opacity));
+}.hover\:bg-red-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 36 36 / var(--tw-bg-opacity));
 }.hover\:bg-gradient-to-br:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }.hover\:text-cyan-700:hover {
@@ -3898,6 +3926,8 @@ video {
     height: 1.5rem;
   }.sm\:h-7 {
     height: 1.75rem;
+  }.sm\:h-9 {
+    height: 2.25rem;
   }.sm\:w-10 {
     width: 2.5rem;
   }.sm\:w-6 {

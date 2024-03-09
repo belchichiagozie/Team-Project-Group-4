@@ -31,13 +31,8 @@ export default function Products() {
     return (
         <div className="border border-solid">
             <div className="flex flex-row"></div>
-            <div className=" flex flex-1">
-                <h1>Books</h1>
-            </div>
-            <div className="left-0">
-                <AddBookButton />
-            </div>
-            <thead>
+            <div className=" flex flex-1"></div>
+            <thead className="text-blue-900 font-bold">
                 <tr>
                     <td>Book Title</td>
                     <td>Author</td>

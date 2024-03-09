@@ -20,13 +20,21 @@ import {
     HiOutlineBookOpen,
 } from "react-icons/hi";
 
-import { Sidebar } from "flowbite-react";
+import { Sidebar, DarkThemeToggle } from "flowbite-react";
 
 const sideItem =
     "flex items-center text-xl gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base whitespace-nowrap overflow-clip";
 
 const bottoms =
     "flex flex-col gap-0.5 pt-2 border-t border-neutral-700 shrink-0";
+
+const darkTheme = {
+    base: "bg-gray-800 text-white",
+    item: {
+        base: "hover:bg-gray-700",
+        active: "bg-gray-900",
+    },
+};
 
 export default function SideBar() {
     return (
@@ -84,7 +92,11 @@ export default function SideBar() {
         //         <div className={bottoms}>Logout</div>
         //     </div>
         // </div>
-        <Sidebar aria-label="Sidebar with logo branding example">
+
+        <Sidebar
+            theme={darkTheme}
+            aria-label="Sidebar with logo branding example"
+        >
             <Sidebar.Logo href="#" img="/logo.svg" imgAlt="BookTour Logo">
                 Book-Tour
             </Sidebar.Logo>

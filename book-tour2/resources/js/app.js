@@ -12,6 +12,7 @@ import("./components/BinButton");
 import("./components/EditBook");
 import("./components/FavouriteButton");
 import("./components/AddBookButton");
+import("./components/shared/Header");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
