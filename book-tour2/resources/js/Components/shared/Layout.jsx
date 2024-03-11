@@ -11,6 +11,7 @@ import Login from "../Login";
 import BookSalesChart from "../BookSalesChart";
 import BooksCard from "../BooksCard";
 import UsersCard from "../UsersCard";
+import Users from "../Users";
 
 const header_text = "text-xl border border-solid bg-teal-200";
 const page = "bg-neutral-100 overflow-x-hidden w-full h-screen flex flex-col";
@@ -91,8 +92,11 @@ export default function Layout() {
                             </div>
                         </div>
                         <div className="flex flex-row p-2">
-                            <div className="shadow max-w-4xl">
+                            <div className="shadow max-w-4xl p-2">
                                 <Products />
+                            </div>
+                            <div className="shadow max-w-4xl p-2">
+                                <Users />
                             </div>
                         </div>
                     </div>

@@ -17,6 +17,7 @@ import("./components/Login");
 import("./components/BookSalesChart");
 import("./components/BooksCard");
 import("./components/UsersCard");
+import("./components/Users");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
