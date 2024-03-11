@@ -72,7 +72,7 @@ export default function EditBookButton({ bookObj }) {
             ></IconButton>
             <Modal
                 show={openModal}
-                className="text-white"
+                className="text-black"
                 size="md"
                 onClose={() => setOpenModal(false)}
                 initialFocus={bookTitleRef}
@@ -91,7 +91,7 @@ export default function EditBookButton({ bookObj }) {
                                 encType="multipart/form-data"
                             >
                                 <div className={formrow}>
-                                    <div className="mb-2 block">
+                                    <div className="mb-2 block dark:text-white">
                                         <label
                                             htmlFor="title"
                                             className="form-label"
@@ -113,7 +113,7 @@ export default function EditBookButton({ bookObj }) {
                                     <span>{inputErrorList.title}</span>
                                 </div>
                                 <div className={formrow}>
-                                    <div className="mb-2 block">
+                                    <div className="mb-2 block dark:text-white">
                                         <label
                                             htmlFor="author"
                                             className="form-label"
@@ -134,7 +134,7 @@ export default function EditBookButton({ bookObj }) {
                                     <span>{inputErrorList.author}</span>
                                 </div>
                                 <div className={formrow}>
-                                    <div className="mb-2 block">
+                                    <div className="mb-2 block dark:text-white">
                                         <label
                                             htmlFor="genre"
                                             className="form-label"
@@ -155,7 +155,7 @@ export default function EditBookButton({ bookObj }) {
                                     <span>{inputErrorList.genre}</span>
                                 </div>
                                 <div className={formrow}>
-                                    <div className="mb-2 block">
+                                    <div className="mb-2 block dark:text-white">
                                         <label
                                             htmlFor="price"
                                             className="form-label"
@@ -176,7 +176,7 @@ export default function EditBookButton({ bookObj }) {
                                     <span>{inputErrorList.price}</span>
                                 </div>
                                 <div className={formrow}>
-                                    <div className="mb-2 block">
+                                    <div className="mb-2 block dark:text-white">
                                         <label
                                             htmlFor="stock"
                                             className="form-label"
@@ -196,7 +196,7 @@ export default function EditBookButton({ bookObj }) {
                                     />
                                     <span>{inputErrorList.stock}</span>
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group dark:text-white">
                                     <label htmlFor="image">Upload Image</label>
                                     <input
                                         type="file"
@@ -206,17 +206,17 @@ export default function EditBookButton({ bookObj }) {
                                         accept="image/*"
                                     />
                                 </div>
-                                <div className="w-full">
+                                <div className="w-full flex flex-row">
                                     <button
                                         type="submit"
                                         id="submit"
-                                        className="btn"
+                                        className="btn text-white border border-solid flex-1 bg-green-500"
                                     >
-                                        Add Book
+                                        Confirm Changes
                                     </button>
                                     <button
                                         type="button"
-                                        className="btn"
+                                        className="btn text-white border border-solid p-2 bg-red-500"
                                         onClick={() => setOpenModal(false)}
                                     >
                                         Cancel

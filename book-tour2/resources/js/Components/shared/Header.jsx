@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Navbar } from "flowbite-react";
+import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 
 const pageName = function (props) {
     if (props.includes("/admin/products")) {
@@ -46,15 +47,10 @@ export default function Component() {
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
-                <Navbar.Link href="#" active>
-                    Home
+                <Navbar.Link href="/products" active>
+                    <HiMiniArrowLeftOnRectangle />
+                    <span>Visit Main Page</span>
                 </Navbar.Link>
-                <Navbar.Link as={Link} href="#">
-                    About
-                </Navbar.Link>
-                <Navbar.Link href="#">Services</Navbar.Link>
-                <Navbar.Link href="#">Pricing</Navbar.Link>
-                <Navbar.Link href="#">Contact</Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     );

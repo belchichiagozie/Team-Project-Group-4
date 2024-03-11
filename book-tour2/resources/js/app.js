@@ -14,6 +14,9 @@ import("./components/FavouriteButton");
 import("./components/AddBookButton");
 import("./components/shared/Header");
 import("./components/Login");
+import("./components/BookSalesChart");
+import("./components/BooksCard");
+import("./components/UsersCard");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";

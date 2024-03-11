@@ -79,6 +79,14 @@ function BookStockChart(_ref) {
       responsive: true,
       backgroundColor: isLightMode ? "#106586" : "#a5f3fc",
       borderColor: "#a5f3fc"
+    }, {
+      label: "Price of each book",
+      data: book.map(function (item) {
+        return item.Price;
+      }),
+      fill: true,
+      responsive: true,
+      backgroundColor: isLightMode ? "#183ddc" : "#51fdf0"
     }]
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Bar, {

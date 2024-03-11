@@ -50,6 +50,13 @@ export default function BookStockChart({ isLightMode }) {
                 backgroundColor: isLightMode ? "#106586" : "#a5f3fc",
                 borderColor: "#a5f3fc",
             },
+            {
+                label: "Price of each book",
+                data: book.map((item) => item.Price),
+                fill: true,
+                responsive: true,
+                backgroundColor: isLightMode ? "#183ddc" : "#51fdf0",
+            },
         ],
     };
     return <Bar data={newData} options={options} />;

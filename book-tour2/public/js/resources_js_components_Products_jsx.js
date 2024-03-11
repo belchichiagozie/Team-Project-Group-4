@@ -603,7 +603,7 @@ function EditBookButton(_ref) {
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Modal, {
       show: openModal,
-      className: "text-white",
+      className: "text-black",
       size: "md",
       onClose: function onClose() {
         return setOpenModal(false);
@@ -623,7 +623,7 @@ function EditBookButton(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "mb-2 block",
+                className: "mb-2 block dark:text-white",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "title",
                   className: "form-label",
@@ -645,7 +645,7 @@ function EditBookButton(_ref) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "mb-2 block",
+                className: "mb-2 block dark:text-white",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "author",
                   className: "form-label",
@@ -666,7 +666,7 @@ function EditBookButton(_ref) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "mb-2 block",
+                className: "mb-2 block dark:text-white",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "genre",
                   className: "form-label",
@@ -687,7 +687,7 @@ function EditBookButton(_ref) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "mb-2 block",
+                className: "mb-2 block dark:text-white",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "price",
                   className: "form-label",
@@ -708,7 +708,7 @@ function EditBookButton(_ref) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
               className: formrow,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-                className: "mb-2 block",
+                className: "mb-2 block dark:text-white",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "stock",
                   className: "form-label",
@@ -727,7 +727,7 @@ function EditBookButton(_ref) {
                 children: inputErrorList.stock
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "form-group",
+              className: "form-group dark:text-white",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "image",
                 children: "Upload Image"
@@ -739,15 +739,15 @@ function EditBookButton(_ref) {
                 accept: "image/*"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "w-full",
+              className: "w-full flex flex-row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "submit",
                 id: "submit",
-                className: "btn",
-                children: "Add Book"
+                className: "btn text-white border border-solid flex-1 bg-green-500",
+                children: "Confirm Changes"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "button",
-                className: "btn",
+                className: "btn text-white border border-solid p-2 bg-red-500",
                 onClick: function onClick() {
                   return setOpenModal(false);
                 },
@@ -875,7 +875,7 @@ function Products() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "w-max",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
-        className: "text-blue-900 font-bold w-full",
+        className: "dark:text-white dark:bg-cyan-950 text-blue-900 font-bold w-full",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
           className: "",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {

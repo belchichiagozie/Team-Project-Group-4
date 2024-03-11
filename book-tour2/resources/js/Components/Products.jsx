@@ -31,7 +31,7 @@ export default function Products() {
     return (
         <div className="border border-solid rounded-lg">
             <div className="w-max">
-                <thead className="text-blue-900 font-bold w-full">
+                <thead className="dark:text-white dark:bg-cyan-950 text-blue-900 font-bold w-full">
                     <tr className="">
                         <td>Book Title</td>
                         <td>Author</td>
