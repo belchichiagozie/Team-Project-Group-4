@@ -56,7 +56,7 @@ function Component() {
     rounded: true,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Navbar.Brand, {
       as: (next_link__WEBPACK_IMPORTED_MODULE_0___default()),
-      href: "https://flowbite-react.com",
+      href: "/admin/dashboard",
       children: pageName(window.location.href)
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Navbar.Toggle, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Navbar.Collapse, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Navbar.Link, {

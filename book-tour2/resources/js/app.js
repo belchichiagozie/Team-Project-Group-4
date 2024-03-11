@@ -3,7 +3,7 @@ import "../css/app.css";
 import("./components/AdminPage");
 import("./components/Counter");
 import("./components/shared/Layout");
-import("./components/shared/SideBar");
+import("./components/shared/Sidebarr");
 import("./components/Dashboard");
 import("./components/Products");
 import("./components/Chart");
@@ -13,6 +13,7 @@ import("./components/EditBook");
 import("./components/FavouriteButton");
 import("./components/AddBookButton");
 import("./components/shared/Header");
+import("./components/Login");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";

@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\AdminLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,7 @@ Route::prefix('admin/')->group(function() {
     Route::get('addproducts', [AdminProductController::class, 'add_index']);
     Route::get('customers', [AdminCustomerController::class, 'index']);
     Route::get('orders', [AdminOrderController::class, 'index']);
+    Route::get('login',[AdminLoginController::class, 'index']);
 });
 
 

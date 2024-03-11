@@ -6,7 +6,7 @@ import { IconButton } from "rsuite";
 import { HiOutlinePlus } from "react-icons/hi";
 import axios from "axios";
 
-export default function AddBookButton({ bookObj }) {
+export default function AddBookButton() {
     const [openModal, setOpenModal] = useState(false);
     const [inputErrorList, setInputErrorList] = useState({});
     const [book, setBook] = useState({
@@ -69,7 +69,7 @@ export default function AddBookButton({ bookObj }) {
             </Button>
             <Modal
                 show={openModal}
-                className="text-white"
+                className=""
                 size="md"
                 onClose={() => setOpenModal(false)}
                 initialFocus={bookTitleRef}
@@ -202,7 +202,7 @@ export default function AddBookButton({ bookObj }) {
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="title"
-                                            className="form-label"
+                                            className="form-label dark:text-white"
                                         >
                                             Book Title
                                         </label>
@@ -224,7 +224,7 @@ export default function AddBookButton({ bookObj }) {
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="author"
-                                            className="form-label"
+                                            className="form-label dark:text-white"
                                         >
                                             Author
                                         </label>
@@ -245,7 +245,7 @@ export default function AddBookButton({ bookObj }) {
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="genre"
-                                            className="form-label"
+                                            className="form-label dark:text-white"
                                         >
                                             Genre
                                         </label>
@@ -266,7 +266,7 @@ export default function AddBookButton({ bookObj }) {
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="price"
-                                            className="form-label"
+                                            className="form-label dark:text-white"
                                         >
                                             Price
                                         </label>
@@ -287,7 +287,7 @@ export default function AddBookButton({ bookObj }) {
                                     <div className="mb-2 block">
                                         <label
                                             htmlFor="stock"
-                                            className="form-label"
+                                            className="form-label dark:text-white"
                                         >
                                             Stock
                                         </label>
@@ -304,7 +304,7 @@ export default function AddBookButton({ bookObj }) {
                                     />
                                     <span>{inputErrorList.stock}</span>
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group dark:text-white">
                                     <label htmlFor="image">Upload Image</label>
                                     <input
                                         type="file"
@@ -319,13 +319,13 @@ export default function AddBookButton({ bookObj }) {
                                     <button
                                         type="submit"
                                         id="submit"
-                                        className="btn"
+                                        className="btn dark:text-white"
                                     >
                                         Add Book
                                     </button>
                                     <button
                                         type="button"
-                                        className="btn"
+                                        className="btn dark:text-white"
                                         onClick={() => setOpenModal(false)}
                                     >
                                         Cancel

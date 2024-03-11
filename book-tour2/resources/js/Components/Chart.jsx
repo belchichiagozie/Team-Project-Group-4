@@ -37,8 +37,9 @@ export default function LineChartComponent({ isLightMode }) {
                 label: "Users Gained",
                 data: [65, 59, 80, 81, 56],
                 fill: false,
-                backgroundColor: "#a5f3fc",
-                borderColor: "#a5f3fc",
+                responsive: true,
+                backgroundColor: isLightMode ? "#106586" : "#a5f3fc",
+                borderColor: isLightMode ? "#106586" : "#a5f3fc",
             },
         ],
     };

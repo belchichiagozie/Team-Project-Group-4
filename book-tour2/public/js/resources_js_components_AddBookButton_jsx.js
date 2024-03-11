@@ -41,8 +41,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function AddBookButton(_ref) {
-  var bookObj = _ref.bookObj;
+function AddBookButton() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     openModal = _useState2[0],
@@ -67,7 +66,7 @@ function AddBookButton(_ref) {
   };
   var bookTitleRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   var saveBook = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
       var formData, imageInput;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -105,7 +104,7 @@ function AddBookButton(_ref) {
       }, _callee);
     }));
     return function saveBook(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref.apply(this, arguments);
     };
   }();
   var formrow = "flex flex-col justify-center";
@@ -122,7 +121,7 @@ function AddBookButton(_ref) {
       children: "Add New Book +"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Modal, {
       show: openModal,
-      className: "text-white",
+      className: "",
       size: "md",
       onClose: function onClose() {
         return setOpenModal(false);
@@ -258,7 +257,7 @@ function AddBookButton(_ref) {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "title",
-                  className: "form-label",
+                  className: "form-label dark:text-white",
                   children: "Book Title"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -280,7 +279,7 @@ function AddBookButton(_ref) {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "author",
-                  className: "form-label",
+                  className: "form-label dark:text-white",
                   children: "Author"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -301,7 +300,7 @@ function AddBookButton(_ref) {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "genre",
-                  className: "form-label",
+                  className: "form-label dark:text-white",
                   children: "Genre"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -322,7 +321,7 @@ function AddBookButton(_ref) {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "price",
-                  className: "form-label",
+                  className: "form-label dark:text-white",
                   children: "Price"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -343,7 +342,7 @@ function AddBookButton(_ref) {
                 className: "mb-2 block",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                   htmlFor: "stock",
-                  className: "form-label",
+                  className: "form-label dark:text-white",
                   children: "Stock"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
@@ -359,7 +358,7 @@ function AddBookButton(_ref) {
                 children: inputErrorList.stock
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "form-group",
+              className: "form-group dark:text-white",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 htmlFor: "image",
                 children: "Upload Image"
@@ -376,11 +375,11 @@ function AddBookButton(_ref) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "submit",
                 id: "submit",
-                className: "btn",
+                className: "btn dark:text-white",
                 children: "Add Book"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "button",
-                className: "btn",
+                className: "btn dark:text-white",
                 onClick: function onClick() {
                   return setOpenModal(false);
                 },

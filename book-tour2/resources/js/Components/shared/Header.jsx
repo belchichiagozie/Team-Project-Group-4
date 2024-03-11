@@ -41,7 +41,7 @@ export default function Component() {
     const loc = window.location.href;
     return (
         <Navbar fluid rounded>
-            <Navbar.Brand as={Link} href="https://flowbite-react.com">
+            <Navbar.Brand as={Link} href="/admin/dashboard">
                 {pageName(window.location.href)}
             </Navbar.Brand>
             <Navbar.Toggle />

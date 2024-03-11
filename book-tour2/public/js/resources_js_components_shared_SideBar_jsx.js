@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_shared_SideBar_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_shared_SideBar_jsx"],{
 
-/***/ "./resources/js/components/shared/SideBar.jsx":
+/***/ "./resources/js/Components/shared/SideBar.jsx":
 /*!****************************************************!*\
-  !*** ./resources/js/components/shared/SideBar.jsx ***!
+  !*** ./resources/js/Components/shared/SideBar.jsx ***!
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -26,100 +26,53 @@ __webpack_require__.r(__webpack_exports__);
 
 var sideItem = "flex items-center text-xl gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base whitespace-nowrap overflow-clip";
 var bottoms = "flex flex-col gap-0.5 pt-2 border-t border-neutral-700 shrink-0";
+var darkTheme = {
+  base: "bg-gray-800 text-white",
+  item: {
+    base: "hover:bg-gray-700",
+    active: "bg-gray-900"
+  }
+};
 function SideBar() {
-  return (
-    /*#__PURE__*/
-    // <div className="h-screen flex gap-10 flex-col bg-neutral-900 w-1/6 p-3 text-white">
-    //     <div className="flex items-center gap-2 px-1 py-3">
-    //         <FcBullish />
-    //         <span className="text-neutral-100 text-lg">Book-Tour</span>
-    //     </div>
-    //     <div className="flex flex-col flex-1 gap-2">
-    //         <a href="/admin/dashboard">
-    //             <div className={sideItem}>
-    //                 Dashboard
-    //                 <span>
-    //                     <HiOutlineViewGrid />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //         <a href="/admin/products">
-    //             <div className={sideItem}>
-    //                 Products
-    //                 <span>
-    //                     <HiOutlineCube />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //         <a href="/admin/customers">
-    //             <div className={sideItem}>
-    //                 Customers
-    //                 <span>
-    //                     <HiOutlineUsers />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //         <a href="/admin/orders">
-    //             <div className={sideItem}>
-    //                 Orders
-    //                 <span>
-    //                     <HiOutlineShoppingCart />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //         <a href="/admin/dashboard">
-    //             <div className={sideItem}>
-    //                 Analytics
-    //                 <span>
-    //                     <HiChartPie />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //     </div>
-    //     <div>
-    //         <div className={bottoms}>Settings</div>
-    //         <div className={bottoms}>Help & Support</div>
-    //         <div className={bottoms}>Logout</div>
-    //     </div>
-    // </div>
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar, {
-      "aria-label": "Sidebar with logo branding example",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Logo, {
-        href: "#",
-        img: "/logo.svg",
-        imgAlt: "BookTour Logo",
-        children: "Book-Tour"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Items, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.ItemGroup, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/dashboard",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiChartPie,
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar, {
+    "aria-label": "Sidebar with logo branding example",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Logo, {
+      href: "#",
+      img: "/logo.svg",
+      imgAlt: "BookTour Logo",
+      children: "Book-Tour"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Items, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.ItemGroup, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
+          href: "/admin/dashboard",
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiChartPie, {}),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
             children: "Dashboard"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/products",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiOutlineBookOpen,
-            children: "Books"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/customers",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiInbox,
-            children: "Customers"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/orders",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiOutlineShoppingCart,
-            children: "Orders"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "#",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiArrowSmRight,
-            children: "Sign In"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "#",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiTable,
-            children: "Sign Up"
-          })]
-        })
-      })]
-    })
-  );
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
+          href: "/admin/products",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiOutlineBookOpen,
+          children: "Books"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
+          href: "/admin/customers",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiInbox,
+          children: "Customers"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
+          href: "/admin/orders",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiOutlineShoppingCart,
+          children: "Orders"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
+          href: "/admin/login",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiArrowSmRight,
+          children: "Sign In"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
+          href: "/admin/login",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiTable,
+          children: "Sign Up"
+        })]
+      })
+    })]
+  });
 }
 
 /***/ }),

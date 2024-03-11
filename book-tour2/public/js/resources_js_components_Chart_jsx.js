@@ -55,8 +55,9 @@ function LineChartComponent(_ref) {
       label: "Users Gained",
       data: [65, 59, 80, 81, 56],
       fill: false,
-      backgroundColor: "#a5f3fc",
-      borderColor: "#a5f3fc"
+      responsive: true,
+      backgroundColor: isLightMode ? "#106586" : "#a5f3fc",
+      borderColor: isLightMode ? "#106586" : "#a5f3fc"
     }]
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_3__.Line, {

@@ -76,7 +76,8 @@ function BookStockChart(_ref) {
         return item.Stock;
       }),
       fill: true,
-      backgroundColor: "#a5f3fc",
+      responsive: true,
+      backgroundColor: isLightMode ? "#106586" : "#a5f3fc",
       borderColor: "#a5f3fc"
     }]
   };

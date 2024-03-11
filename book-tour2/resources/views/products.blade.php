@@ -13,9 +13,7 @@
         
         <div class="books-slider">
             <div class="wrapper">
-                <a href="#"><img src="/images/{{$books[0]->file}}" alt=""></a>
-                <a href="#"><img src="/images/{{$books[1]->file}}" alt=""></a>
-                <a href="#"><img src="/images/{{$books[2]->file}}" alt=""></a>
+
             </div>
         </div> 
 </section>
