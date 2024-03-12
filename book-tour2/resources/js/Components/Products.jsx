@@ -35,10 +35,10 @@ export default function Products() {
                     <tr className="">
                         <td>Book Title</td>
                         <td>Author</td>
-                        <td>Genre</td>
+                        <td className="md:inline-block hidden">Genre</td>
                         <td>Price</td>
                         <td>Stock</td>
-                        <td>Image</td>
+                        <td className="lg:inline-block hidden">Image</td>
                         <td colspan="3">Action</td>
                     </tr>
                 </thead>
@@ -51,10 +51,18 @@ export default function Products() {
                                     {bookObj.Title}
                                 </td>
                                 <td key={index}>{bookObj.Author}</td>
-                                <td key={index}>{bookObj.Genre}</td>
+                                <td
+                                    className="md:inline-block hidden"
+                                    key={index}
+                                >
+                                    {bookObj.Genre}
+                                </td>
                                 <td key={index}>{bookObj.Price}</td>
                                 <td key={index}>{bookObj.Stock}</td>
-                                <td key={index}>
+                                <td
+                                    key={index}
+                                    className="lg:inline-block hidden"
+                                >
                                     <img
                                         className="w-20 h-32"
                                         src={imgprefix + bookObj.file}

@@ -38,18 +38,63 @@ const pageName = function (props) {
     }
 };
 
-export default function Component() {
+export default function Header() {
     const loc = window.location.href;
     return (
         <Navbar fluid rounded>
             <Navbar.Brand as={Link} href="/admin/dashboard">
                 {pageName(window.location.href)}
+                <img
+                    src="/logotr.svg"
+                    className="mr-3 h-6 sm:h-9 block md:hidden"
+                    alt="Book-Tour logo"
+                />
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
                 <Navbar.Link href="/products" active>
                     <HiMiniArrowLeftOnRectangle />
                     <span>Visit Main Page</span>
+                </Navbar.Link>
+                <Navbar.Link
+                    href="/admin/dashboard"
+                    className="block md:hidden"
+                    active
+                >
+                    <HiMiniArrowLeftOnRectangle />
+                    <span>Dashboard</span>
+                </Navbar.Link>
+                <Navbar.Link
+                    href="/admin/products"
+                    className="block md:hidden"
+                    active
+                >
+                    <HiMiniArrowLeftOnRectangle />
+                    <span>Books</span>
+                </Navbar.Link>
+                <Navbar.Link
+                    href="/admin/customers"
+                    className="block md:hidden"
+                    active
+                >
+                    <HiMiniArrowLeftOnRectangle />
+                    <span>Customers</span>
+                </Navbar.Link>
+                <Navbar.Link
+                    href="/admin/orders"
+                    className="block md:hidden"
+                    active
+                >
+                    <HiMiniArrowLeftOnRectangle />
+                    <span>Orders</span>
+                </Navbar.Link>
+                <Navbar.Link
+                    href="/admin/login"
+                    className="block md:hidden"
+                    active
+                >
+                    <HiMiniArrowLeftOnRectangle />
+                    <span>Login</span>
                 </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>

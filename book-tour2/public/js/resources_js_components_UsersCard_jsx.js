@@ -43,10 +43,10 @@ function UsersCard() {
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Card, {
-    className: "max-w-sm p-4",
+    className: "max-w-sm",
     horizontal: true,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
-      className: "text-2xl font-bold tracking-tight text-gray-900 dark:text-white",
+      className: "text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-bold tracking-tight text-gray-900 dark:text-white",
       children: "Amount of Users"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
       className: "font-normal text-gray-700 text-4xl dark:text-gray-400",

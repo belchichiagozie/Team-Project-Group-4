@@ -86,11 +86,11 @@ function Sidebarr() {
       "aria-label": "Sidebar with logo branding example",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Logo, {
         href: "#",
-        img: "/logo.svg",
+        img: "/logotr.svg",
         imgAlt: "BookTour Logo",
         children: "Book-Tour"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Items, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.ItemGroup, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Items, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.ItemGroup, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
             href: "/admin/dashboard",
             icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiChartPie,
@@ -107,16 +107,14 @@ function Sidebarr() {
             href: "/admin/orders",
             icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiOutlineShoppingCart,
             children: "Orders"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.ItemGroup, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
             href: "/admin/login",
             icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiArrowSmRight,
             children: "Sign In"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "#",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiTable,
-            children: "Sign Up"
-          })]
-        })
+          })
+        })]
       })]
     })
   );

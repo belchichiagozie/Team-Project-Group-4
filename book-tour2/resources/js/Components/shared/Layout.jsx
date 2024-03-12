@@ -15,7 +15,11 @@ import Users from "../Users";
 
 const header_text = "text-xl border border-solid bg-teal-200";
 const page = "bg-neutral-100 overflow-x-hidden w-full h-screen flex flex-col";
-const chartsize = "relative h-64 w-96 min-w-0 border rounded-lg border-solid";
+const chartsize =
+    "h-64 w-96 min-w-0 border rounded-lg border-solid mx-2 sm:mx-4 md:mx-6 lg:mx-8";
+const loginpage =
+    "bg-neutral-100 overflow-x-hidden w-full h-full flex grow items-center justify-center dark:bg-slate-50 dark:text-white";
+const pageCenter = " flex justify-center w-max border border-solid border-4 ";
 
 export default function Layout() {
     const loc = window.location.href;
@@ -30,14 +34,13 @@ export default function Layout() {
         return (
             <div className="flex justify-between flex-row overflow-x-hidden">
                 <Flowbite>
-                    <div className="not(justify-between)">
+                    <div className="hidden md:block not(justify-between)">
                         <Sidebarr />
                     </div>
                     <div className={pageStyle} id="prods">
-                        <div>
+                        <div className="">
                             <Header />
                         </div>
-
                         <div className="p-4 w-max max-w-3xl shadow dark:text-white">
                             <Products />
 
@@ -54,28 +57,29 @@ export default function Layout() {
         return (
             <div className="flex justify-between flex-row">
                 <Flowbite>
-                    <div className="not(justify-between)">
+                    <div className="hidden md:block not(justify-between)">
                         <Sidebarr />
                     </div>
                     <div className={pageStyle}>
-                        <div>
+                        <div className="">
                             <Header />
                         </div>
-                        <div className="flex flex-row justify-between">
-                            <div className="p-2">
+                        <div className="flex flex-row flex-wrap items-center justify-center">
+                            <div className="py-2 pl-4 lg:pl-0 px-4">
                                 <BooksCard />
                             </div>
-                            <div className="p-2">
+                            <div className="py-2 xs:pl-20 px-4">
                                 <UsersCard />
                             </div>
-                            <div className="p-2">
+
+                            <div className="py-2 xs:pl-20 px-4">
                                 <BooksCard />
                             </div>
-                            <div className="p-2">
+                            <div className="py-2 pr-4 lg:pr-0 px-4">
                                 <UsersCard />
                             </div>
                         </div>
-                        <div className="flex flex-row justify-between p-2">
+                        <div className="flex min-w-0 flex-row flex-wrap items-center justify-center p-2">
                             <div className={chartsize}>
                                 <BookStockChart isLightMode={isLightMode} />
                             </div>
@@ -91,11 +95,11 @@ export default function Layout() {
                                 </button>
                             </div>
                         </div>
-                        <div className="flex flex-row p-2">
-                            <div className="shadow max-w-4xl p-2">
+                        <div className="flex flex-col xl:flex-row p-2 items-center justify-center">
+                            <div className="shadow w-max max-w-4xl xl:px-2 pb-4">
                                 <Products />
                             </div>
-                            <div className="shadow max-w-4xl p-2">
+                            <div className="shadow w-max max-w-4xl xl:px-2">
                                 <Users />
                             </div>
                         </div>
@@ -116,11 +120,14 @@ export default function Layout() {
         return (
             <div className="flex justify-between flex-row">
                 <Flowbite>
-                    <div className="not(justify-between)">
+                    <div className="hidden md:block not(justify-between)">
                         <Sidebarr />
                     </div>
                     <div className={pageStyle} id="prods">
                         <div>
+                            <Header />
+                        </div>
+                        <div className={loginpage}>
                             <Login />
                         </div>
                     </div>

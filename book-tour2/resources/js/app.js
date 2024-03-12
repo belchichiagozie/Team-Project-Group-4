@@ -18,6 +18,7 @@ import("./components/BookSalesChart");
 import("./components/BooksCard");
 import("./components/UsersCard");
 import("./components/Users");
+import("./components/BooktourCard");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";

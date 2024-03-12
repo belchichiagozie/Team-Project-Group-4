@@ -84,8 +84,9 @@ export default function Sidebarr() {
         //         <div className={bottoms}>Logout</div>
         //     </div>
         // </div>
+
         <Sidebar aria-label="Sidebar with logo branding example">
-            <Sidebar.Logo href="#" img="/logo.svg" imgAlt="BookTour Logo">
+            <Sidebar.Logo href="#" img="/logotr.svg" imgAlt="BookTour Logo">
                 Book-Tour
             </Sidebar.Logo>
             <Sidebar.Items>
@@ -108,11 +109,10 @@ export default function Sidebarr() {
                     >
                         Orders
                     </Sidebar.Item>
+                </Sidebar.ItemGroup>
+                <Sidebar.ItemGroup>
                     <Sidebar.Item href="/admin/login" icon={HiArrowSmRight}>
                         Sign In
-                    </Sidebar.Item>
-                    <Sidebar.Item href="#" icon={HiTable}>
-                        Sign Up
                     </Sidebar.Item>
                 </Sidebar.ItemGroup>
             </Sidebar.Items>

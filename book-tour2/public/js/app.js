@@ -40,6 +40,7 @@ __webpack_require__.e(/*! import() */ "resources_js_components_BookSalesChart_js
 __webpack_require__.e(/*! import() */ "resources_js_components_BooksCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/BooksCard */ "./resources/js/components/BooksCard.jsx"));
 __webpack_require__.e(/*! import() */ "resources_js_components_UsersCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/UsersCard */ "./resources/js/components/UsersCard.jsx"));
 __webpack_require__.e(/*! import() */ "resources_js_components_Users_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Users */ "./resources/js/components/Users.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_components_BooktourCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/BooktourCard */ "./resources/js/components/BooktourCard.jsx"));
 
 
 
@@ -46428,7 +46429,7 @@ const isThenable = (thing) =>
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_AdminPage_jsx":1,"resources_js_components_Counter_jsx":1,"resources_js_components_shared_Layout_jsx":1,"resources_js_components_shared_Sidebarr_jsx":1,"resources_js_components_Dashboard_jsx":1,"resources_js_components_Products_jsx":1,"resources_js_components_Chart_jsx":1,"resources_js_components_BookStockChart_jsx":1,"resources_js_components_BinButton_jsx":1,"resources_js_components_EditBook_jsx":1,"resources_js_components_FavouriteButton_jsx":1,"resources_js_components_AddBookButton_jsx":1,"resources_js_components_shared_Header_jsx":1,"resources_js_components_Login_jsx":1,"resources_js_components_BookSalesChart_jsx":1,"resources_js_components_BooksCard_jsx":1,"resources_js_components_UsersCard_jsx":1,"resources_js_components_Users_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_AdminPage_jsx":1,"resources_js_components_Counter_jsx":1,"resources_js_components_shared_Layout_jsx":1,"resources_js_components_shared_Sidebarr_jsx":1,"resources_js_components_Dashboard_jsx":1,"resources_js_components_Products_jsx":1,"resources_js_components_Chart_jsx":1,"resources_js_components_BookStockChart_jsx":1,"resources_js_components_BinButton_jsx":1,"resources_js_components_EditBook_jsx":1,"resources_js_components_FavouriteButton_jsx":1,"resources_js_components_AddBookButton_jsx":1,"resources_js_components_shared_Header_jsx":1,"resources_js_components_Login_jsx":1,"resources_js_components_BookSalesChart_jsx":1,"resources_js_components_BooksCard_jsx":1,"resources_js_components_UsersCard_jsx":1,"resources_js_components_Users_jsx":1,"resources_js_components_BooktourCard_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
