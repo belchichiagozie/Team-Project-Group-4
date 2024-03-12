@@ -64,8 +64,8 @@ export default function Layout() {
                         <div className="">
                             <Header />
                         </div>
-                        <div className="flex flex-row flex-wrap items-center justify-center">
-                            <div className="py-2 pl-4 lg:pl-0 px-4">
+                        <div className="flex flex-row flex-wrap items-center justify-center xl:justify-between">
+                            <div className="py-2 pl-4 xl:pl-8 px-4">
                                 <BooksCard />
                             </div>
                             <div className="py-2 xs:pl-20 px-4">
@@ -75,7 +75,7 @@ export default function Layout() {
                             <div className="py-2 xs:pl-20 px-4">
                                 <BooksCard />
                             </div>
-                            <div className="py-2 pr-4 lg:pr-0 px-4">
+                            <div className="py-2 pr-4 xl:pr-8 px-4">
                                 <UsersCard />
                             </div>
                         </div>

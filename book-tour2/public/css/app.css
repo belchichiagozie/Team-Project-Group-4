@@ -4203,6 +4203,8 @@ video {
     display: inline-block;
   }.lg\:w-96 {
     width: 24rem;
+  }.lg\:justify-between {
+    justify-content: space-between;
   }.lg\:gap-8 {
     gap: 2rem;
   }.lg\:p-8 {
@@ -4223,9 +4225,19 @@ video {
   }
 }@media (min-width: 1280px) {.xl\:flex-row {
     flex-direction: row;
+  }.xl\:justify-between {
+    justify-content: space-between;
+  }.xl\:p-4 {
+    padding: 1rem;
+  }.xl\:p-2 {
+    padding: 0.5rem;
   }.xl\:px-2 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }.xl\:pl-8 {
+    padding-left: 2rem;
+  }.xl\:pr-8 {
+    padding-right: 2rem;
   }.xl\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
