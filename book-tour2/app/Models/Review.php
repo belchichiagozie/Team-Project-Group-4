@@ -27,6 +27,8 @@ class Review extends Model
 	protected $primaryKey = 'Book_ID';
 	public $timestamps = false;
 
+	public $incrementing = false;
+
 	protected $casts = [
 		'Customer_ID' => 'int'
 	];
