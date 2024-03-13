@@ -5,3 +5,4 @@ export default function ApplicationLogo(props) {
         </svg>
     );
 }
+

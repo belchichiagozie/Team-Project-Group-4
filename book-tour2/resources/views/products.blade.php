@@ -13,9 +13,7 @@
         
         <div class="books-slider">
             <div class="wrapper">
-                <a href="#"><img src="/images/bookcover.png" alt=""></a>
-                <a href="#"><img src="/images/bookcover1.png" alt=""></a>
-                <a href="#"><img src="/images/bookcover2.png" alt=""></a>
+
             </div>
         </div> 
 </section>

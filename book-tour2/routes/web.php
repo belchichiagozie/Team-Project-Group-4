@@ -7,6 +7,13 @@ use App\Http\Controllers\BasketController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +48,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::redirect('/', '/products');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/login',[LoginController::class, 'index']);
 
 //Routes for Catalog page
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
@@ -50,5 +58,23 @@ Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('baske
 Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
 Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
 Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
+
+//Routes for Admin Panel page
+Route::prefix('admin/')->group(function() {
+    Route::get('dashboard', [AdminController::class, 'index']);
+    Route::get('products',[AdminProductController::class, 'index']);
+    Route::post('addproducts', [AdminProductController::class, 'store']);
+    Route::post('products', [AdminProductController::class, 'store']);
+    Route::get('addproducts', [AdminProductController::class, 'add_index']);
+    Route::get('customers', [AdminCustomerController::class, 'index']);
+    Route::get('orders', [AdminOrderController::class, 'index']);
+    Route::get('login',[AdminLoginController::class, 'index']);
+});
+
+
+
+
+Route::redirect('/admin','/admin/dashboard');
+
 
 require __DIR__.'/auth.php';

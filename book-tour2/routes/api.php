@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\APIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/addbook',[APIController::class,'store']);
+Route::put('/updatebook/{id}', [APIController::class, 'update']);
+
+Route::get('/admin/products',[APIController::class, 'getBooks']);
+Route::get('/admin/favouritebooks',[APIController::class, 'getFavourites']);
+
