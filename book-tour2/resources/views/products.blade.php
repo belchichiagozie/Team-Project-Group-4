@@ -31,7 +31,7 @@
                     <img src="/images/bookcover3.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>hide and seek</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -48,7 +48,7 @@
                     <img src="/images/bookcover4.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>game of your mind</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -66,7 +66,7 @@
                     <img src="/images/bookcover5.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>the spirit</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -83,7 +83,7 @@
                     <img src="/images/bookcover6.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>artifical forces</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -100,7 +100,7 @@
                     <img src="/images/bookcover7.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>robotics</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -120,7 +120,7 @@
                     <img src="/images/bookcover8.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>"Adventures of the space crew"</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -137,7 +137,7 @@
                     <img src="/images/bookcover9.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>the dreams</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -154,24 +154,7 @@
                     <img src="/images/bookcover10.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
-                    <div class="price">£10 <span>£12</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="/images/bookcover11.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>the story of a prince</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -188,7 +171,24 @@
                     <img src="/images/bookcover12.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>new arrivals</h3>
+                    <h3>time travel</h3>
+                    <div class="price">£10 <span>£12</span></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="swiper-slide box">
+                <div class="image">
+                    <img src="/images/bookcover14.png" alt="">
+                </div>
+                <div class="content">
+                    <h3>the way to success</h3>
                     <div class="price">£10 <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
@@ -211,8 +211,8 @@
 <div class="offers-container">
     <section class="offers">
         <div class="content">
-            <h3>Bookworm Deals</h3>
-            <h1>80% off new arrivals!</h1>
+            <h3>BookTour Deals</h3>
+            <h1>50% off new arrivals!</h1>
             <p>Half price on all best sellers!</p>
             <a href="#" class="btn">shop special offers</a>
         </div>
@@ -239,7 +239,7 @@
                     <img src="/images/bookcover.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>Rising Ashes</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -256,7 +256,7 @@
                     <img src="/images/bookcover1.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>walk into the shadow</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -273,7 +273,7 @@
                     <img src="/images/bookcover2.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>in your eyes</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -290,7 +290,7 @@
                     <img src="/images/bookcover3.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>hide and seek</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -307,7 +307,7 @@
                     <img src="/images/bookcover4.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>game of your mind</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -324,7 +324,7 @@
                     <img src="/images/bookcover5.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>the spirit</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -338,10 +338,10 @@
                     <a href="#" class="fas fa-shopping-cart"></a>
                 </div>
                 <div class="image">
-                    <img src="/images/bookcover6.png" alt="">
+                    <img src="/images/bookcover17.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>Conquest of flames</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -355,10 +355,10 @@
                     <a href="#" class="fas fa-shopping-cart"></a>
                 </div>
                 <div class="image">
-                    <img src="/images/bookcover7.png" alt="">
+                    <img src="/images/bookcover16.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>a lady in the countryside</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -372,10 +372,10 @@
                     <a href="#" class="fas fa-shopping-cart"></a>
                 </div>
                 <div class="image">
-                    <img src="/images/bookcover8.png" alt="">
+                    <img src="/images/bookcover14.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>the way to success</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
@@ -389,10 +389,10 @@
                     <a href="#" class="fas fa-shopping-cart"></a>
                 </div>
                 <div class="image">
-                    <img src="/images/bookcover9.png" alt="">
+                    <img src="/images/bookcover12.png" alt="">
                 </div>
                 <div class="content">
-                    <h3>Best Sellers</h3>
+                    <h3>time travel</h3>
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
