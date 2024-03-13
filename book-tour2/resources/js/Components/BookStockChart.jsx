@@ -5,10 +5,13 @@ import Chart from "chart.js/auto";
 
 export default function BookStockChart({ isLightMode }) {
     const [book, setBook] = useState([]);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         axios
-            .get("http://127.0.0.1:8000/api/admin/products")
+            .get("http://127.0.0.1:8000/api/admin/products", {
+                headers: { Authorization: `Bearer ${token}` },
+            })
             .then((response) => setBook(response.data["books"]));
     }, []);
 

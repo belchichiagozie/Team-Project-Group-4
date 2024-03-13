@@ -10,8 +10,11 @@ export default function Products() {
     const [book, setBook] = useState([]);
     const imgprefix = "/images/";
     const fetchData = () => {
+        const token = localStorage.getItem("token");
         return axios
-            .get("http://127.0.0.1:8000/api/admin/products")
+            .get("http://127.0.0.1:8000/api/admin/products", {
+                headers: { Authorization: `Bearer ${token}` },
+            })
             .then((response) => setBook(response.data["books"]));
     };
 

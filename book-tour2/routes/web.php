@@ -68,13 +68,15 @@ Route::prefix('admin/')->group(function() {
     Route::get('addproducts', [AdminProductController::class, 'add_index']);
     Route::get('customers', [AdminCustomerController::class, 'index']);
     Route::get('orders', [AdminOrderController::class, 'index']);
-    Route::get('login',[AdminLoginController::class, 'index']);
+    Route::get('login', [AdminLoginController::class, 'index'])->name('admin.login');
+Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
+Route::post('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 });
 
 
 
 
-Route::redirect('/admin','/admin/dashboard');
+Route::redirect('/admin','/admin/login');
 
 
 require __DIR__.'/auth.php';

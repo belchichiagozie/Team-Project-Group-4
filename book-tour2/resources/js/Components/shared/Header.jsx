@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Navbar } from "flowbite-react";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
+import { useAuth } from "../AuthContext";
 
 const pageName = function (props) {
     if (props.includes("/admin/products")) {
@@ -40,6 +41,13 @@ const pageName = function (props) {
 
 export default function Header() {
     const loc = window.location.href;
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+    const handleSignOut = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/admin/login";
+        setIsAuthenticated(false);
+    };
     return (
         <Navbar fluid rounded>
             <Navbar.Brand as={Link} href="/admin/dashboard">
@@ -52,50 +60,69 @@ export default function Header() {
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
+                {isAuthenticated === true && (
+                    <Navbar.Link
+                        href="/admin/dashboard"
+                        className="block md:hidden"
+                        active
+                    >
+                        <HiMiniArrowLeftOnRectangle />
+                        <span>Dashboard</span>
+                    </Navbar.Link>
+                )}
+                {isAuthenticated === true && (
+                    <Navbar.Link
+                        href="/admin/products"
+                        className="block md:hidden"
+                        active
+                    >
+                        <HiMiniArrowLeftOnRectangle />
+                        <span>Books</span>
+                    </Navbar.Link>
+                )}
+                {isAuthenticated === true && (
+                    <Navbar.Link
+                        href="/admin/customers"
+                        className="block md:hidden"
+                        active
+                    >
+                        <HiMiniArrowLeftOnRectangle />
+                        <span>Customers</span>
+                    </Navbar.Link>
+                )}
+                {isAuthenticated === true && (
+                    <Navbar.Link
+                        href="/admin/orders"
+                        className="block md:hidden"
+                        active
+                    >
+                        <HiMiniArrowLeftOnRectangle />
+                        <span>Orders</span>
+                    </Navbar.Link>
+                )}
                 <Navbar.Link href="/products" active>
                     <HiMiniArrowLeftOnRectangle />
                     <span>Visit Main Page</span>
                 </Navbar.Link>
-                <Navbar.Link
-                    href="/admin/dashboard"
-                    className="block md:hidden"
-                    active
-                >
-                    <HiMiniArrowLeftOnRectangle />
-                    <span>Dashboard</span>
-                </Navbar.Link>
-                <Navbar.Link
-                    href="/admin/products"
-                    className="block md:hidden"
-                    active
-                >
-                    <HiMiniArrowLeftOnRectangle />
-                    <span>Books</span>
-                </Navbar.Link>
-                <Navbar.Link
-                    href="/admin/customers"
-                    className="block md:hidden"
-                    active
-                >
-                    <HiMiniArrowLeftOnRectangle />
-                    <span>Customers</span>
-                </Navbar.Link>
-                <Navbar.Link
-                    href="/admin/orders"
-                    className="block md:hidden"
-                    active
-                >
-                    <HiMiniArrowLeftOnRectangle />
-                    <span>Orders</span>
-                </Navbar.Link>
-                <Navbar.Link
-                    href="/admin/login"
-                    className="block md:hidden"
-                    active
-                >
-                    <HiMiniArrowLeftOnRectangle />
-                    <span>Login</span>
-                </Navbar.Link>
+                {isAuthenticated ? (
+                    <Navbar.Link
+                        onClick={handleSignOut}
+                        className="block md:hidden"
+                        active
+                    >
+                        <HiMiniArrowLeftOnRectangle />
+                        <span>Log Out</span>
+                    </Navbar.Link>
+                ) : (
+                    <Navbar.Link
+                        href="/admin/login"
+                        className="block md:hidden"
+                        active
+                    >
+                        <HiMiniArrowLeftOnRectangle />
+                        <span>Login</span>
+                    </Navbar.Link>
+                )}
             </Navbar.Collapse>
         </Navbar>
     );
