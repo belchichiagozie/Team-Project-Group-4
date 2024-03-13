@@ -52,12 +52,41 @@
             </div>
             </div>
         </div>
+        <!--navbar-->
         <div class="header-2">
             <nav class="navbar">
                 <a href="/products">Home</a>
                 <a href="#New Arrivals">New Arrivals</a>
                 <a href="#Best Sellers">Best Sellers</a>
-                <a href="#Genres">Genres</a>
+                <div class="genre-dropdown">
+                    <a href="#Genres">Genres &#9662; </a>
+                    <ul class="dropdown">
+                        <li class="dropdown-subsection"><a href="#">Fiction &#9656; </a>
+                        <ul class="subsection">
+                            <li><a href="#">Fantasy</a></li>
+                            <li><a href="#">Mystery & Thriller</a></li>
+                            <li><a href="#">Romance</a></li>
+                            <li><a href="#">Science Fiction</a></li>
+                            <li><a href="#">Horror</a></li>
+                            <li><a href="#">Children's</a></li>
+                            <li><a href="#">Myths & Legends</a></li>
+                            <li><a href="#">Manga</a></li>
+                        </ul>
+                        </li>
+                    <li class="dropdown-subsection"><a href="#">Non-Fiction &#9656; </a>
+                    <ul class="subsection">
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Biography & Autobiography</a></li>
+                            <li><a href="#">Science</a></li>
+                            <li><a href="#">True Crime</a></li>
+                            <li><a href="#">Philosophy</a></li>
+                            <li><a href="#">Self-Help</a></li>
+                            <li><a href="#">Business, Finance & Law</a></li>
+                            <li><a href="#">Health & Wellness</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
                 <a href="#Special Offers">Special Offers</a>
                 <a href="#Reviews">Reviews</a>
 
