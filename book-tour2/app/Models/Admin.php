@@ -7,6 +7,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class Admin
@@ -21,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Admin extends Model
 {
+	use HasFactory, Notifiable;
+	use HasApiTokens;
 	protected $table = 'admins';
 	protected $primaryKey = 'Admin_ID';
 	public $timestamps = false;

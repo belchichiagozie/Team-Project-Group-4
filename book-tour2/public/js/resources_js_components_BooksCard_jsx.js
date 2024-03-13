@@ -31,13 +31,16 @@ function BooksCard() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
     bookCount = _useState2[0],
-    setBookCount = _useState2[1]; // Initialize as null or appropriate initial value
-
+    setBookCount = _useState2[1];
+  var token = localStorage.getItem("token");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products").then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products", {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function (response) {
       var booksData = response.data["books"];
       if (booksData) {
-        // Assuming the first book or adjust according to your data structure
         setBookCount(booksData.length);
       }
     });

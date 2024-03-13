@@ -851,7 +851,12 @@ function Products() {
     setBook = _useState2[1];
   var imgprefix = "/images/";
   var fetchData = function fetchData() {
-    return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/admin/products").then(function (response) {
+    var token = localStorage.getItem("token");
+    return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/admin/products", {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function (response) {
       return setBook(response.data["books"]);
     });
   };

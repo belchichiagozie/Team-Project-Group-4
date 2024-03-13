@@ -3,11 +3,14 @@ import axios from "axios";
 import { Card } from "flowbite-react";
 
 export default function UsersCard() {
-    const [book, setBook] = useState(null); // Initialize as null or appropriate initial value
+    const [book, setBook] = useState(null);
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         axios
-            .get("http://127.0.0.1:8000/api/admin/products")
+            .get("http://127.0.0.1:8000/api/admin/products", {
+                headers: { Authorization: `Bearer ${token}` },
+            })
             .then((response) => {
                 const booksData = response.data["books"];
                 if (booksData && booksData.length > 0) {

@@ -34,8 +34,13 @@ function BookStockChart(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     book = _useState2[0],
     setBook = _useState2[1];
+  var token = localStorage.getItem("token");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products").then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products", {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function (response) {
       return setBook(response.data["books"]);
     });
   }, []);
