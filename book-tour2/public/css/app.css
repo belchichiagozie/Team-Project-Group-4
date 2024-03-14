@@ -1061,6 +1061,8 @@ video {
   margin: 13rem;
 }.m-56 {
   margin: 14rem;
+}.m-5 {
+  margin: 1.25rem;
 }.-mx-1 {
   margin-left: -0.25rem;
   margin-right: -0.25rem;
@@ -1094,6 +1096,9 @@ video {
 }.my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }.-mb-px {
   margin-bottom: -1px;
 }.-me-0 {
@@ -1122,6 +1127,8 @@ video {
   margin-inline-end: 0.25rem;
 }.me-4 {
   margin-inline-end: 1rem;
+}.me-auto {
+  margin-inline-end: auto;
 }.ml-0 {
   margin-left: 0px;
 }.ml-1 {
@@ -1138,6 +1145,8 @@ video {
   margin-left: 1.5rem;
 }.ml-auto {
   margin-left: auto;
+}.mr-1 {
+  margin-right: 0.25rem;
 }.mr-2 {
   margin-right: 0.5rem;
 }.mr-3 {
@@ -1148,6 +1157,8 @@ video {
   margin-inline-start: 0.75rem;
 }.ms-4 {
   margin-inline-start: 1rem;
+}.ms-auto {
+  margin-inline-start: auto;
 }.mt-1 {
   margin-top: 0.25rem;
 }.mt-1\.5 {
@@ -1303,6 +1314,12 @@ video {
 }.w-max {
   width: -moz-max-content;
   width: max-content;
+}.w-1\/3 {
+  width: 33.333333%;
+}.w-screen {
+  width: 100vw;
+}.w-\[300px\] {
+  width: 300px;
 }.min-w-0 {
   min-width: 0px;
 }.max-w-2xl {
@@ -1392,6 +1409,8 @@ video {
   cursor: pointer;
 }.cursor-wait {
   cursor: wait;
+}.resize {
+  resize: both;
 }.snap-x {
   scroll-snap-type: x var(--tw-scroll-snap-strictness);
 }.snap-mandatory {
@@ -1870,6 +1889,9 @@ video {
 }.bg-red-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(200 30 30 / var(--tw-bg-opacity));
+}.bg-red-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(155 28 28 / var(--tw-bg-opacity));
 }.bg-teal-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(213 245 246 / var(--tw-bg-opacity));
@@ -1900,6 +1922,15 @@ video {
 }.bg-yellow-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(159 88 10 / var(--tw-bg-opacity));
+}.bg-slate-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}.bg-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(63 131 248 / var(--tw-bg-opacity));
 }.bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }.bg-gradient-to-br {
@@ -1913,6 +1944,10 @@ video {
 }.from-cyan-500 {
   --tw-gradient-from: #06b6d4 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(6 182 212 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}.from-gray-700 {
+  --tw-gradient-from: #374151 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(55 65 81 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }.from-gray-700\/50 {
   --tw-gradient-from: rgb(55 65 81 / 0.5) var(--tw-gradient-from-position);
@@ -2034,6 +2069,8 @@ video {
   fill: #E3A008;
 }.stroke-gray-400 {
   stroke: #9CA3AF;
+}.stroke-gray-600 {
+  stroke: #4B5563;
 }.stroke-red-500 {
   stroke: #F05252;
 }.object-cover {
@@ -2183,10 +2220,14 @@ video {
   text-align: left;
 }.text-center {
   text-align: center;
+}.text-right {
+  text-align: right;
 }.text-start {
   text-align: start;
 }.text-end {
   text-align: end;
+}.font-sans {
+  font-family: Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }.text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -2741,6 +2782,9 @@ video {
 }.hover\:bg-yellow-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(252 233 106 / var(--tw-bg-opacity));
+}.hover\:bg-blue-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(26 86 219 / var(--tw-bg-opacity));
 }.hover\:bg-gradient-to-br:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }.hover\:text-cyan-700:hover {
@@ -3994,6 +4038,8 @@ video {
     margin-right: auto;
   }.sm\:mb-0 {
     margin-bottom: 0px;
+  }.sm\:ml-0 {
+    margin-left: 0px;
   }.sm\:ms-0 {
     margin-inline-start: 0px;
   }.sm\:ms-10 {
@@ -4024,6 +4070,10 @@ video {
     width: 16rem;
   }.sm\:w-full {
     width: 100%;
+  }.sm\:w-96 {
+    width: 24rem;
+  }.sm\:w-\[300px\] {
+    width: 300px;
   }.sm\:max-w-2xl {
     max-width: 42rem;
   }.sm\:max-w-lg {
@@ -4047,6 +4097,10 @@ video {
     --tw-scale-x: .95;
     --tw-scale-y: .95;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }.sm\:flex-row {
+    flex-direction: row;
+  }.sm\:flex-col {
+    flex-direction: column;
   }.sm\:items-center {
     align-items: center;
   }.sm\:justify-start {
@@ -4059,6 +4113,10 @@ video {
     border-radius: 0.5rem;
   }.sm\:p-8 {
     padding: 2rem;
+  }.sm\:p-10 {
+    padding: 2.5rem;
+  }.sm\:p-4 {
+    padding: 1rem;
   }.sm\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -4072,8 +4130,12 @@ video {
     padding-right: 2rem;
   }.sm\:pt-0 {
     padding-top: 0px;
+  }.sm\:text-left {
+    text-align: left;
   }.sm\:text-center {
     text-align: center;
+  }.sm\:text-right {
+    text-align: right;
   }.sm\:text-start {
     text-align: start;
   }.sm\:text-end {
@@ -4117,6 +4179,12 @@ video {
     width: 16rem;
   }.md\:w-auto {
     width: auto;
+  }.md\:w-96 {
+    width: 24rem;
+  }.md\:w-\[450px\] {
+    width: 450px;
+  }.md\:w-\[400px\] {
+    width: 400px;
   }.md\:max-w-xl {
     max-width: 36rem;
   }.md\:grid-cols-2 {
@@ -4142,6 +4210,10 @@ video {
     background-color: transparent;
   }.md\:p-0 {
     padding: 0px;
+  }.md\:p-12 {
+    padding: 3rem;
+  }.md\:p-6 {
+    padding: 1.5rem;
   }.md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -4169,12 +4241,28 @@ video {
     margin-bottom: 2rem;
   }.lg\:inline-block {
     display: inline-block;
+  }.lg\:h-\[1000px\] {
+    height: 1000px;
   }.lg\:w-96 {
     width: 24rem;
+  }.lg\:w-1\/2 {
+    width: 50%;
+  }.lg\:w-full {
+    width: 100%;
+  }.lg\:w-\[1000px\] {
+    width: 1000px;
+  }.lg\:w-\[500px\] {
+    width: 500px;
+  }.lg\:flex-row {
+    flex-direction: row;
   }.lg\:gap-8 {
     gap: 2rem;
   }.lg\:p-8 {
     padding: 2rem;
+  }.lg\:p-12 {
+    padding: 3rem;
+  }.lg\:p-16 {
+    padding: 4rem;
   }.lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;

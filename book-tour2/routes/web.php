@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::redirect('/', '/products');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/login',[LoginController::class, 'index']);
+Route::get('/mainlogin',[LoginController::class, 'index']);
 
 //Routes for Catalog page
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');

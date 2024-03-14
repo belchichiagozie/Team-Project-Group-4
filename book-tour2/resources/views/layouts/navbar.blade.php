@@ -35,7 +35,7 @@
             <a href="/basket/view" class="fas fa-shopping-cart"></a>
             <div id="login-btn" class="fas fa-user dropdown">
                 <div class="dropdown-content">
-                    @auth
+                    @auth('user')
                     <a href="{{ route('logout') }}" id="xstext" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
        {{ __('Logout') }} </a>
@@ -44,7 +44,7 @@
     </form>
     @endauth
     @guest
-    <a href="/home" id="xstext">Log In</a>
+    <a href="/mainlogin" id="xstext">Log In</a>
     @endguest
                     
                     

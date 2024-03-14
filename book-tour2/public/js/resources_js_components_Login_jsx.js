@@ -98,7 +98,13 @@ function LeftSide() {
 }
 function Login() {
   var _useAuth = (0,_AuthContext__WEBPACK_IMPORTED_MODULE_1__.useAuth)(),
-    login = _useAuth.login;
+    isAuthenticated = _useAuth.isAuthenticated,
+    setIsAuthenticated = _useAuth.setIsAuthenticated;
+  if (isAuthenticated) {
+    window.location.href = "/admin/dashboard";
+  }
+  var _useAuth2 = (0,_AuthContext__WEBPACK_IMPORTED_MODULE_1__.useAuth)(),
+    login = _useAuth2.login;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState2 = _slicedToArray(_useState, 2),
     email = _useState2[0],

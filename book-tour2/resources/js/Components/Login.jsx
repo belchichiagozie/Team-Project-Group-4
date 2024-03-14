@@ -13,6 +13,10 @@ function LeftSide() {
 }
 
 export default function Login() {
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
+    if (isAuthenticated) {
+        window.location.href = "/admin/dashboard";
+    }
     const { login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
