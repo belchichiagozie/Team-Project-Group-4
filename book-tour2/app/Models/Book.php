@@ -67,4 +67,11 @@ class Book extends Model
 	{
 		return $this->hasOne(Review::class, 'Book_ID');
 	}
+
+	public function getReviews()
+    {
+        // Retrieve reviews associated with this book
+        return Review::where('Book_ID', $this->Book_ID)->get();
+    }
+
 }
