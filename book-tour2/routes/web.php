@@ -12,7 +12,8 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\AdminLoginController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 /*
@@ -48,7 +49,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::redirect('/', '/products');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/mainlogin',[LoginController::class, 'index']);
 
 //Routes for Catalog page
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
@@ -72,6 +72,11 @@ Route::prefix('admin/')->group(function() {
 Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
 Route::post('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 });
+
+Route::get('/mainlogin', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/mainlogin', [LoginController::class, 'login']);
+Route::get('/mainregister',[RegisterController::class, 'showRegistrationForm']);
+Route::post('/mainregister', [RegisterController::class, 'register']);
 
 
 

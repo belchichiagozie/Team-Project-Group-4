@@ -35,7 +35,7 @@
             <a href="/basket/view" class="fas fa-shopping-cart"></a>
             <div id="login-btn" class="fas fa-user dropdown">
                 <div class="dropdown-content">
-                    @auth('user')
+                    @auth()
                     <a href="{{ route('logout') }}" id="xstext" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
        {{ __('Logout') }} </a>

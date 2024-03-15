@@ -20,7 +20,6 @@ import("./components/UsersCard");
 import("./components/Users");
 import("./components/BooktourCard");
 import("./components/AuthContext");
-import("./components/LoginMain");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";

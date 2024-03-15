@@ -20,7 +20,6 @@ use App\Http\Controllers\LoginAPIController;
 Route::middleware('web')->group(function () {
     Route::post('/admin/login', [AdminLoginAPIController::class, 'login']);
     Route::post('/admin/logout', [AdminLoginAPIController::class, 'logout']);
-    Route::post('/user/login',[LoginAPIController::class,'login']);
 });
 
 

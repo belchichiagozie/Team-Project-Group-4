@@ -23,6 +23,11 @@
 <!-- Products Page: New Arrivals Section -->
 <section class="arrivals" id="New Arrivals">
     <h1 class="heading"> <span> new arrivals</span> </h1>
+    @if($user)
+    <p>Welcome, {{ $user->name }}</p>
+@else
+    <p>You are not logged in.</p>
+@endif
 
     <div class="swiper arrivals-slider">
         <div class="swiper-wrapper">

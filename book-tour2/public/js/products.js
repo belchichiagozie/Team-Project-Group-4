@@ -82,20 +82,3 @@ var swiper = new Swiper(".bestsellers-slider", {
         },
     },
 });
-
-window.addEventListener("DOMContentLoaded", (event) => {
-    const token = localStorage.getItem("usertoken");
-    const loginBtn = document.getElementById("login-btn");
-    const dropdownContent = loginBtn.querySelector(".dropdown-content");
-
-    if (token) {
-        dropdownContent.innerHTML = `<a href="#" id="logout" onclick="handleLogout()">Logout</a>`;
-    } else {
-        dropdownContent.innerHTML = `<a href="/mainlogin" id="xstext">Log In</a>`;
-    }
-});
-
-function handleLogout() {
-    localStorage.removeItem("usertoken");
-    window.location.href = "/products";
-}

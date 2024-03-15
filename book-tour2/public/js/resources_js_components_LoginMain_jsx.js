@@ -60,6 +60,7 @@ function LoginMain() {
     _useState4 = _slicedToArray(_useState3, 2),
     password = _useState4[0],
     setPassword = _useState4[1];
+  axios__WEBPACK_IMPORTED_MODULE_3__["default"].defaults.withCredentials = true;
   var handleSubmit = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
       var response, token;
@@ -69,20 +70,24 @@ function LoginMain() {
             e.preventDefault();
             _context.prev = 1;
             _context.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("/sanctum/csrf-cookie");
+          case 4:
+            _context.next = 6;
             return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/user/login", {
+              withCredentials: true,
               email: email,
               password: password
             });
-          case 4:
+          case 6:
             response = _context.sent;
             token = response.data.token;
             localStorage.setItem("usertoken", token);
             console.log("Login successful", response.data);
             window.location.href = "/products";
-            _context.next = 14;
+            _context.next = 16;
             break;
-          case 11:
-            _context.prev = 11;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](1);
             if (_context.t0.response) {
               console.error("Login error", _context.t0.response.data);
@@ -92,11 +97,11 @@ function LoginMain() {
             } else {
               console.error("Error", _context.t0.message);
             }
-          case 14:
+          case 16:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[1, 11]]);
+      }, _callee, null, [[1, 13]]);
     }));
     return function handleSubmit(_x) {
       return _ref.apply(this, arguments);
