@@ -50,4 +50,9 @@ class User extends Authenticatable
 		'password',
 		'remember_token'
 	];
+
+	public function readingList()
+{
+    return $this->belongsToMany(Book::class, 'readinglist', 'User_ID', 'Book_ID');
+}
 }

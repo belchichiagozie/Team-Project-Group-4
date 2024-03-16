@@ -24,11 +24,12 @@ Route::middleware('web')->group(function () {
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/addbook',[APIController::class,'store']);
 Route::put('/updatebook/{id}', [APIController::class, 'update']);
 Route::get('/admin/products',[APIController::class, 'getBooks']);
 Route::get('/admin/favouritebooks',[APIController::class, 'getFavourites']);
 });
+Route::post('/addbook',[APIController::class,'store']);
+Route::delete('/admin/products/{id}', [APIController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

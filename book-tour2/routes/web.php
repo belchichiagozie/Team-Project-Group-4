@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ReadingListController;
 
 
 /*
@@ -58,6 +59,12 @@ Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('baske
 Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
 Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
 Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
+
+//Routes for ReadingList page
+Route::get('/readinglist',[ReadingListController::class, 'index'])->middleware('auth');;
+Route::post('/reading-list/add', [ReadingListController::class, 'addToReadingList'])->name('addrl');
+Route::post('/reading-list/remove', [ReadingListController::class, 'removeFromReadingList'])->name('removerl');
+Route::get('/reading-list', [ReadingListController::class, 'getReadingList']);
 
 //Routes for Admin Panel page
 Route::prefix('admin/')->group(function() {

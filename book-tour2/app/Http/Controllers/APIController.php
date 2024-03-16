@@ -61,7 +61,7 @@ class APIController extends Controller
             'genre' => 'required',
             'price' => 'required|integer|min:0|max:1000',
             'stock' => 'required|integer|min:1|max:1000',
-            'image' => 'sometimes|mimes:jpg,png,jpeg|max:5048'
+            'image' => 'sometimes|mimes:jpg,png,jpeg'
         ]);
     
         if($validator->fails()){
@@ -105,4 +105,30 @@ class APIController extends Controller
             'message' => 'Book Updated Successfully!'
         ]);
     }
+
+    public function destroy($id)
+{
+    $book = Book::find($id);
+
+    if (!$book) {
+        return response()->json([
+            'status' => 404,
+            'message' => 'Book Not Found!'
+        ], 404);
+    }
+
+    // Optional: Delete associated image file
+    $imagePath = public_path('images/' . $book->file);
+    if (file_exists($imagePath)) {
+        @unlink($imagePath);
+    }
+
+    // Delete the book from the database
+    $book->delete();
+
+    return response()->json([
+        'status' => 200,
+        'message' => 'Book Deleted Successfully!'
+    ], 200);
+}
 }

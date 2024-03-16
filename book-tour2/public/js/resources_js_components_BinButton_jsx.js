@@ -30,7 +30,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function BinButton() {
+function BinButton(_ref) {
+  var Book_ID = _ref.Book_ID,
+    onRemove = _ref.onRemove;
+  var handleClick = function handleClick() {
+    onRemove(Book_ID);
+    setOpenModal(false);
+  };
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     openModal = _useState2[0],
@@ -60,9 +66,7 @@ function BinButton() {
             className: "flex justify-center gap-4",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Button, {
               color: "failure",
-              onClick: function onClick() {
-                return setOpenModal(false);
-              },
+              onClick: handleClick,
               children: "Yes, I'm sure"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Button, {
               color: "gray",

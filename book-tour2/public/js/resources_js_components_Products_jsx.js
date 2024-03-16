@@ -425,7 +425,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function BinButton() {
+function BinButton(_ref) {
+  var Book_ID = _ref.Book_ID,
+    onRemove = _ref.onRemove;
+  var handleClick = function handleClick() {
+    onRemove(Book_ID);
+    setOpenModal(false);
+  };
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     openModal = _useState2[0],
@@ -455,9 +461,7 @@ function BinButton() {
             className: "flex justify-center gap-4",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Button, {
               color: "failure",
-              onClick: function onClick() {
-                return setOpenModal(false);
-              },
+              onClick: handleClick,
               children: "Yes, I'm sure"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Button, {
               color: "gray",
@@ -845,6 +849,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Products() {
   // user variable used to fetch user data from database via Axios
+  var removeBook = function removeBook(Book_ID) {
+    var token = localStorage.getItem("token");
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("http://127.0.0.1:8000/api/admin/products/".concat(Book_ID), {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function () {
+      var updatedBooks = book.filter(function (bookObj) {
+        return bookObj.Book_ID !== Book_ID;
+      });
+      setBook(updatedBooks);
+    })["catch"](function (error) {
+      console.error("There was an error removing the book: ", error);
+    });
+  };
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     book = _useState2[0],
@@ -903,38 +922,41 @@ function Products() {
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-        children: book && book.length > 0 && book.map(function (bookObj, index) {
+        children: book && book.length > 0 && book.map(function (bookObj) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               className: "font-bold",
               children: bookObj.Title
-            }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: bookObj.Author
-            }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              className: "md:inline-block hidden",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              className: "",
               children: bookObj.Genre
-            }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: bookObj.Price
-            }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: bookObj.Stock
-            }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               className: "lg:inline-block hidden",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
                 className: "w-20 h-32",
                 src: imgprefix + bookObj.file
               })
-            }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_BinButton__WEBPACK_IMPORTED_MODULE_1__["default"], {})
-            }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_BinButton__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                Book_ID: bookObj.Book_ID,
+                onRemove: removeBook
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditBook__WEBPACK_IMPORTED_MODULE_2__["default"], {
                 bookObj: bookObj
               })
-            }, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FavouriteButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
                 id: bookObj.Favourite
               })
-            }, index)]
-          });
+            })]
+          }, bookObj.Book_ID);
         })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {

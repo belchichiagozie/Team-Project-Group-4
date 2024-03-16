@@ -63,6 +63,11 @@ class Book extends Model
 		return $this->hasOne(Readinglist::class, 'Book_ID');
 	}
 
+	public function readers()
+{
+    return $this->belongsToMany(User::class, 'readinglist', 'Book_ID', 'User_ID');
+}
+
 	public function review()
 	{
 		return $this->hasOne(Review::class, 'Book_ID');

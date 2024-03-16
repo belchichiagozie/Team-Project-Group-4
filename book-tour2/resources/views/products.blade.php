@@ -31,13 +31,14 @@
 
     <div class="swiper arrivals-slider">
         <div class="swiper-wrapper">
-            <a href="#" class="swiper-slide box">
+        @foreach($books as $book)
+            <a href="/products/{{$book->Book_ID}}" class="swiper-slide box">
                 <div class="image">
-                    <img src="/images/bookcover3.png" alt="">
+                    <img src="/images/{{$book->file}}" alt="{{$book->Book_ID}}">
                 </div>
                 <div class="content">
-                    <h3>hide and seek</h3>
-                    <div class="price">£10 <span>£12</span></div>
+                    <h3>{{$book->Title}}</h3>
+                    <div class="price"> <span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -47,8 +48,9 @@
                     </div>
                 </div>
             </a>
+            @endforeach
 
-            <a href="#" class="swiper-slide box">
+            <!-- <a href="#" class="swiper-slide box">
                 <div class="image">
                     <img src="/images/bookcover4.png" alt="">
                 </div>
@@ -203,7 +205,7 @@
                         <i class="fas fa-star-half-alt"></i>
                     </div>
                 </div>
-            </a>
+            </a> -->
 
         </div>
 
@@ -231,26 +233,46 @@
 <!-- Products Page: Best Sellers section -->
 <section class="bestsellers" id="Best Sellers">
     <h1 class="heading"> <span>Best Sellers</span> </h1>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('info'))
+    <div class="alert alert-info">
+        {{ session('info') }}
+    </div>
+@endif
     <div class="swiper bestsellers-slider">
         <div class="swiper-wrapper">
+            @foreach($books as $book)
             <div class="swiper-slide box">
                 <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
+                    <a href="/products/{{$book->Book_ID}}" class="fas fa-search"></a>
+                    <form action="{{ route('addrl') }}" method="POST" style="display:inline;">
+            @csrf
+            <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
+            <button type="submit" class="btn">
+                    <a href="" class="fas fa-heart"></a>
+</button>
+</form>
+
                     <a href="#" class="fas fa-eye"></a>
                     <a href="#" class="fas fa-shopping-cart"></a>
                 </div>
                 <div class="image">
-                    <img src="/images/bookcover.png" alt="">
+                    <img src="/images/{{$book->file}}" alt="">
                 </div>
                 <div class="content">
-                    <h3>Rising Ashes</h3>
-                    <div class="price">£10 <span> £12 </span></div>
+                    <h3>{{$book->Title}}</h3>
+                    <div class="price">{{$book->Price}} <span> £30 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
             </div>
+            @endforeach
 
-            <div class="swiper-slide box">
+            <!-- <div class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
                     <a href="#" class="fas fa-heart"></a>
@@ -401,7 +423,7 @@
                     <div class="price">£10 <span> £12 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
