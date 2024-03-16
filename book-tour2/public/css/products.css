@@ -887,6 +887,48 @@ section {
     }
 }
 
+/* Review Styling */
+.review-container {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.review-container h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.review-container p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.review-container .customer-name {
+    font-weight: bold;
+}
+
+.review-container .book-title {
+    font-style: italic;
+}
+
+.review-container .review-body {
+    margin-top: 10px;
+}
+
+/* Styling for Stars/Rating */
+.review-container .rating {
+    color: #f1c40f; /* Yellow color for stars */
+}
+
+.review-container .rating i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
 .readinglist {
     background: #106585;
 }
