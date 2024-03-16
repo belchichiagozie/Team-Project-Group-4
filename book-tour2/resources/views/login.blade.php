@@ -19,7 +19,7 @@
             </div>
             <div>Don't have an account?</div>
             <button class="bg-green-500 p-4">
-                <a class="text-white" href="/admin">
+                <a class="text-white" href="/mainregister">
                     <h2>Register Here</h2>
                 </a>
             </button>
@@ -60,7 +60,7 @@
                 <h1 class="text-3xl">Welcome Back!</h1>
                 <div>Don't have an account?</div>
                 <button class="bg-green-500 p-4">
-                    <a class="text-white" href="/register">
+                    <a class="text-white" href="/mainregister">
                         <h2>Register Here</h2>
                     </a>
                 </button>

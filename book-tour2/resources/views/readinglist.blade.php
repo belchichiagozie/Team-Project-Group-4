@@ -11,7 +11,7 @@
                 <img src="/images/{{$book->file}}" alt="game of your mind">
                 <div class="list">
                 <h2>{{$book->Title}}</h2>
-                <h3>{{$book->Price}}</h3>
+                <h3>£{{$book->Price}}</h3>
                 <p class="addbtn">
                             <span class="btn1">Add to basket</span>
                         </p>

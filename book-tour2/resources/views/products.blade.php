@@ -38,7 +38,7 @@
                 </div>
                 <div class="content">
                     <h3>{{$book->Title}}</h3>
-                    <div class="price"> <span>£12</span></div>
+                    <div class="price">£{{$book->Price}}<span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -266,7 +266,7 @@
                 </div>
                 <div class="content">
                     <h3>{{$book->Title}}</h3>
-                    <div class="price">{{$book->Price}} <span> £30 </span></div>
+                    <div class="price">£{{$book->Price}} <span> £30 </span></div>
                     <a href="#" class="btn">Add to Basket</a>
                 </div>
             </div>
