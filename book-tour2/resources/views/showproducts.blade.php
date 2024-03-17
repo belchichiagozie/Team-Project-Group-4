@@ -20,6 +20,7 @@
         <div class="details-bottom">
             <button class="add-to-favorites">Add to Favorites</button>
             <button class="add-to-basket">Add to Basket</button>
+            <button class="add-review" onclick="window.location.href='/add-review/{{$book->Book_ID}}'">Leave a Review</button>
         </div>
     </div>
 </div>

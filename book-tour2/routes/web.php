@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ReadingListController;
@@ -46,6 +47,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+// Routes for Reviews
+Route::get("/add-review/{id}", [ReviewController::class, "add"])->name('reviews.add');
+Route::post("/add-review/{id}", [ReviewController::class, "create"])->name('reviews.create');
+
+
 //Routes for main Products page
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::redirect('/', '/products');
