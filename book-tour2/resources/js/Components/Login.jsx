@@ -13,6 +13,10 @@ function LeftSide() {
 }
 
 export default function Login() {
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
+    if (isAuthenticated) {
+        window.location.href = "/admin/dashboard";
+    }
     const { login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -54,7 +58,7 @@ export default function Login() {
                         alt="Book-tour logo"
                     />
                     <span className="flex flex-col justify-center items-center">
-                        <h1>Book-Tour:</h1>
+                        <h1>BookTour:</h1>
                         <span className="text-xs">Admin</span>
                     </span>
                 </div>

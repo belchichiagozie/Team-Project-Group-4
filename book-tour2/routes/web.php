@@ -12,8 +12,10 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\AdminLoginController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ReadingListController;
 
 
 /*
@@ -57,7 +59,6 @@ Route::post("/add-review/{id}", [ReviewController::class, "create"])->name('revi
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::redirect('/', '/products');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/login',[LoginController::class, 'index']);
 
 //Routes for Catalog page
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
@@ -67,6 +68,12 @@ Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('baske
 Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
 Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
 Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
+
+//Routes for ReadingList page
+Route::get('/readinglist',[ReadingListController::class, 'index'])->middleware('auth');;
+Route::post('/reading-list/add', [ReadingListController::class, 'addToReadingList'])->name('addrl');
+Route::post('/reading-list/remove', [ReadingListController::class, 'removeFromReadingList'])->name('removerl');
+Route::get('/reading-list', [ReadingListController::class, 'getReadingList']);
 
 //Routes for Admin Panel page
 Route::prefix('admin/')->group(function() {
@@ -81,6 +88,11 @@ Route::prefix('admin/')->group(function() {
 Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
 Route::post('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 });
+
+Route::get('/mainlogin', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/mainlogin', [LoginController::class, 'login']);
+Route::get('/mainregister',[RegisterController::class, 'showRegistrationForm']);
+Route::post('/mainregister', [RegisterController::class, 'register']);
 
 
 

@@ -7,6 +7,22 @@ import AddBookButton from "./AddBookButton";
 
 export default function Products() {
     // user variable used to fetch user data from database via Axios
+    const removeBook = (Book_ID) => {
+        const token = localStorage.getItem("token");
+        axios
+            .delete(`http://127.0.0.1:8000/api/admin/products/${Book_ID}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then(() => {
+                const updatedBooks = book.filter(
+                    (bookObj) => bookObj.Book_ID !== Book_ID,
+                );
+                setBook(updatedBooks);
+            })
+            .catch((error) => {
+                console.error("There was an error removing the book: ", error);
+            });
+    };
     const [book, setBook] = useState([]);
     const imgprefix = "/images/";
     const fetchData = () => {
@@ -48,36 +64,29 @@ export default function Products() {
                 <tbody>
                     {book &&
                         book.length > 0 &&
-                        book.map((bookObj, index) => (
-                            <tr>
-                                <td key={index} className="font-bold">
-                                    {bookObj.Title}
-                                </td>
-                                <td key={index}>{bookObj.Author}</td>
-                                <td
-                                    className="md:inline-block hidden"
-                                    key={index}
-                                >
-                                    {bookObj.Genre}
-                                </td>
-                                <td key={index}>{bookObj.Price}</td>
-                                <td key={index}>{bookObj.Stock}</td>
-                                <td
-                                    key={index}
-                                    className="lg:inline-block hidden"
-                                >
+                        book.map((bookObj) => (
+                            <tr key={bookObj.Book_ID}>
+                                <td className="font-bold">{bookObj.Title}</td>
+                                <td>{bookObj.Author}</td>
+                                <td className="">{bookObj.Genre}</td>
+                                <td>{bookObj.Price}</td>
+                                <td>{bookObj.Stock}</td>
+                                <td className="lg:inline-block hidden">
                                     <img
                                         className="w-20 h-32"
                                         src={imgprefix + bookObj.file}
                                     ></img>
                                 </td>
-                                <td key={index}>
-                                    <BinButton />
+                                <td>
+                                    <BinButton
+                                        Book_ID={bookObj.Book_ID}
+                                        onRemove={removeBook}
+                                    />
                                 </td>
-                                <td key={index}>
+                                <td>
                                     <EditBookButton bookObj={bookObj} />
                                 </td>
-                                <td key={index}>
+                                <td>
                                     <FavouriteButton id={bookObj.Favourite} />
                                 </td>
                             </tr>

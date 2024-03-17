@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>BookTour</title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
@@ -35,7 +36,7 @@
             <a href="/basket/view" class="fas fa-shopping-cart"></a>
             <div id="login-btn" class="fas fa-user dropdown">
                 <div class="dropdown-content">
-                    @auth
+                    @auth()
                     <a href="{{ route('logout') }}" id="xstext" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
        {{ __('Logout') }} </a>
@@ -44,7 +45,7 @@
     </form>
     @endauth
     @guest
-    <a href="/home" id="xstext">Log In</a>
+    <a href="/mainlogin" id="xstext">Log In</a>
     @endguest
                     
                     
@@ -89,6 +90,9 @@
                 </div>
                 <a href="#Special Offers">Special Offers</a>
                 <a href="#Reviews">Reviews</a>
+                @auth
+                <a href="/readinglist">My Reading List</a>
+                @endauth
 
             </nav>
         </div>
