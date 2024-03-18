@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Review;
 
 class ProductController extends Controller
 {
@@ -19,7 +20,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-        return view('showproducts', ['book' => $book]);
+        $reviews = Review::where('Book_ID', $id)->get();
+        return view('showproducts', ['book' => $book, 'reviews' => $reviews]);
     }
     //
 }
