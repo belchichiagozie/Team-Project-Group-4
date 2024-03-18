@@ -68,6 +68,7 @@ Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('baske
 Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
 Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
 Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
+Route::get('/checkout', [BasketController::class,'checkout'])->name('basket.checkout');
 
 //Routes for ReadingList page
 Route::get('/readinglist',[ReadingListController::class, 'index'])->middleware('auth');;

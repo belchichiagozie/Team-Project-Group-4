@@ -131,4 +131,8 @@ class BasketController extends Controller
         return (float) $total;
     }
     //
+
+    public function checkout(){
+        return view('basket.checkout');
+    }
 }
