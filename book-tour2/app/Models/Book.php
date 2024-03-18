@@ -43,13 +43,12 @@ class Book extends Model
 		'Genre',
 		'Price',
 		'Stock',
-		'Favourite',
 		'file'
 	];
 
 	public function basket()
 	{
-		return $this->hasOne(Basket::class, 'Book_ID');
+		return $this->hasMany(Basket::class, 'Book_ID');
 	}
 
 	public function orders()
@@ -63,20 +62,13 @@ class Book extends Model
 		return $this->hasOne(Readinglist::class, 'Book_ID');
 	}
 
-	public function readers()
-{
-    return $this->belongsToMany(User::class, 'readinglist', 'Book_ID', 'User_ID');
-}
-
 	public function review()
 	{
 		return $this->hasOne(Review::class, 'Book_ID');
 	}
 
-	public function getReviews()
+	public function users()
     {
-        // Retrieve reviews associated with this book
-        return Review::where('Book_ID', $this->Book_ID)->get();
+        return $this->belongsToMany(User::class, 'basket', 'Book_ID', 'user_id')->withPivot('Quantity');
     }
-
 }

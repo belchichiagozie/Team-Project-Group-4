@@ -55,4 +55,14 @@ class User extends Authenticatable
 {
     return $this->belongsToMany(Book::class, 'readinglist', 'User_ID', 'Book_ID');
 }
+
+	public function basket()
+	{
+		return $this->belongsToMany(Basket::class,'basket', 'user_id', 'Book_ID');
+	}
+
+	public function books()
+	{
+		return $this->belongsToMany(Book::class, 'basket', 'user_id', 'Book_ID')->withPivot('Quantity');
+	}
 }

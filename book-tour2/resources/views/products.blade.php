@@ -259,7 +259,15 @@
 </form>
 
                     <a href="#" class="fas fa-eye"></a>
-                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <form action="{{ route('basket.add') }}" method="POST" style="display:inline;">
+            @csrf
+            <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
+            <input type="hidden" name="Quantity" value="1">
+            <button type="submit" class="btn">
+            <a href="" class="fas fa-shopping-cart"></a>
+</button>
+</form>
+                    
                 </div>
                 <div class="image">
                     <img src="/images/{{$book->file}}" alt="">

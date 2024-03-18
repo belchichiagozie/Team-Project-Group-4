@@ -54,7 +54,6 @@ Route::middleware('auth')->group(function () {
 Route::get("/add-review/{id}", [ReviewController::class, "add"])->name('reviews.add');
 Route::post("/add-review/{id}", [ReviewController::class, "create"])->name('reviews.create');
 
-
 //Routes for main Products page
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::redirect('/', '/products');
@@ -64,10 +63,9 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
 //Routes for Basket page
-Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('basket.view');
+Route::get('/basket/view', [BasketController::class, 'index'])->name('basket.view');
 Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
 Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
-Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
 Route::get('/checkout', [BasketController::class,'checkout'])->name('basket.checkout');
 
 //Routes for ReadingList page
