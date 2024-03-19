@@ -1052,14 +1052,18 @@ section {
 .review-card {
     background-color: #eee;
     border: #eee;
-    border-radius: 20px;
     margin-bottom: 10px;
+    font-family: "airal";
+    margin: 10px;
 }
 
 .review-card-top {
     display: flex;
     flex-direction: row;
     padding: 20px;
+}
+
+.right-column {
 }
 
 .review-card-title {
@@ -1083,6 +1087,31 @@ section {
 
 .review-card-bottom {
     padding: 10px;
+}
+
+.create-review-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.crc {
     border: #000;
     border-style: solid;
+}
+
+.crc-heading {
+    padding: 10px;
+}
+
+.crc-title {
+    padding: 10px;
+}
+
+.crc-body {
+    padding: 10px;
+}
+
+.crc-submit-button {
+    padding: 10px;
 }

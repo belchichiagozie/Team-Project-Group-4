@@ -24,8 +24,7 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
 	protected $table = 'reviews';
-	protected $primaryKey = 'Book_ID';
-	public $timestamps = false;
+	public $timestamps = true;
 
 	public $incrementing = false;
 
@@ -36,7 +35,8 @@ class Review extends Model
 	protected $fillable = [
 		'Customer_ID',
 		'Title',
-		'Body'
+		'Body',
+		'Customer_Name',
 	];
 
 	public function book()

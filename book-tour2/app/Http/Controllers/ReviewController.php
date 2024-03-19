@@ -27,8 +27,10 @@ class ReviewController extends Controller
         $review = new Review;
         $review->Book_ID = $request->input('book_id');
         $review->Customer_ID = Auth::user()->id;
+        $review->Customer_Name = Auth::user()->name;
         $review->Title = $request->input('review_title');
         $review->Body = $request->input('review_body');
+
     
         $review->save();
     }
@@ -47,7 +49,7 @@ class ReviewController extends Controller
         error_log('User not found');
     }
 
-    return redirect()->route('products.index');
+    return redirect()->route('products.show',['id'=>$bookID]);
     }
 
     

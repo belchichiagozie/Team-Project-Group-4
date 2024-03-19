@@ -26,7 +26,7 @@
         </div>
     </div>
 </div>
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div>
             <div class="card">
@@ -43,6 +43,27 @@
             </div>
         </div>
     </div>
+</div> -->
+<div class="create-review-container">
+    <div class="crc">
+    <div class="crc-heading">
+        <h2>Leave a review for {{$book->Title}}</h2>
+    </div>
+    <form action="{{ url('add-review/'.$book->Book_ID) }}" method="POST">
+        @csrf
+    <div class="crc-title">
+        <input type="hidden" name="book_id" value="{{ $book->Book_ID }}">
+        <textarea class="form-control" name="review_title" id="review" cols="30" rows="1" placeholder="Title"></textarea>
+    </div>
+    <div class="crc-body">
+        <textarea class="form-control" name="review_body" id="review" cols="30" rows="5" placeholder="Leave your review here!"></textarea>
+    </div>
+    <div class="crc-submit-button">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    </div>
+
 </div>
 </div>
 <div class="right-column">
@@ -52,12 +73,12 @@
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-card-title">
-                <h1>{{$review->Title}}</h1>
+                <h3>Title: {{$review->Title}}</h3>
                 </div>
                 <div class="review-card-user">
-                    <h1>
-                        {{$review->Customer_ID}}
-                    </h1>
+                    <h3>
+                        {{$review->Customer_Name}}
+                    </h3>
                 </div>
             </div>
             <div class="review-card-bottom">
