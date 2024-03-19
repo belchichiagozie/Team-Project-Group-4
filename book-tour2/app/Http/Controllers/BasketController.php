@@ -127,6 +127,7 @@ class BasketController extends Controller
         }
 
         return $totalPrice;
+        
 }
 
 }

@@ -5,22 +5,25 @@
     <body>
         <section class="catalog" id="Catalog">
         
-            <h1>Catalogue Page</h1>
+            <h1 style = "font-size: 3rem;">Catalogue Page</h1>
 
 
             <form action="{{ route('catalog.index') }}" method="GET" id="searchForm">
-                <label for="sort">Sort By:</label>
+                <label for="sort" style = "font-size: 1.5rem;">Sort By:</label>
                 <!--main drop down boxs -->
 
-                <select name="sort" id="sort" onchange="toggleInput()">
+                <select name="sort" id="sort" style = "font-size: 1.5rem;" onchange="toggleInput()">
                     <option value="title">Title</option>
                     <option value="genre">Genre</option>
                     <option value="author">Author</option>
                     <option value="price">Price</option>
                 </select>
         
-                <label for="searchInput" id="searchLabel" style="display: none;">Title:</label>
-                <input type="text" name="searchInput" id="searchInput" style="display: none;">
+                <label for="searchInput" id="searchLabel" style="display: none; font-size: 1.5rem;">Title:</label>
+<input type="text" name="searchInput" id="searchInput" style="display: none; width: 300px; border: 2px solid black; border-radius: 8px;">
+
+                    
+
 
                 <button type="submit">Search</button>
             </form>
@@ -33,7 +36,8 @@
                         </div>
 
                         <div class="content">
-                            <h3>{{ $book->Title }}</h3>
+                            <p style="font-size: 1.5rem; font-weight: bold;" class="text-black">{{ $book->Title }}</p>
+                            <p style="font-size: 1rem;" class="text-black">Author: {{ $book->Author }}</p>
                             <div class="price">£{{ $book->Price }}<span>£12</span></div>
                             <div class="stars">
                                 <i class="fas fa-star"></i>
@@ -98,6 +102,7 @@
 
                     label.innerText = 'Title: ';
                     label.style.display = 'inline-block';
+                     
                 
                 }
             }
