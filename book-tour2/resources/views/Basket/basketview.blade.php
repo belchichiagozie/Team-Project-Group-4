@@ -13,14 +13,18 @@
                         <div class="content">
                             <h3>{{$item->Title}}</h3>
                             <h4>Price: £{{$item->Price}}</h4>
-                            <p class="unit">Quantity: {{$item->pivot->Quantity}}</p>
-                            <p class="btn-area">
+                            <p class="unit">Quantity:
+                                @if(auth()->check())
+                                    {{$item->pivot->Quantity}}
+                                 @else
+                                    {{$item->Quantity}}
+                                 @endif
+                            </p>
                                 <form action="{{ route('basket.remove') }}" method="POST" style="display:inline;">
                                     @csrf
                                     <input type="hidden" name="Book_ID" value="{{ $item->Book_ID }}">
                                     <button type="submit" class="fa fa-trash"></button>
                                 </form>
-                                <span class="btn2">Remove</span>
                             </p>
                         </div>
                     </div>
@@ -35,7 +39,7 @@
                 <hr>
                 <p><span>Total</span> <span>£{{$totalPrice + 5}}</span></p>
 
-                <a href="#"><i class="fa fa-shopping-cart"></i> Checkout </a>
+                <a href="{{ route('basket.checkout') }}"><i class="fa fa-shopping-cart"></i> Checkout </a>
             </div>
         </div>
     </div>

@@ -21,7 +21,8 @@ class ProductController extends Controller
     {
         $book = Book::find($id);
         $reviews = Review::where('Book_ID', $id)->get();
-        return view('showproducts', ['book' => $book, 'reviews' => $reviews]);
+        $user = Auth::user();
+        return view('showproducts', ['book' => $book, 'reviews' => $reviews, 'user' => $user]);
     }
     //
 }

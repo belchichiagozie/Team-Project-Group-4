@@ -16,6 +16,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ReadingListController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -67,6 +68,7 @@ Route::get('/basket/view', [BasketController::class, 'index'])->name('basket.vie
 Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
 Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
 Route::get('/checkout', [BasketController::class,'checkout'])->name('basket.checkout');
+Route::post('/checkout/order', [OrderController::class, 'checkout'])->name('checkout.order');
 
 //Routes for ReadingList page
 Route::get('/readinglist',[ReadingListController::class, 'index'])->middleware('auth');;

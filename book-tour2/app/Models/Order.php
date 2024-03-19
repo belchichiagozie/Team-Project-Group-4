@@ -23,27 +23,30 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
-	protected $table = 'orders';
-	protected $primaryKey = 'Order_ID';
-	public $timestamps = false;
+	protected $table = 'order_items';
+	public $timestamps = true;
 
 	protected $casts = [
-		'Customer_ID' => 'int'
+		'User_ID' => 'int',
+		'Book_ID' => 'int'
 	];
 
 	protected $fillable = [
-		'Customer_ID',
-		'Status'
+		'User_ID',
+		'Book_ID',
+		'Quantity'
 	];
 
 	public function customer()
 	{
-		return $this->belongsTo(Customer::class, 'Customer_ID');
+		return $this->belongsTo(User::class, 'User_ID');
 	}
 
 	public function books()
-	{
-		return $this->belongsToMany(Book::class, 'orderbooks', 'OrderID', 'Book_ID')
-					->withPivot('Quantity');
-	}
+{
+    return $this->belongsToMany(Book::class, 'order_items', 'User_ID', 'Book_ID')->withPivot('Quantity');
+}
+
+
+
 }

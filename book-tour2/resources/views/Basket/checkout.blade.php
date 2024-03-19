@@ -5,7 +5,7 @@
 
 
 
-        <form method="POST" action="/mainlogin" class="bg-slate-800 rounded-2xl w-[300px] sm:w-[300px] md:w-[400px] lg:w-[500px] border border-solid border-2 flex max-w-2xl flex-col gap-4 lg:gap-8 text-black">
+        <form method="POST" action="{{ route('checkout.order') }}" class="bg-slate-800 rounded-2xl w-[300px] sm:w-[300px] md:w-[400px] lg:w-[500px] border border-solid border-2 flex max-w-2xl flex-col gap-4 lg:gap-8 text-black">
         @csrf
             <div class="p-8 sm:p-10 md:p-12 lg:p-16 text-3xl text-white flex flex-col justify-center items-center">
                 <img class="w-40 h-40" src="/images/logotr.png" alt="Book-tour logo"/>

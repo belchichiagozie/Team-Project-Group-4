@@ -21,9 +21,15 @@ class BasketController extends Controller
         $totalPrice = $this->calculateTotalPriceForUser($user);
         $basket = $user->books()->select('books.*', 'basket.Quantity')->get();
     } else {
+        
         $totalPrice = $this->calculateTotalPriceForSessionBasket();
-        $basketIds = session()->get('basket', []);
-        $basket = Book::whereIn('Book_ID', $basketIds)->get();
+        $basket = session()->get('basket', []);
+        $bookIds = array_keys($basket);
+        $basketItems = Book::whereIn('Book_ID', $bookIds)->get();
+        foreach ($basketItems as $item) {
+            $item->Quantity = $basket[$item->Book_ID];
+        }
+        $basket = $basketItems;
     }
 
     return view('Basket.basketview', ['basket' => $basket, 'totalPrice' => $totalPrice]);
@@ -129,5 +135,28 @@ class BasketController extends Controller
         return $totalPrice;
         
 }
+    public function checkout()
+    {
+        $basket = [];
+
+    if (auth()->check()) {
+        $userId = auth()->user()->id;
+        $user = User::find($userId);
+        $totalPrice = $this->calculateTotalPriceForUser($user);
+        $basket = $user->books()->select('books.*', 'basket.Quantity')->get();
+    } else {
+        
+        $totalPrice = $this->calculateTotalPriceForSessionBasket();
+        $basket = session()->get('basket', []);
+        $bookIds = array_keys($basket);
+        $basketItems = Book::whereIn('Book_ID', $bookIds)->get();
+        foreach ($basketItems as $item) {
+            $item->Quantity = $basket[$item->Book_ID];
+        }
+        $basket = $basketItems;
+    }
+
+    return view('Basket.checkout', ['basket' => $basket, 'totalPrice' => $totalPrice]);
+    }
 
 }

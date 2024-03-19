@@ -11,7 +11,7 @@
     </div>
     <div class="right-side">
         <div class="details-top">
-            <div class="name" id="name">[Name]</div> <!-- Placeholder for user's name -->
+            <div class="name" id="name">{{$user->name}}</div> <!-- Placeholder for user's name -->
             <div class="book-name" id="book-name">{{$book->Title}}</div>
         </div>
         <div class="details-middle">
@@ -21,9 +21,19 @@
         </div>
         <div class="details-bottom">
             <button class="add-to-favorites">Add to Favorites</button>
-            <button class="add-to-basket">Add to Basket</button>
+            <form action="{{ route('basket.add') }}" method="POST" style="display:inline;">
+                        @csrf
+                        <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
+                        <input type="hidden" name="Quantity" value="1">
+                        <button class="add-to-basket">Add to Basket</button>
+                    </form>
             <button class="add-review" onclick="window.location.href='/add-review/{{$book->Book_ID}}'">Leave a Review</button>
         </div>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
     </div>
 </div>
 <!-- <div class="container">

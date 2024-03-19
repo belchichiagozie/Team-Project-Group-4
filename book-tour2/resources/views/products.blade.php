@@ -275,7 +275,12 @@
                 <div class="content">
                     <h3>{{$book->Title}}</h3>
                     <div class="price">£{{$book->Price}} <span> £30 </span></div>
-                    <a href="#" class="btn">Add to Basket</a>
+                    <form action="{{ route('basket.add') }}" method="POST" style="display:inline;">
+                        @csrf
+                        <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
+                        <input type="hidden" name="Quantity" value="1">
+                        <button type="submit" class="btn">Add to Basket</button>
+                    </form>
                 </div>
             </div>
             @endforeach
