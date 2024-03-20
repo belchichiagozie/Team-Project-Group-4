@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_AdminPage_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_AdminPage_jsx"],{
 
-/***/ "./resources/js/components/AdminPage.jsx":
+/***/ "./resources/js/Components/AdminPage.jsx":
 /*!***********************************************!*\
-  !*** ./resources/js/components/AdminPage.jsx ***!
+  !*** ./resources/js/Components/AdminPage.jsx ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

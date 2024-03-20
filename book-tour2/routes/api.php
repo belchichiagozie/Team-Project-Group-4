@@ -26,6 +26,7 @@ Route::middleware('web')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
 Route::put('/updatebook/{id}', [APIController::class, 'update']);
 Route::get('/admin/products',[APIController::class, 'getBooks']);
+Route::get('/admin/orders',[APIController::class, 'getOrders']);
 Route::get('/admin/favouritebooks',[APIController::class, 'getFavourites']);
 });
 Route::post('/addbook',[APIController::class,'store']);

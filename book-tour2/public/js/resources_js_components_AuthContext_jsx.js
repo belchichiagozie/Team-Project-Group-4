@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_AuthContext_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_AuthContext_jsx"],{
 
-/***/ "./resources/js/components/AuthContext.jsx":
+/***/ "./resources/js/Components/AuthContext.jsx":
 /*!*************************************************!*\
-  !*** ./resources/js/components/AuthContext.jsx ***!
+  !*** ./resources/js/Components/AuthContext.jsx ***!
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

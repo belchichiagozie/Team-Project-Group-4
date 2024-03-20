@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Dashboard_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_Dashboard_jsx"],{
 
-/***/ "./resources/js/components/Dashboard.jsx":
+/***/ "./resources/js/Components/Dashboard.jsx":
 /*!***********************************************!*\
-  !*** ./resources/js/components/Dashboard.jsx ***!
+  !*** ./resources/js/Components/Dashboard.jsx ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

@@ -11,7 +11,6 @@
     </div>
     <div class="right-side">
         <div class="details-top">
-            <div class="name" id="name">{{$user->name}}</div> <!-- Placeholder for user's name -->
             <div class="book-name" id="book-name">{{$book->Title}}</div>
         </div>
         <div class="details-middle">

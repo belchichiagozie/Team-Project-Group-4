@@ -1,8 +1,8 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_EditBook_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_EditBook_jsx"],{
 
-/***/ "./resources/js/components/EditBook.jsx":
+/***/ "./resources/js/Components/EditBook.jsx":
 /*!**********************************************!*\
-  !*** ./resources/js/components/EditBook.jsx ***!
+  !*** ./resources/js/Components/EditBook.jsx ***!
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

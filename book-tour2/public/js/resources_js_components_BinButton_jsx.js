@@ -1,8 +1,8 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_BinButton_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_BinButton_jsx"],{
 
-/***/ "./resources/js/components/BinButton.jsx":
+/***/ "./resources/js/Components/BinButton.jsx":
 /*!***********************************************!*\
-  !*** ./resources/js/components/BinButton.jsx ***!
+  !*** ./resources/js/Components/BinButton.jsx ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Book;
 use App\Models\Readinglist;
+use App\Models\Order;
 
 class APIController extends Controller
 {
@@ -18,6 +19,11 @@ class APIController extends Controller
     public function getFavourites(){
         $favourites=Book::where('Favourite',1)->get();
         return response()->json(['favourites'=>$favourites],200);
+    }
+
+    public function getOrders(){
+        $orders= Order::get();
+        return response()->json(['orders'=>$orders],200);
     }
 
     public function store(Request $request){

@@ -22,26 +22,28 @@ function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" 
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
-__webpack_require__.e(/*! import() */ "resources_js_components_AdminPage_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/AdminPage */ "./resources/js/components/AdminPage.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_Counter_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Counter */ "./resources/js/components/Counter.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_shared_Layout_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shared/Layout */ "./resources/js/components/shared/Layout.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_shared_Sidebarr_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shared/Sidebarr */ "./resources/js/components/shared/Sidebarr.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_Dashboard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Dashboard */ "./resources/js/components/Dashboard.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_Products_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Products */ "./resources/js/components/Products.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_Chart_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Chart */ "./resources/js/components/Chart.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_BookStockChart_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/BookStockChart */ "./resources/js/components/BookStockChart.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_BinButton_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/BinButton */ "./resources/js/components/BinButton.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_EditBook_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/EditBook */ "./resources/js/components/EditBook.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_FavouriteButton_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/FavouriteButton */ "./resources/js/components/FavouriteButton.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_AddBookButton_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/AddBookButton */ "./resources/js/components/AddBookButton.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_shared_Header_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/shared/Header */ "./resources/js/components/shared/Header.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_Login_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Login */ "./resources/js/components/Login.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_BookSalesChart_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/BookSalesChart */ "./resources/js/components/BookSalesChart.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_BooksCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/BooksCard */ "./resources/js/components/BooksCard.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_UsersCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/UsersCard */ "./resources/js/components/UsersCard.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_Users_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Users */ "./resources/js/components/Users.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_BooktourCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/BooktourCard */ "./resources/js/components/BooktourCard.jsx"));
-__webpack_require__.e(/*! import() */ "resources_js_components_AuthContext_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/AuthContext */ "./resources/js/components/AuthContext.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_AdminPage_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/AdminPage */ "./resources/js/Components/AdminPage.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_Counter_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/Counter */ "./resources/js/Components/Counter.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_shared_Layout_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/shared/Layout */ "./resources/js/Components/shared/Layout.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_shared_Sidebarr_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/shared/Sidebarr */ "./resources/js/Components/shared/Sidebarr.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_Dashboard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/Dashboard */ "./resources/js/Components/Dashboard.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_Products_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/Products */ "./resources/js/Components/Products.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_Chart_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/Chart */ "./resources/js/Components/Chart.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_BookStockChart_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/BookStockChart */ "./resources/js/Components/BookStockChart.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_BinButton_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/BinButton */ "./resources/js/Components/BinButton.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_EditBook_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/EditBook */ "./resources/js/Components/EditBook.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_FavouriteButton_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/FavouriteButton */ "./resources/js/Components/FavouriteButton.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_AddBookButton_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/AddBookButton */ "./resources/js/Components/AddBookButton.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_shared_Header_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/shared/Header */ "./resources/js/Components/shared/Header.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_Login_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/Login */ "./resources/js/Components/Login.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_BookSalesChart_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/BookSalesChart */ "./resources/js/Components/BookSalesChart.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_BooksCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/BooksCard */ "./resources/js/Components/BooksCard.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_UsersCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/UsersCard */ "./resources/js/Components/UsersCard.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_OrdersCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/OrdersCard */ "./resources/js/Components/OrdersCard.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_SalesCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/SalesCard */ "./resources/js/Components/SalesCard.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_Users_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/Users */ "./resources/js/Components/Users.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_BooktourCard_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/BooktourCard */ "./resources/js/Components/BooktourCard.jsx"));
+__webpack_require__.e(/*! import() */ "resources_js_Components_AuthContext_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Components/AuthContext */ "./resources/js/Components/AuthContext.jsx"));
 
 
 
@@ -46430,7 +46432,7 @@ const isThenable = (thing) =>
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_AdminPage_jsx":1,"resources_js_components_Counter_jsx":1,"resources_js_components_shared_Layout_jsx":1,"resources_js_components_shared_Sidebarr_jsx":1,"resources_js_components_Dashboard_jsx":1,"resources_js_components_Products_jsx":1,"resources_js_components_Chart_jsx":1,"resources_js_components_BookStockChart_jsx":1,"resources_js_components_BinButton_jsx":1,"resources_js_components_EditBook_jsx":1,"resources_js_components_FavouriteButton_jsx":1,"resources_js_components_AddBookButton_jsx":1,"resources_js_components_shared_Header_jsx":1,"resources_js_components_Login_jsx":1,"resources_js_components_BookSalesChart_jsx":1,"resources_js_components_BooksCard_jsx":1,"resources_js_components_UsersCard_jsx":1,"resources_js_components_Users_jsx":1,"resources_js_components_BooktourCard_jsx":1,"resources_js_components_AuthContext_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Components_AdminPage_jsx":1,"resources_js_Components_Counter_jsx":1,"resources_js_Components_shared_Layout_jsx":1,"resources_js_Components_shared_Sidebarr_jsx":1,"resources_js_Components_Dashboard_jsx":1,"resources_js_Components_Products_jsx":1,"resources_js_Components_Chart_jsx":1,"resources_js_Components_BookStockChart_jsx":1,"resources_js_Components_BinButton_jsx":1,"resources_js_Components_EditBook_jsx":1,"resources_js_Components_FavouriteButton_jsx":1,"resources_js_Components_AddBookButton_jsx":1,"resources_js_Components_shared_Header_jsx":1,"resources_js_Components_Login_jsx":1,"resources_js_Components_BookSalesChart_jsx":1,"resources_js_Components_BooksCard_jsx":1,"resources_js_Components_UsersCard_jsx":1,"resources_js_Components_OrdersCard_jsx":1,"resources_js_Components_SalesCard_jsx":1,"resources_js_Components_Users_jsx":1,"resources_js_Components_BooktourCard_jsx":1,"resources_js_Components_AuthContext_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

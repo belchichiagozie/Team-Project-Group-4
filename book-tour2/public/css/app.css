@@ -1112,8 +1112,6 @@ video {
   margin-bottom: 2.5rem;
 }.mb-2 {
   margin-bottom: 0.5rem;
-}.mb-3 {
-  margin-bottom: 0.75rem;
 }.mb-4 {
   margin-bottom: 1rem;
 }.mb-5 {
@@ -1124,8 +1122,6 @@ video {
   margin-inline-end: 0.25rem;
 }.me-4 {
   margin-inline-end: 1rem;
-}.me-auto {
-  margin-inline-end: auto;
 }.ml-0 {
   margin-left: 0px;
 }.ml-1 {
@@ -1142,8 +1138,6 @@ video {
   margin-left: 1.5rem;
 }.ml-auto {
   margin-left: auto;
-}.mr-1 {
-  margin-right: 0.25rem;
 }.mr-2 {
   margin-right: 0.5rem;
 }.mr-3 {
@@ -1154,8 +1148,6 @@ video {
   margin-inline-start: 0.75rem;
 }.ms-4 {
   margin-inline-start: 1rem;
-}.ms-auto {
-  margin-inline-start: auto;
 }.mt-1 {
   margin-top: 0.25rem;
 }.mt-1\.5 {
@@ -1311,8 +1303,6 @@ video {
 }.w-max {
   width: -moz-max-content;
   width: max-content;
-}.w-screen {
-  width: 100vw;
 }.min-w-0 {
   min-width: 0px;
 }.max-w-2xl {
@@ -1402,8 +1392,6 @@ video {
   cursor: pointer;
 }.cursor-wait {
   cursor: wait;
-}.resize {
-  resize: both;
 }.snap-x {
   scroll-snap-type: x var(--tw-scroll-snap-strictness);
 }.snap-mandatory {
@@ -1877,12 +1865,6 @@ video {
 }.bg-red-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(200 30 30 / var(--tw-bg-opacity));
-}.bg-red-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(155 28 28 / var(--tw-bg-opacity));
-}.bg-slate-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
 }.bg-slate-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
@@ -1929,10 +1911,6 @@ video {
 }.from-cyan-500 {
   --tw-gradient-from: #06b6d4 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(6 182 212 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}.from-gray-700 {
-  --tw-gradient-from: #374151 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(55 65 81 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }.from-gray-700\/50 {
   --tw-gradient-from: rgb(55 65 81 / 0.5) var(--tw-gradient-from-position);
@@ -2054,8 +2032,6 @@ video {
   fill: #E3A008;
 }.stroke-gray-400 {
   stroke: #9CA3AF;
-}.stroke-gray-600 {
-  stroke: #4B5563;
 }.stroke-red-500 {
   stroke: #F05252;
 }.object-cover {
@@ -2203,14 +2179,10 @@ video {
   text-align: left;
 }.text-center {
   text-align: center;
-}.text-right {
-  text-align: right;
 }.text-start {
   text-align: start;
 }.text-end {
   text-align: end;
-}.font-sans {
-  font-family: Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }.text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -4017,8 +3989,6 @@ video {
     margin-right: auto;
   }.sm\:mb-0 {
     margin-bottom: 0px;
-  }.sm\:ml-0 {
-    margin-left: 0px;
   }.sm\:ms-0 {
     margin-inline-start: 0px;
   }.sm\:ms-10 {
@@ -4105,12 +4075,8 @@ video {
     padding-right: 2rem;
   }.sm\:pt-0 {
     padding-top: 0px;
-  }.sm\:text-left {
-    text-align: left;
   }.sm\:text-center {
     text-align: center;
-  }.sm\:text-right {
-    text-align: right;
   }.sm\:text-start {
     text-align: start;
   }.sm\:text-end {
@@ -4152,8 +4118,6 @@ video {
     width: 16rem;
   }.md\:w-\[400px\] {
     width: 400px;
-  }.md\:w-\[500px\] {
-    width: 500px;
   }.md\:w-auto {
     width: auto;
   }.md\:max-w-xl {
@@ -4216,8 +4180,6 @@ video {
     width: 24rem;
   }.lg\:w-\[500px\] {
     width: 500px;
-  }.lg\:w-\[600px\] {
-    width: 600px;
   }.lg\:gap-8 {
     gap: 2rem;
   }.lg\:p-16 {

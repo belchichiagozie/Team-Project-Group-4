@@ -11,6 +11,8 @@ import Login from "../Login";
 import BookSalesChart from "../BookSalesChart";
 import BooksCard from "../BooksCard";
 import UsersCard from "../UsersCard";
+import OrdersCard from "../OrdersCard";
+import SalesCard from "../SalesCard";
 import Users from "../Users";
 import { AuthProvider } from "../AuthContext";
 
@@ -77,10 +79,10 @@ export default function Layout() {
                                 </div>
 
                                 <div className="py-2 xs:pl-20 px-4">
-                                    <BooksCard />
+                                    <OrdersCard />
                                 </div>
                                 <div className="py-2 pr-4 xl:pr-8 px-4">
-                                    <UsersCard />
+                                    <SalesCard />
                                 </div>
                             </div>
                             <div className="flex min-w-0 flex-row flex-wrap items-center justify-center p-2">

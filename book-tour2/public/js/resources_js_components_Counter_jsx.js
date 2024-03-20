@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Counter_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_Counter_jsx"],{
 
-/***/ "./resources/js/components/Counter.jsx":
+/***/ "./resources/js/Components/Counter.jsx":
 /*!*********************************************!*\
-  !*** ./resources/js/components/Counter.jsx ***!
+  !*** ./resources/js/Components/Counter.jsx ***!
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

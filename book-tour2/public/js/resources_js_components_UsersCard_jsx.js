@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_UsersCard_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_UsersCard_jsx"],{
 
-/***/ "./resources/js/components/UsersCard.jsx":
+/***/ "./resources/js/Components/UsersCard.jsx":
 /*!***********************************************!*\
-  !*** ./resources/js/components/UsersCard.jsx ***!
+  !*** ./resources/js/Components/UsersCard.jsx ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -54,7 +54,7 @@ function UsersCard() {
       children: "Amount of Users"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
       className: "font-normal text-gray-700 text-4xl dark:text-gray-400",
-      children: "10"
+      children: "3"
     })]
   });
 }

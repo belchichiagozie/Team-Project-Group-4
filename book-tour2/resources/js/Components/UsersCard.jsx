@@ -26,7 +26,7 @@ export default function UsersCard() {
                 Amount of Users
             </h5>
             <p className="font-normal text-gray-700 text-4xl dark:text-gray-400">
-                10
+                3
             </p>
         </Card>
     );

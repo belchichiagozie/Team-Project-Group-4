@@ -7,8 +7,10 @@ export default function BooksCard() {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
+        const apiUrl =
+            process.env.REACT_APP_API_URL || "http://127.0.0.1:8000/api";
         axios
-            .get("http://127.0.0.1:8000/api/admin/products", {
+            .get(`${apiUrl}/admin/products`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

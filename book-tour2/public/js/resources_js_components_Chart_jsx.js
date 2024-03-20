@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Chart_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_Chart_jsx"],{
 
-/***/ "./resources/js/components/Chart.jsx":
+/***/ "./resources/js/Components/Chart.jsx":
 /*!*******************************************!*\
-  !*** ./resources/js/components/Chart.jsx ***!
+  !*** ./resources/js/Components/Chart.jsx ***!
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

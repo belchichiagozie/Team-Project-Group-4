@@ -1,8 +1,8 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_shared_Header_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_shared_Header_jsx"],{
 
-/***/ "./resources/js/components/AuthContext.jsx":
+/***/ "./resources/js/Components/AuthContext.jsx":
 /*!*************************************************!*\
-  !*** ./resources/js/components/AuthContext.jsx ***!
+  !*** ./resources/js/Components/AuthContext.jsx ***!
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -57,9 +57,9 @@ var AuthProvider = function AuthProvider(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/shared/Header.jsx":
+/***/ "./resources/js/Components/shared/Header.jsx":
 /*!***************************************************!*\
-  !*** ./resources/js/components/shared/Header.jsx ***!
+  !*** ./resources/js/Components/shared/Header.jsx ***!
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -72,7 +72,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var flowbite_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flowbite-react */ "./node_modules/flowbite-react/lib/esm/index.js");
 /* harmony import */ var react_icons_hi2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/hi2 */ "./node_modules/react-icons/hi2/index.mjs");
-/* harmony import */ var _AuthContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AuthContext */ "./resources/js/components/AuthContext.jsx");
+/* harmony import */ var _AuthContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AuthContext */ "./resources/js/Components/AuthContext.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 "use client";
 

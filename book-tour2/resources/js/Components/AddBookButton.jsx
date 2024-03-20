@@ -315,17 +315,17 @@ export default function AddBookButton() {
                                         required
                                     />
                                 </div>
-                                <div className="w-full">
+                                <div className="w-full flex flex-row">
                                     <button
                                         type="submit"
                                         id="submit"
-                                        className="btn dark:text-white"
+                                        className="btn text-white border border-solid flex-1 bg-green-500"
                                     >
                                         Add Book
                                     </button>
                                     <button
                                         type="button"
-                                        className="btn dark:text-white"
+                                        className="btn text-white border border-solid p-2 bg-red-500"
                                         onClick={() => setOpenModal(false)}
                                     >
                                         Cancel

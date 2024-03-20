@@ -1,8 +1,8 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Users_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_Users_jsx"],{
 
-/***/ "./resources/js/components/AddBookButton.jsx":
+/***/ "./resources/js/Components/AddBookButton.jsx":
 /*!***************************************************!*\
-  !*** ./resources/js/components/AddBookButton.jsx ***!
+  !*** ./resources/js/Components/AddBookButton.jsx ***!
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -371,15 +371,15 @@ function AddBookButton() {
                 required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "w-full",
+              className: "w-full flex flex-row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "submit",
                 id: "submit",
-                className: "btn dark:text-white",
+                className: "btn text-white border border-solid flex-1 bg-green-500",
                 children: "Add Book"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "button",
-                className: "btn dark:text-white",
+                className: "btn text-white border border-solid p-2 bg-red-500",
                 onClick: function onClick() {
                   return setOpenModal(false);
                 },
@@ -395,9 +395,9 @@ function AddBookButton() {
 
 /***/ }),
 
-/***/ "./resources/js/components/BinButton.jsx":
+/***/ "./resources/js/Components/BinButton.jsx":
 /*!***********************************************!*\
-  !*** ./resources/js/components/BinButton.jsx ***!
+  !*** ./resources/js/Components/BinButton.jsx ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -479,9 +479,9 @@ function BinButton(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/EditBook.jsx":
+/***/ "./resources/js/Components/EditBook.jsx":
 /*!**********************************************!*\
-  !*** ./resources/js/components/EditBook.jsx ***!
+  !*** ./resources/js/Components/EditBook.jsx ***!
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -767,9 +767,9 @@ function EditBookButton(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/FavouriteButton.jsx":
+/***/ "./resources/js/Components/FavouriteButton.jsx":
 /*!*****************************************************!*\
-  !*** ./resources/js/components/FavouriteButton.jsx ***!
+  !*** ./resources/js/Components/FavouriteButton.jsx ***!
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -814,9 +814,9 @@ function FavouriteButton(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Users.jsx":
+/***/ "./resources/js/Components/Users.jsx":
 /*!*******************************************!*\
-  !*** ./resources/js/components/Users.jsx ***!
+  !*** ./resources/js/Components/Users.jsx ***!
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -828,10 +828,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var _BinButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BinButton */ "./resources/js/components/BinButton.jsx");
-/* harmony import */ var _EditBook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditBook */ "./resources/js/components/EditBook.jsx");
-/* harmony import */ var _FavouriteButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FavouriteButton */ "./resources/js/components/FavouriteButton.jsx");
-/* harmony import */ var _AddBookButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddBookButton */ "./resources/js/components/AddBookButton.jsx");
+/* harmony import */ var _BinButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BinButton */ "./resources/js/Components/BinButton.jsx");
+/* harmony import */ var _EditBook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditBook */ "./resources/js/Components/EditBook.jsx");
+/* harmony import */ var _FavouriteButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FavouriteButton */ "./resources/js/Components/FavouriteButton.jsx");
+/* harmony import */ var _AddBookButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddBookButton */ "./resources/js/Components/AddBookButton.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }

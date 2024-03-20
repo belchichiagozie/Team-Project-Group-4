@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_AddBookButton_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_AddBookButton_jsx"],{
 
-/***/ "./resources/js/components/AddBookButton.jsx":
+/***/ "./resources/js/Components/AddBookButton.jsx":
 /*!***************************************************!*\
-  !*** ./resources/js/components/AddBookButton.jsx ***!
+  !*** ./resources/js/Components/AddBookButton.jsx ***!
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -371,15 +371,15 @@ function AddBookButton() {
                 required: true
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-              className: "w-full",
+              className: "w-full flex flex-row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "submit",
                 id: "submit",
-                className: "btn dark:text-white",
+                className: "btn text-white border border-solid flex-1 bg-green-500",
                 children: "Add Book"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                 type: "button",
-                className: "btn dark:text-white",
+                className: "btn text-white border border-solid p-2 bg-red-500",
                 onClick: function onClick() {
                   return setOpenModal(false);
                 },
