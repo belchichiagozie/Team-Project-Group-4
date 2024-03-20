@@ -26,7 +26,7 @@ class ReviewController extends Controller
 
         $review = new Review;
         $review->Book_ID = $request->input('book_id');
-        $review->Customer_ID = Auth::user()->id;
+        $review->User_ID = Auth::user()->id;
         $review->Customer_Name = Auth::user()->name;
         $review->Title = $request->input('review_title');
         $review->Body = $request->input('review_body');

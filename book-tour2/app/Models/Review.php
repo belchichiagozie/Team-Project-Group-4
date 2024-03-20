@@ -29,11 +29,11 @@ class Review extends Model
 	public $incrementing = false;
 
 	protected $casts = [
-		'Customer_ID' => 'int'
+		'User_ID' => 'int'
 	];
 
 	protected $fillable = [
-		'Customer_ID',
+		'User_ID',
 		'Title',
 		'Body',
 		'Customer_Name',
@@ -46,6 +46,6 @@ class Review extends Model
 
 	public function customer()
 	{
-		return $this->belongsTo(Customer::class, 'Customer_ID');
+		return $this->belongsTo(User::class, 'User_ID');
 	}
 }
