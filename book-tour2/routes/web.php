@@ -17,6 +17,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ReadingListController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderSummaryController;
+
 
 
 
@@ -72,6 +74,8 @@ Route::get('/checkout', [BasketController::class,'checkout'])->name('basket.chec
 
 //Routes for Checkout function
 Route::post('/checkout/submit', [OrderController::class, 'checkout'])->name('checkout.submit');
+
+Route::get('/ordersummary', [OrderSummaryController::class,'index']);
 
 //Routes for ReadingList page
 Route::get('/readinglist',[ReadingListController::class, 'index'])->middleware('auth');;
