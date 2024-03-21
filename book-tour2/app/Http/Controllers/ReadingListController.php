@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class ReadingListController extends Controller
 {
@@ -15,6 +17,11 @@ class ReadingListController extends Controller
 
     public function addToReadingList(Request $request)
 {
+
+    if (Auth::user() == null) {
+        return redirect()->route('login');
+    }
+
     $userId = auth()->user()->id; // Get authenticated user ID
     $bookId = $request->Book_ID; // 
 

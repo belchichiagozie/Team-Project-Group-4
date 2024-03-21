@@ -89,7 +89,6 @@
                     </ul>
                 </div>
                 <a href="#Special Offers">Special Offers</a>
-                <a href="#Reviews">Reviews</a>
                 @auth
                 <a href="/readinglist">My Reading List</a>
                 @endauth

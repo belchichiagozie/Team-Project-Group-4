@@ -18,11 +18,29 @@ class ProductController extends Controller
     }
 
     public function show($id)
-    {
+    {   
         $book = Book::find($id);
         $reviews = Review::where('Book_ID', $id)->get();
         $user = Auth::user();
-        return view('showproducts', ['book' => $book, 'reviews' => $reviews, 'user' => $user]);
+        $canReview = !($this->hasReview($id));
+        return view('showproducts', ['book' => $book, 'reviews' => $reviews, 'user' => $user], compact('canReview'));
     }
-    //
+
+    public function hasReview($bookID) {
+
+        $user = Auth::user();
+    
+        if ($user == null) {
+            return true;
+        }
+
+
+        $review = Review::where('User_ID', $user->id)->where('Book_ID', $bookID);
+        error_log("Review: " . $review->get());
+        if ($review->get()->count() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
