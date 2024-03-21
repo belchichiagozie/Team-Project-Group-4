@@ -12,9 +12,13 @@
         </div>
     </div>
 
+
     <div class="flex font-bold flex-col sm:flex-row rounded-2xl inset-20 shadow-[rgba(0,0,15,0.5)_10px_5px_4px_0px]">
         <div class="border border-solid border-2 rounded-2xl w-max hidden sm:block sm:flex sm:flex-col sm:items-center sm:justify-center sm:w-[300px] md:w-[400px] lg:w-[500px] bg-cyan-700">
-            <div class="text-3xl p-8 text-white flex justify-center items-center">
+        @if(session('message'))
+            <div class="p-4 bg-yellow-200 text-yellow text-xl rounded-md mb-4">{{ session('message') }}</div>
+        @endif
+        <div class="text-3xl p-8 text-white flex justify-center items-center">
                 Welcome Back!
             </div>
             <div>Don't have an account?</div>

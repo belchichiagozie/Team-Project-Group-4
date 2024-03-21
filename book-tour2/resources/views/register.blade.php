@@ -19,6 +19,11 @@
             <img class="w-40 h-40" src="/images/logotr.png" alt="Site logo"/>
             <h1>Create Your Account</h1>
         </div>
+
+        @if(session('message'))
+            <div class="p-4 bg-yellow-200 text-white text-xl rounded-md mb-4">{{ session('message') }}</div>
+        @endif
+
         <div class="p-8 flex flex-col justify-center">
             <label for="name" class="mb-2 block text-white form-label">Name</label>
             <input name="name" id="name" type="text" class="form-input" placeholder="Your Name" required/>

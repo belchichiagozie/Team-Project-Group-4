@@ -17,11 +17,11 @@ class OrderController extends Controller
     {
 
         $userId = null;
-        $shippingFirstName = $request->input('Shipping_First_Name');
-        $shippingLastName = $request->input('Shipping_Last_Name');
+        $shippingFirstName = $request->Shipping_First_Name;
+        $shippingLastName = $request->Shipping_Last_Name;
         $shippingAddress = $request->Shipping_Address;
         $shippingCity = $request->Shipping_City;
-        $orderTotal = 0;
+        $orderTotal = 5;
 
         // Retrieve user information if authenticated
         if (auth()->check()) {
@@ -33,9 +33,7 @@ class OrderController extends Controller
             $user = User::find($userId);
             $basketItems = $user->books()->select('books.*', 'basket.Quantity')->get();
         } else {
-            $basket = session()->get('basket', []);
-            $bookIds = array_keys($basket);
-            $basketItems = Book::whereIn('Book_ID', $bookIds)->get();
+            return Redirect::route('showRegistrationForm')->with('message', 'You need to register to checkout.');
         }
 
         // Calculate order total

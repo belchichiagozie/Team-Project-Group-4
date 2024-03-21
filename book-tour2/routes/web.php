@@ -98,9 +98,9 @@ Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login.
 Route::post('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 });
 
-Route::get('/mainlogin', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/mainlogin', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
 Route::post('/mainlogin', [LoginController::class, 'login']);
-Route::get('/mainregister',[RegisterController::class, 'showRegistrationForm']);
+Route::get('/mainregister',[RegisterController::class, 'showRegistrationForm'])->name('showRegistrationForm');
 Route::post('/mainregister', [RegisterController::class, 'register']);
 Route::redirect("/login", "/mainlogin");
 

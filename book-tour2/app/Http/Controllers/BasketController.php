@@ -8,6 +8,7 @@ use App\Models\Basket;
 use App\Models\Book;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class BasketController extends Controller
 {
@@ -134,7 +135,8 @@ class BasketController extends Controller
 
         return $totalPrice;
         
-}
+    }
+
     public function checkout()
     {
         $basket = [];
@@ -144,19 +146,10 @@ class BasketController extends Controller
         $user = User::find($userId);
         $totalPrice = $this->calculateTotalPriceForUser($user);
         $basket = $user->books()->select('books.*', 'basket.Quantity')->get();
+        return view('Basket.checkout', ['basket' => $basket, 'totalPrice' => $totalPrice]);
     } else {
-        
-        $totalPrice = $this->calculateTotalPriceForSessionBasket();
-        $basket = session()->get('basket', []);
-        $bookIds = array_keys($basket);
-        $basketItems = Book::whereIn('Book_ID', $bookIds)->get();
-        foreach ($basketItems as $item) {
-            $item->Quantity = $basket[$item->Book_ID];
+        return Redirect::route('showLoginForm')->with('message', 'You need to login or register to checkout.');
         }
-        $basket = $basketItems;
     }
-
-    return view('Basket.checkout', ['basket' => $basket, 'totalPrice' => $totalPrice]);
-    }
-
 }
+
