@@ -5,7 +5,7 @@
 
 <div class="border border-solid rounded-lg">
     <div class="w-max">
-        <h1 class="text-2xl text-black font-bold text-center py-4">Your Orders</h1> 
+        <h1 class="text-2xl text-black font-bold text-center py-4">Your Most Recent Order</h1> 
         <table class="w-full">
             <thead class="text-white bg-cyan-950 text-blue-900 font-bold">
                 <tr>
