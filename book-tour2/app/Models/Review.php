@@ -17,8 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $Body
  * 
  * @property Book $book
- * @property Customer|null $customer
- *
+ * 
  * @package App\Models
  */
 class Review extends Model

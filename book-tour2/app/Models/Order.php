@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $Customer_ID
  * @property string $Status
  * 
- * @property Customer $customer
+ * 
  * @property Collection|Book[] $books
  *
  * @package App\Models
@@ -50,7 +50,5 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class, 'Order_ID');
     }
-
-
 
 }
