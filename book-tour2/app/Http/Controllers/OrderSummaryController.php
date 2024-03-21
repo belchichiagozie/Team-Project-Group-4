@@ -12,13 +12,20 @@ class OrderSummaryController extends Controller
     public function index()
     {
         $userId = auth()->user()->id;
-        $order = Order::where('user_id', $userId)->first();
-        if (!$order) 
+        $orders = Order::where('user_id', $userId)->get();
+        if (!$orders) 
         {
             return redirect()->back()->with('error', 'No order found!!!!');
         }
 
-        $orderItems = OrderItem::where('Order_ID', $order->Order_ID)->get();
+        $orderItems = [];
+
+        foreach ($orders as $order) 
+        {
+            $orderItem = OrderItem::where('Order_ID', $order->Order_ID)->get();
+            $orderItems = $orderItem;
+        }
+
         $books = [];
 
         foreach ($orderItems as $orderItem) 
@@ -30,6 +37,7 @@ class OrderSummaryController extends Controller
             {
                 $books[] = $book;
             }
+
         }
         return view('Basket.ordersview', ['orderItems' => $orderItems, 'books' => $books]);
     }
