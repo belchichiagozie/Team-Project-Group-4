@@ -25,8 +25,7 @@
                         <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
                         <input type="hidden" name="Quantity" value="1">
                         <button class="add-to-basket">Add to Basket</button>
-                    </form>
-            <button class="add-review" onclick="window.location.href='/add-review/{{$book->Book_ID}}'">Leave a Review</button>
+            </form>
         </div>
         @if(session('success'))
             <div class="alert alert-success">
@@ -53,6 +52,7 @@
         </div>
     </div>
 </div> -->
+@if ($canReview) 
 <div class="create-review-container">
     <div class="crc">
     <div class="crc-heading">
@@ -74,6 +74,21 @@
     </div>
 
 </div>
+@else
+<div class="create-review-container">
+    <div class="crc">
+    <div class="crc-heading">
+        <h2>You have already left a review for this book</h2>
+        <form action="{{ url('delete-review/'.$book->Book_ID) }}" method="POST">
+            @csrf
+            <input type="hidden" name="book_id" value="{{ $book->Book_ID }}">
+            <button type="submit" class="btn btn-primary">Delete Review</button>
+    </div>
+    </div>
+</div>
+
+@endif
+
 </div>
 <div class="right-column">
     <div class="mini-columns">

@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
 // Routes for Reviews
 Route::get("/add-review/{id}", [ReviewController::class, "add"])->name('reviews.add');
 Route::post("/add-review/{id}", [ReviewController::class, "create"])->name('reviews.create');
+Route::post("/delete-review/{id}", [ReviewController::class, "delete"])->name('reviews.delete');
 
 //Routes for main Products page
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -97,6 +98,7 @@ Route::get('/mainlogin', [LoginController::class, 'showLoginForm'])->name('login
 Route::post('/mainlogin', [LoginController::class, 'login']);
 Route::get('/mainregister',[RegisterController::class, 'showRegistrationForm']);
 Route::post('/mainregister', [RegisterController::class, 'register']);
+Route::redirect("/login", "/mainlogin");
 
 
 

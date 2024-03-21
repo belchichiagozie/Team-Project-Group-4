@@ -13,17 +13,13 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ReviewController extends Controller
 {
-    //
+
     public function add($id) {
         $book = Book::find($id);
         return view("reviews", ['book' => $book]);
-    }
+    } 
 
     private function createReviewUser(Request $request) {
-
-        error_log("Creating review for user " . Auth::user()->id . " for book " . $request->input('book_id'));
-
-
         $review = new Review;
         $review->Book_ID = $request->input('book_id');
         $review->User_ID = Auth::user()->id;
@@ -40,23 +36,45 @@ class ReviewController extends Controller
         
     $bookID = $request->input('book_id');
     $user = Auth::user();
-    $reviewBody = $request->input('review_body');
-    $reviewTitle = $request->input('review_title');
 
     if ($user) {
         $this->createReviewUser($request);
     } else {
-        error_log('User not found');
+        return redirect()->route('login');
     }
 
     return redirect()->route('products.show',['id'=>$bookID]);
     }
 
-    
+    public function delete(Request $request) {
+        $user_id = Auth::user()->id;
+        $bookID = $request->input('book_id');
+
+        error_log("User ID: " . $user_id);
+        error_log("Book ID: " . $bookID);
+
+        $review = Review::where('User_ID', $user_id)->where('Book_ID', $bookID);
+
+        if ($review != null) {
+            $review->delete();
+            error_log("Review Deleted");
+        }
+
+        return redirect()->route('products.show',['id'=>$bookID]);
+    }
+    public function hasReview($bookID) {
+        $user_id = Auth::user()->id;
+
+        if (Auth::user() == null) {
+            return false;
+        }
 
 
-
-
-
-
+        $review = Review::where('User_ID', $user_id)->where('Book_ID', $bookID)->first();
+        if ($review != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
