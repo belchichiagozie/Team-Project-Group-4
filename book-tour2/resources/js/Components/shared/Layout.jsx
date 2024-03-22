@@ -46,7 +46,7 @@ export default function Layout() {
                             <div className="">
                                 <Header />
                             </div>
-                            <div className="p-4 w-max max-w-3xl shadow dark:text-white">
+                            <div className="p-1 sm:p-4 md:p-8 w-max max-w-3xl shadow dark:text-white">
                                 <Products />
 
                                 <AddBookButton />
@@ -138,7 +138,7 @@ export default function Layout() {
                             <div className="">
                                 <Header />
                             </div>
-                            <div className="p-4 w-max max-w-3xl shadow dark:text-white">
+                            <div className="p-1 sm:p-4 md:p-8 w-max max-w-3xl shadow dark:text-white">
                                 <Orders />
                             </div>
                             <div>

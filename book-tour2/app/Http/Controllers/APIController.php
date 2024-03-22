@@ -10,6 +10,7 @@ use App\Models\Readinglist;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
+use Carbon\Carbon;
 
 class APIController extends Controller
 {
@@ -35,7 +36,7 @@ class APIController extends Controller
     }
 
     public function getTotalSales(){
-        $orders = Order::with('items.book')->get(); // Load orders with items and books
+        $orders = Order::with('items.book')->get();
 
         $totalSales = $orders->reduce(function ($carry, $order) {
             foreach ($order->items as $item) {
@@ -55,6 +56,22 @@ class APIController extends Controller
     public function getUsers(){
         $users= User::get();
         return response()->json(['user'=>$users],200);
+    }
+
+    public function getUsersGrowth() {
+        $users = User::all(['created_at']);
+    
+        $usersGrowth = $users->groupBy(function($date) {
+            return Carbon::parse($date->created_at)->format('Y-m'); 
+        })->map(function($group) {
+            return $group->count();
+        });
+    
+        $formattedGrowth = $usersGrowth->mapWithKeys(function ($count, $month) {
+            return [$month => ['month' => $month, 'count' => $count]];
+        })->values();
+    
+        return response()->json($formattedGrowth, 200);
     }
 
 

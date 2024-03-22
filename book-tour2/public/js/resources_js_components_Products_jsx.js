@@ -833,6 +833,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FavouriteButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FavouriteButton */ "./resources/js/Components/FavouriteButton.jsx");
 /* harmony import */ var _AddBookButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddBookButton */ "./resources/js/Components/AddBookButton.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -848,7 +852,53 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Products() {
-  // user variable used to fetch user data from database via Axios
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    book = _useState2[0],
+    setBook = _useState2[1];
+  var imgprefix = "/images/";
+  var fetchData = function fetchData() {
+    var token = localStorage.getItem("token");
+    return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("/api/admin/products", {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function (response) {
+      return setBook(response.data["books"] || []);
+    });
+  };
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      key: null,
+      direction: "ascending"
+    }),
+    _useState4 = _slicedToArray(_useState3, 2),
+    sortConfig = _useState4[0],
+    setSortConfig = _useState4[1];
+  var sortedBooks = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var sortableBooks = _toConsumableArray(book !== null && book !== void 0 ? book : []);
+    if (sortConfig !== null) {
+      sortableBooks.sort(function (a, b) {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === "ascending" ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === "ascending" ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortableBooks;
+  }, [book, sortConfig]);
+  var requestSort = function requestSort(key) {
+    var direction = "ascending";
+    if (sortConfig.key === key && sortConfig.direction === "ascending") {
+      direction = "descending";
+    }
+    setSortConfig({
+      key: key,
+      direction: direction
+    });
+  };
   var removeBook = function removeBook(Book_ID) {
     var token = localStorage.getItem("token");
     axios__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("/api/admin/products/".concat(Book_ID), {
@@ -864,28 +914,13 @@ function Products() {
       console.error("There was an error removing the book: ", error);
     });
   };
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState2 = _slicedToArray(_useState, 2),
-    book = _useState2[0],
-    setBook = _useState2[1];
-  var imgprefix = "/images/";
-  var fetchData = function fetchData() {
-    var token = localStorage.getItem("token");
-    return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("/api/admin/products", {
-      headers: {
-        Authorization: "Bearer ".concat(token)
-      }
-    }).then(function (response) {
-      return setBook(response.data["books"]);
-    });
-  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchData();
   }, []);
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState4 = _slicedToArray(_useState3, 2),
-    favourite = _useState4[0],
-    setFavourite = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    favourite = _useState6[0],
+    setFavourite = _useState6[1];
   var fetchMore = function fetchMore() {
     return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("/api/admin/favouritebooks").then(function (response) {
       return setFavourite(response.data["favourites"]);
@@ -902,59 +937,80 @@ function Products() {
         className: "dark:text-white dark:bg-cyan-950 text-blue-900 font-bold w-full",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
           className: "",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-            children: "Book Title"
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
+            onClick: function onClick() {
+              return requestSort("Title");
+            },
+            children: ["Title", " ", sortConfig.key === "Title" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
+            onClick: function onClick() {
+              return requestSort("Author");
+            },
+            className: "hidden sm:table-cell",
+            children: ["Author", " ", sortConfig.key === "Author" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
+            onClick: function onClick() {
+              return requestSort("Genre");
+            },
+            className: "md:table-cell hidden",
+            children: ["Genre", " ", sortConfig.key === "Genre" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
+            onClick: function onClick() {
+              return requestSort("Price");
+            },
+            children: ["Price", " ", sortConfig.key === "Price" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
+            onClick: function onClick() {
+              return requestSort("Stock");
+            },
+            children: ["Stock", " ", sortConfig.key === "Stock" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-            children: "Author"
+            className: "table-cell md:hidden lg:table-cell",
+            children: "Book"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-            className: "md:inline-block hidden",
-            children: "Genre"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-            children: "Price"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-            children: "Stock"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-            className: "lg:inline-block hidden",
-            children: "Image"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-            colspan: "3",
             children: "Action"
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-        children: book && book.length > 0 && book.map(function (bookObj) {
+        children: sortedBooks && sortedBooks.length > 0 && sortedBooks.map(function (bookObj) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               className: "font-bold",
               children: bookObj.Title
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              className: "hidden sm:table-cell",
               children: bookObj.Author
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              className: "",
+              className: "md:table-cell hidden",
               children: bookObj.Genre
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: bookObj.Price
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: bookObj.Stock
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              className: "lg:inline-block hidden",
+              className: "table-cell md:hidden lg:table-cell",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
                 className: "w-20 h-32",
                 src: imgprefix + bookObj.file
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_BinButton__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                Book_ID: bookObj.Book_ID,
-                onRemove: removeBook
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditBook__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                bookObj: bookObj
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FavouriteButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                id: bookObj.Favourite
-              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
+              className: "flex flex-col justify-around sm:flex-row h-full py-6",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "mb-6 sm:mb-0 sm:mr-2",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_BinButton__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                  Book_ID: bookObj.Book_ID,
+                  onRemove: removeBook
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "mb-6 sm:mb-0 sm:mr-2",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditBook__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                  bookObj: bookObj
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FavouriteButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                  id: bookObj.Favourite
+                })
+              })]
             })]
           }, bookObj.Book_ID);
         })

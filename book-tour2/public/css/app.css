@@ -1178,6 +1178,8 @@ video {
   display: inline-flex;
 }.table {
   display: table;
+}.table-cell {
+  display: table-cell;
 }.grid {
   display: grid;
 }.hidden {
@@ -1309,6 +1311,8 @@ video {
   width: 100vw;
 }.min-w-0 {
   min-width: 0px;
+}.min-w-full {
+  min-width: 100%;
 }.max-w-2xl {
   max-width: 42rem;
 }.max-w-3xl {
@@ -1444,6 +1448,8 @@ video {
   justify-content: center;
 }.justify-between {
   justify-content: space-between;
+}.justify-around {
+  justify-content: space-around;
 }.justify-items-center {
   justify-items: center;
 }.gap-0 {
@@ -2132,6 +2138,9 @@ video {
 }.py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }.pb-1 {
   padding-bottom: 0.25rem;
 }.pb-2 {
@@ -4013,10 +4022,16 @@ video {
     margin-inline-start: 2.5rem;
   }.sm\:ms-6 {
     margin-inline-start: 1.5rem;
+  }.sm\:mr-2 {
+    margin-right: 0.5rem;
   }.sm\:block {
     display: block;
+  }.sm\:inline-block {
+    display: inline-block;
   }.sm\:flex {
     display: flex;
+  }.sm\:table-cell {
+    display: table-cell;
   }.sm\:hidden {
     display: none;
   }.sm\:h-10 {
@@ -4080,6 +4095,8 @@ video {
     padding: 1rem;
   }.sm\:p-8 {
     padding: 2rem;
+  }.sm\:p-2 {
+    padding: 0.5rem;
   }.sm\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -4124,6 +4141,8 @@ video {
     display: inline-block;
   }.md\:flex {
     display: flex;
+  }.md\:table-cell {
+    display: table-cell;
   }.md\:hidden {
     display: none;
   }.md\:h-auto {
@@ -4169,6 +4188,10 @@ video {
     padding: 3rem;
   }.md\:p-6 {
     padding: 1.5rem;
+  }.md\:p-4 {
+    padding: 1rem;
+  }.md\:p-8 {
+    padding: 2rem;
   }.md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -4196,6 +4219,10 @@ video {
     margin-bottom: 2rem;
   }.lg\:inline-block {
     display: inline-block;
+  }.lg\:table-cell {
+    display: table-cell;
+  }.lg\:hidden {
+    display: none;
   }.lg\:w-96 {
     width: 24rem;
   }.lg\:w-\[500px\] {
@@ -4215,7 +4242,11 @@ video {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
-}@media (min-width: 1280px) {.xl\:flex-row {
+}@media (min-width: 1280px) {.xl\:inline-block {
+    display: inline-block;
+  }.xl\:table-cell {
+    display: table-cell;
+  }.xl\:flex-row {
     flex-direction: row;
   }.xl\:justify-between {
     justify-content: space-between;
