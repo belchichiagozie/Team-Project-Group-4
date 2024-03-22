@@ -11,7 +11,7 @@ export default function Products() {
     const imgprefix = "/images/";
     const fetchData = () => {
         return axios
-            .get("http://127.0.0.1:8000/api/admin/products")
+            .get("/api/admin/products")
             .then((response) => setBook(response.data["books"]));
     };
 
@@ -21,7 +21,7 @@ export default function Products() {
     const [favourite, setFavourite] = useState([]);
     const fetchMore = () => {
         return axios
-            .get("http://127.0.0.1:8000/api/admin/favouritebooks")
+            .get("/api/admin/favouritebooks")
             .then((response) => setFavourite(response.data["favourites"]));
     };
 

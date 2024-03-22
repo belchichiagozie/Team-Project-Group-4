@@ -28,6 +28,9 @@ Route::put('/updatebook/{id}', [APIController::class, 'update']);
 Route::get('/admin/products',[APIController::class, 'getBooks']);
 Route::get('/admin/orders',[APIController::class, 'getOrders']);
 Route::get('/admin/favouritebooks',[APIController::class, 'getFavourites']);
+Route::get('/admin/total-sales', [APIController::class, 'getTotalSales']);
+Route::get('/admin/total-users', [APIController::class, 'getTotalUsers']);
+
 });
 Route::post('/addbook',[APIController::class,'store']);
 Route::delete('/admin/products/{id}', [APIController::class, 'destroy']);

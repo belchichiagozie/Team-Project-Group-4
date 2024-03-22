@@ -10,7 +10,7 @@ export default function Products() {
     const removeBook = (Book_ID) => {
         const token = localStorage.getItem("token");
         axios
-            .delete(`http://127.0.0.1:8000/api/admin/products/${Book_ID}`, {
+            .delete(`/api/admin/products/${Book_ID}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then(() => {
@@ -28,7 +28,7 @@ export default function Products() {
     const fetchData = () => {
         const token = localStorage.getItem("token");
         return axios
-            .get("http://127.0.0.1:8000/api/admin/products", {
+            .get("/api/admin/products", {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => setBook(response.data["books"]));
@@ -40,7 +40,7 @@ export default function Products() {
     const [favourite, setFavourite] = useState([]);
     const fetchMore = () => {
         return axios
-            .get("http://127.0.0.1:8000/api/admin/favouritebooks")
+            .get("/api/admin/favouritebooks")
             .then((response) => setFavourite(response.data["favourites"]));
     };
 
@@ -52,13 +52,13 @@ export default function Products() {
             <div className="w-max">
                 <thead className="dark:text-white dark:bg-cyan-950 text-blue-900 font-bold w-full">
                     <tr className="">
-                        <td>Book Title</td>
-                        <td>Author</td>
-                        <td className="md:inline-block hidden">Genre</td>
-                        <td>Price</td>
-                        <td>Stock</td>
-                        <td className="lg:inline-block hidden">Image</td>
-                        <td colspan="3">Action</td>
+                        <th>Book Title</th>
+                        <th>Author</th>
+                        <th className="md:inline-block hidden">Genre</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th className="lg:inline-block hidden">Image</th>
+                        <th colspan="3">Action</th>
                     </tr>
                 </thead>
                 <tbody>

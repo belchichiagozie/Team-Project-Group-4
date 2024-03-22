@@ -3,20 +3,25 @@ import axios from "axios";
 import { Card } from "flowbite-react";
 
 export default function OrdersCard() {
-    const [book, setBook] = useState(null);
+    const [ordersCount, setOrdersCount] = useState();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
         axios
-            .get("http://127.0.0.1:8000/api/admin/products", {
+            .get("/api/admin/orders", {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
-                const booksData = response.data["books"];
-                if (booksData && booksData.length > 0) {
-                    // Assuming the first book or adjust according to your data structure
-                    setBook(booksData[0]);
+                const ordersData = response.data["orders"];
+                if (ordersData) {
+                    setOrdersCount(ordersData.length);
                 }
+            })
+            .catch((error) => {
+                console.error(
+                    "There was an error fetching the orders: ",
+                    error,
+                );
             });
     }, []);
 
@@ -26,7 +31,7 @@ export default function OrdersCard() {
                 Amount of Orders
             </h5>
             <p className="font-normal text-gray-700 text-4xl dark:text-gray-400">
-                0
+                {ordersCount !== null ? ordersCount : "Loading..."}
             </p>
         </Card>
     );

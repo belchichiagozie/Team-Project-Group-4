@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Book;
 use App\Models\Readinglist;
 use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\User;
 
 class APIController extends Controller
 {
@@ -22,9 +24,40 @@ class APIController extends Controller
     }
 
     public function getOrders(){
-        $orders= Order::get();
-        return response()->json(['orders'=>$orders],200);
+        $orders = Order::with(['items.book', 'customer'])->get()->map(function ($order) {
+            $order->userName = $order->customer->name; 
+            $order->items->each(function ($item) {
+                $item->totalAmountSpent = $item->Quantity * $item->book->Price;
+            });
+            return $order;
+        });
+        return response()->json(['orders' => $orders], 200);
     }
+
+    public function getTotalSales(){
+        $orders = Order::with('items.book')->get(); // Load orders with items and books
+
+        $totalSales = $orders->reduce(function ($carry, $order) {
+            foreach ($order->items as $item) {
+                $carry += $item->Quantity * $item->book->Price;
+            }
+            return $carry;
+        }, 0);
+    
+        return response()->json(['totalSales' => $totalSales], 200);
+    }
+
+    public function getTotalUsers() {
+        $totalUsers = User::count();
+        return response()->json(['totalUsers' => $totalUsers], 200);
+    }
+
+    public function getUsers(){
+        $users= User::get();
+        return response()->json(['user'=>$users],200);
+    }
+
+
 
     public function store(Request $request){
         
@@ -87,18 +120,14 @@ class APIController extends Controller
             ], 404);
         }
     
-        // Check if a new image was uploaded
+
         if($request->hasFile('image')){
             $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $newImageName);
-    
-            // Delete old image file if needed, then update path
-            // Storage::delete('/path/to/old/image.jpg');
-    
+
             $book->file = $newImageName;
         }
-    
-        // Update other book details
+
         $book->Title = $request->title;
         $book->Author = $request->author;
         $book->Genre = $request->genre;
@@ -124,13 +153,11 @@ class APIController extends Controller
         ], 404);
     }
 
-    // Optional: Delete associated image file
     $imagePath = public_path('images/' . $book->file);
     if (file_exists($imagePath)) {
         @unlink($imagePath);
     }
 
-    // Delete the book from the database
     $book->delete();
 
     return response()->json([

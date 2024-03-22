@@ -33,7 +33,7 @@ const pageName = function (props) {
     } else {
         return (
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                Orders
+                Login
             </span>
         );
     }

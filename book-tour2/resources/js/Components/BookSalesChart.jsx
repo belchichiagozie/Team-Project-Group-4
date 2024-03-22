@@ -9,7 +9,7 @@ export default function BookSalesChart({ isLightMode }) {
 
     useEffect(() => {
         axios
-            .get("http://127.0.0.1:8000/api/admin/products", {
+            .get("/api/admin/products", {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => setBook(response.data["books"]));

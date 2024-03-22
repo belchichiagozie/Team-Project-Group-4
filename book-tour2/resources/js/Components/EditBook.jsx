@@ -41,7 +41,7 @@ export default function EditBookButton({ bookObj }) {
             formData.append("image", file);
         }
         axios
-            .put(`http://127.0.0.1:8000/api/updatebook/${book.id}`, formData, {
+            .put(`/api/updatebook/${book.id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },

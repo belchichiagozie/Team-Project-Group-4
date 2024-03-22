@@ -28,22 +28,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SalesCard() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
-    book = _useState2[0],
-    setBook = _useState2[1];
+    totalSales = _useState2[0],
+    setTotalSales = _useState2[1];
   var token = localStorage.getItem("token");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products", {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("/api/admin/total-sales", {
       headers: {
         Authorization: "Bearer ".concat(token)
       }
     }).then(function (response) {
-      var booksData = response.data["books"];
-      if (booksData && booksData.length > 0) {
-        // Assuming the first book or adjust according to your data structure
-        setBook(booksData[0]);
-      }
+      setTotalSales(response.data.totalSales);
+    })["catch"](function (error) {
+      console.error("There was an error fetching the total sales amount: ");
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Card, {
@@ -52,9 +50,9 @@ function SalesCard() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
       className: "text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-bold tracking-tight text-gray-900 dark:text-white",
       children: "Total Sales Amount:"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
       className: "font-normal text-gray-700 text-4xl dark:text-gray-400",
-      children: "\xA30"
+      children: ["\xA3", totalSales.toFixed(2)]
     })]
   });
 }
@@ -2606,137 +2604,6 @@ const fileInputTheme = {
 
 /***/ }),
 
-/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js ***!
-  \*****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Floating: () => (/* binding */ Floating)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
-/* harmony import */ var _hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/use-floating */ "./node_modules/flowbite-react/lib/esm/hooks/use-floating.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js");
-'use client';
-
-
-
-
-
-
-/**
- * @see https://floating-ui.com/docs/react-dom-interactions
- */
-const Floating = ({ animation = 'duration-300', arrow = true, children, className, content, placement = 'top', style = 'dark', theme, trigger = 'hover', minWidth, ...props }) => {
-    const arrowRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-    const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const floatingProperties = (0,_hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__.useBaseFLoating)({
-        open,
-        placement,
-        arrowRef,
-        setOpen,
-    });
-    const { context, middlewareData: { arrow: { x: arrowX, y: arrowY } = {} }, refs, strategy, update, x, y, } = floatingProperties;
-    const focus = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_4__.useFocus)(context);
-    const { getFloatingProps, getReferenceProps } = (0,_hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__.useFloatingInteractions)({
-        context,
-        role: 'tooltip',
-        trigger,
-        interactions: [focus],
-    });
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-        if (refs.reference.current && refs.floating.current && open) {
-            return (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.autoUpdate)(refs.reference.current, refs.floating.current, update);
-        }
-    }, [open, refs.floating, refs.reference, update]);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { ref: refs.setReference, className: theme.target, "data-testid": "flowbite-tooltip-target", ...getReferenceProps(), children: children }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { ref: refs.setFloating, "data-testid": "flowbite-tooltip", ...getFloatingProps({
-                    className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_6__.twMerge)(theme.base, animation && `${theme.animation} ${animation}`, !open && theme.hidden, theme.style[style], className),
-                    style: {
-                        position: strategy,
-                        top: y ?? ' ',
-                        left: x ?? ' ',
-                        minWidth,
-                    },
-                    ...props,
-                }), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: theme.content, children: content }), arrow && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_6__.twMerge)(theme.arrow.base, style === 'dark' && theme.arrow.style.dark, style === 'light' && theme.arrow.style.light, style === 'auto' && theme.arrow.style.auto), "data-testid": "flowbite-tooltip-arrow", ref: arrowRef, style: {
-                            top: arrowY ?? ' ',
-                            left: arrowX ?? ' ',
-                            right: ' ',
-                            bottom: ' ',
-                            [(0,_helpers__WEBPACK_IMPORTED_MODULE_3__.getArrowPlacement)({ placement: floatingProperties.placement })]: theme.arrow.placement,
-                        }, children: "\u00A0" }))] })] }));
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js ***!
-  \****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getArrowPlacement: () => (/* binding */ getArrowPlacement),
-/* harmony export */   getMiddleware: () => (/* binding */ getMiddleware),
-/* harmony export */   getPlacement: () => (/* binding */ getPlacement)
-/* harmony export */ });
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/core/dist/floating-ui.core.mjs");
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs");
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs");
-
-/**
- * @see https://floating-ui.com/docs/middleware
- */
-const getMiddleware = ({ arrowRef, placement, }) => {
-    const middleware = [];
-    middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_0__.offset)(8));
-    middleware.push(placement === 'auto' ? (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.autoPlacement)() : (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.flip)());
-    middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.shift)({ padding: 8 }));
-    if (arrowRef?.current) {
-        middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_2__.arrow)({ element: arrowRef.current }));
-    }
-    return middleware;
-};
-const getPlacement = ({ placement }) => {
-    return placement === 'auto' ? undefined : placement;
-};
-const getArrowPlacement = ({ placement }) => {
-    return {
-        top: 'bottom',
-        right: 'left',
-        bottom: 'top',
-        left: 'right',
-    }[placement.split('-')[0]];
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/index.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/index.js ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Floating: () => (/* reexport safe */ _Floating__WEBPACK_IMPORTED_MODULE_0__.Floating)
-/* harmony export */ });
-/* harmony import */ var _Floating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Floating */ "./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js");
-
-
-
-/***/ }),
-
 /***/ "./node_modules/flowbite-react/lib/esm/components/FloatingLabel/FloatingLabel.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/flowbite-react/lib/esm/components/FloatingLabel/FloatingLabel.js ***!
@@ -2889,6 +2756,137 @@ const floatingLabelTheme = {
         error: 'mt-2 text-xs text-red-600 dark:text-red-400',
     },
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Floating: () => (/* binding */ Floating)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
+/* harmony import */ var _hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/use-floating */ "./node_modules/flowbite-react/lib/esm/hooks/use-floating.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js");
+'use client';
+
+
+
+
+
+
+/**
+ * @see https://floating-ui.com/docs/react-dom-interactions
+ */
+const Floating = ({ animation = 'duration-300', arrow = true, children, className, content, placement = 'top', style = 'dark', theme, trigger = 'hover', minWidth, ...props }) => {
+    const arrowRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const floatingProperties = (0,_hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__.useBaseFLoating)({
+        open,
+        placement,
+        arrowRef,
+        setOpen,
+    });
+    const { context, middlewareData: { arrow: { x: arrowX, y: arrowY } = {} }, refs, strategy, update, x, y, } = floatingProperties;
+    const focus = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_4__.useFocus)(context);
+    const { getFloatingProps, getReferenceProps } = (0,_hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__.useFloatingInteractions)({
+        context,
+        role: 'tooltip',
+        trigger,
+        interactions: [focus],
+    });
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        if (refs.reference.current && refs.floating.current && open) {
+            return (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.autoUpdate)(refs.reference.current, refs.floating.current, update);
+        }
+    }, [open, refs.floating, refs.reference, update]);
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { ref: refs.setReference, className: theme.target, "data-testid": "flowbite-tooltip-target", ...getReferenceProps(), children: children }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { ref: refs.setFloating, "data-testid": "flowbite-tooltip", ...getFloatingProps({
+                    className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_6__.twMerge)(theme.base, animation && `${theme.animation} ${animation}`, !open && theme.hidden, theme.style[style], className),
+                    style: {
+                        position: strategy,
+                        top: y ?? ' ',
+                        left: x ?? ' ',
+                        minWidth,
+                    },
+                    ...props,
+                }), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: theme.content, children: content }), arrow && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_6__.twMerge)(theme.arrow.base, style === 'dark' && theme.arrow.style.dark, style === 'light' && theme.arrow.style.light, style === 'auto' && theme.arrow.style.auto), "data-testid": "flowbite-tooltip-arrow", ref: arrowRef, style: {
+                            top: arrowY ?? ' ',
+                            left: arrowX ?? ' ',
+                            right: ' ',
+                            bottom: ' ',
+                            [(0,_helpers__WEBPACK_IMPORTED_MODULE_3__.getArrowPlacement)({ placement: floatingProperties.placement })]: theme.arrow.placement,
+                        }, children: "\u00A0" }))] })] }));
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getArrowPlacement: () => (/* binding */ getArrowPlacement),
+/* harmony export */   getMiddleware: () => (/* binding */ getMiddleware),
+/* harmony export */   getPlacement: () => (/* binding */ getPlacement)
+/* harmony export */ });
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/core/dist/floating-ui.core.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs");
+
+/**
+ * @see https://floating-ui.com/docs/middleware
+ */
+const getMiddleware = ({ arrowRef, placement, }) => {
+    const middleware = [];
+    middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_0__.offset)(8));
+    middleware.push(placement === 'auto' ? (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.autoPlacement)() : (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.flip)());
+    middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.shift)({ padding: 8 }));
+    if (arrowRef?.current) {
+        middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_2__.arrow)({ element: arrowRef.current }));
+    }
+    return middleware;
+};
+const getPlacement = ({ placement }) => {
+    return placement === 'auto' ? undefined : placement;
+};
+const getArrowPlacement = ({ placement }) => {
+    return {
+        top: 'bottom',
+        right: 'left',
+        bottom: 'top',
+        left: 'right',
+    }[placement.split('-')[0]];
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/index.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Floating: () => (/* reexport safe */ _Floating__WEBPACK_IMPORTED_MODULE_0__.Floating)
+/* harmony export */ });
+/* harmony import */ var _Floating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Floating */ "./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js");
+
 
 
 /***/ }),
@@ -3459,109 +3457,6 @@ const labelTheme = {
 
 /***/ }),
 
-/***/ "./node_modules/flowbite-react/lib/esm/components/List/List.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/List/List.js ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   List: () => (/* binding */ List)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
-/* harmony import */ var _helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/merge-deep */ "./node_modules/flowbite-react/lib/esm/helpers/merge-deep.js");
-/* harmony import */ var _theme_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme-store */ "./node_modules/flowbite-react/lib/esm/theme-store/index.js");
-/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ListItem */ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js");
-
-
-
-
-
-const ListComponent = ({ children, className, unstyled, nested, ordered, horizontal, theme: customTheme = {}, ...props }) => {
-    const theme = (0,_helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__.mergeDeep)((0,_theme_store__WEBPACK_IMPORTED_MODULE_2__.getTheme)().list, customTheme);
-    const Component = ordered ? 'ol' : 'ul';
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Component, { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_4__.twMerge)(theme.root.base, theme.root.ordered[ordered ? 'on' : 'off'], unstyled && theme.root.unstyled, nested && theme.root.nested, horizontal && theme.root.horizontal, className), ...props, children: children }));
-};
-ListComponent.displayName = 'List';
-_ListItem__WEBPACK_IMPORTED_MODULE_3__.ListItem.displayName = 'List.Item';
-const List = Object.assign(ListComponent, { Item: _ListItem__WEBPACK_IMPORTED_MODULE_3__.ListItem });
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/List/ListItem.js ***!
-  \*************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ListItem: () => (/* binding */ ListItem)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
-/* harmony import */ var _helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/merge-deep */ "./node_modules/flowbite-react/lib/esm/helpers/merge-deep.js");
-/* harmony import */ var _theme_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme-store */ "./node_modules/flowbite-react/lib/esm/theme-store/index.js");
-
-
-
-
-const ListItem = ({ children, className, theme: customTheme = {} }) => {
-    const theme = (0,_helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__.mergeDeep)((0,_theme_store__WEBPACK_IMPORTED_MODULE_2__.getTheme)().listGroup.item, customTheme);
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_3__.twMerge)(theme.base, className), children: children });
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/List/index.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/List/index.js ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   List: () => (/* reexport safe */ _List__WEBPACK_IMPORTED_MODULE_0__.List),
-/* harmony export */   ListItem: () => (/* reexport safe */ _ListItem__WEBPACK_IMPORTED_MODULE_1__.ListItem)
-/* harmony export */ });
-/* harmony import */ var _List__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./List */ "./node_modules/flowbite-react/lib/esm/components/List/List.js");
-/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListItem */ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js");
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/List/theme.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/List/theme.js ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   listTheme: () => (/* binding */ listTheme)
-/* harmony export */ });
-const listTheme = {
-    root: {
-        base: 'space-y-1 text-gray-500 list-inside dark:text-gray-400',
-        ordered: {
-            off: 'list-disc',
-            on: 'list-decimal',
-        },
-        horizontal: 'flex flex-wrap items-center space-x-4 space-y-0 justify-center list-none',
-        unstyled: 'list-none',
-        nested: 'ps-5 mt-2',
-    },
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/flowbite-react/lib/esm/components/ListGroup/ListGroup.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/flowbite-react/lib/esm/components/ListGroup/ListGroup.js ***!
@@ -3674,6 +3569,109 @@ const listGroupTheme = {
             },
             icon: 'mr-2 h-4 w-4 fill-current',
         },
+    },
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/List/List.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/List/List.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   List: () => (/* binding */ List)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
+/* harmony import */ var _helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/merge-deep */ "./node_modules/flowbite-react/lib/esm/helpers/merge-deep.js");
+/* harmony import */ var _theme_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme-store */ "./node_modules/flowbite-react/lib/esm/theme-store/index.js");
+/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ListItem */ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js");
+
+
+
+
+
+const ListComponent = ({ children, className, unstyled, nested, ordered, horizontal, theme: customTheme = {}, ...props }) => {
+    const theme = (0,_helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__.mergeDeep)((0,_theme_store__WEBPACK_IMPORTED_MODULE_2__.getTheme)().list, customTheme);
+    const Component = ordered ? 'ol' : 'ul';
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Component, { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_4__.twMerge)(theme.root.base, theme.root.ordered[ordered ? 'on' : 'off'], unstyled && theme.root.unstyled, nested && theme.root.nested, horizontal && theme.root.horizontal, className), ...props, children: children }));
+};
+ListComponent.displayName = 'List';
+_ListItem__WEBPACK_IMPORTED_MODULE_3__.ListItem.displayName = 'List.Item';
+const List = Object.assign(ListComponent, { Item: _ListItem__WEBPACK_IMPORTED_MODULE_3__.ListItem });
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/List/ListItem.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListItem: () => (/* binding */ ListItem)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
+/* harmony import */ var _helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/merge-deep */ "./node_modules/flowbite-react/lib/esm/helpers/merge-deep.js");
+/* harmony import */ var _theme_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme-store */ "./node_modules/flowbite-react/lib/esm/theme-store/index.js");
+
+
+
+
+const ListItem = ({ children, className, theme: customTheme = {} }) => {
+    const theme = (0,_helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__.mergeDeep)((0,_theme_store__WEBPACK_IMPORTED_MODULE_2__.getTheme)().listGroup.item, customTheme);
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_3__.twMerge)(theme.base, className), children: children });
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/List/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/List/index.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   List: () => (/* reexport safe */ _List__WEBPACK_IMPORTED_MODULE_0__.List),
+/* harmony export */   ListItem: () => (/* reexport safe */ _ListItem__WEBPACK_IMPORTED_MODULE_1__.ListItem)
+/* harmony export */ });
+/* harmony import */ var _List__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./List */ "./node_modules/flowbite-react/lib/esm/components/List/List.js");
+/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListItem */ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js");
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/List/theme.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/List/theme.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   listTheme: () => (/* binding */ listTheme)
+/* harmony export */ });
+const listTheme = {
+    root: {
+        base: 'space-y-1 text-gray-500 list-inside dark:text-gray-400',
+        ordered: {
+            off: 'list-disc',
+            on: 'list-decimal',
+        },
+        horizontal: 'flex flex-wrap items-center space-x-4 space-y-0 justify-center list-none',
+        unstyled: 'list-none',
+        nested: 'ps-5 mt-2',
     },
 };
 

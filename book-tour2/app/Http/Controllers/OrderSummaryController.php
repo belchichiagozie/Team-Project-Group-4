@@ -12,33 +12,24 @@ class OrderSummaryController extends Controller
     public function index()
     {
         $userId = auth()->user()->id;
-        $orders = Order::where('user_id', $userId)->get();
-        if (!$orders) 
-        {
+        $orders = Order::where('user_id', $userId)->with('items.book')->get();
+        if ($orders->isEmpty()) {
             return redirect()->back()->with('error', 'No order found!!!!');
         }
-
-        $orderItems = [];
-
-        foreach ($orders as $order) 
-        {
-            $orderItem = OrderItem::where('Order_ID', $order->Order_ID)->get();
-            $orderItems = $orderItem;
-        }
-
-        $books = [];
-
-        foreach ($orderItems as $orderItem) 
-        {
     
-            $book = Book::find($orderItem->Book_ID);
-      
-            if ($book) 
-            {
-                $books[] = $book;
+        $orderItems = [];
+        $bookIds = [];
+    
+        foreach ($orders as $order) {
+            foreach ($order->items as $item) {
+                $orderItems[] = $item;
+                $bookIds[] = $item->book->Book_ID;
             }
-
         }
+    
+        // Assuming you need to do something specific with books separate from the order items
+        $books = Book::whereIn('Book_ID', $bookIds)->get();
+    
         return view('Basket.ordersview', ['orderItems' => $orderItems, 'books' => $books]);
     }
         

@@ -43,9 +43,11 @@
        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
     </form>
+    <a href="/admin" id="xstext">Visit Admin Panel</a>
     @endauth
     @guest
     <a href="/mainlogin" id="xstext">Log In</a>
+    <a href="/admin" id="xstext">Visit Admin Panel</a>
     @endguest
                     
                     

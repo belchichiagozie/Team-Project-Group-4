@@ -14,6 +14,7 @@ import UsersCard from "../UsersCard";
 import OrdersCard from "../OrdersCard";
 import SalesCard from "../SalesCard";
 import Users from "../Users";
+import Orders from "../Orders";
 import { AuthProvider } from "../AuthContext";
 
 const header_text = "text-xl border border-solid bg-teal-200";
@@ -108,7 +109,7 @@ export default function Layout() {
                                     <Products />
                                 </div>
                                 <div className="shadow w-max max-w-4xl xl:px-2">
-                                    <Users />
+                                    <Orders />
                                 </div>
                             </div>
                         </div>
@@ -124,6 +125,29 @@ export default function Layout() {
                     <div className={header_text}>Customers</div>
                 </div>
             </div>
+        );
+    } else if (loc.includes("admin/orders")) {
+        return (
+            <AuthProvider>
+                <div className="flex justify-between flex-row overflow-x-hidden">
+                    <Flowbite>
+                        <div className="hidden md:block not(justify-between)">
+                            <Sidebarr />
+                        </div>
+                        <div className={pageStyle} id="prods">
+                            <div className="">
+                                <Header />
+                            </div>
+                            <div className="p-4 w-max max-w-3xl shadow dark:text-white">
+                                <Orders />
+                            </div>
+                            <div>
+                                <DarkThemeToggle />
+                            </div>
+                        </div>
+                    </Flowbite>
+                </div>
+            </AuthProvider>
         );
     } else if (loc.includes("/admin/login")) {
         return (

@@ -3,20 +3,21 @@ import axios from "axios";
 import { Card } from "flowbite-react";
 
 export default function SalesCard() {
-    const [book, setBook] = useState(null);
+    const [totalSales, setTotalSales] = useState(0);
     const token = localStorage.getItem("token");
 
     useEffect(() => {
         axios
-            .get("http://127.0.0.1:8000/api/admin/products", {
+            .get("/api/admin/total-sales", {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
-                const booksData = response.data["books"];
-                if (booksData && booksData.length > 0) {
-                    // Assuming the first book or adjust according to your data structure
-                    setBook(booksData[0]);
-                }
+                setTotalSales(response.data.totalSales);
+            })
+            .catch((error) => {
+                console.error(
+                    "There was an error fetching the total sales amount: ",
+                );
             });
     }, []);
 
@@ -26,7 +27,7 @@ export default function SalesCard() {
                 Total Sales Amount:
             </h5>
             <p className="font-normal text-gray-700 text-4xl dark:text-gray-400">
-                £0
+                £{totalSales.toFixed(2)}
             </p>
         </Card>
     );

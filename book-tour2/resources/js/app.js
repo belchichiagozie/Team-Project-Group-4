@@ -22,6 +22,7 @@ import("./Components/SalesCard");
 import("./Components/Users");
 import("./Components/BooktourCard");
 import("./Components/AuthContext");
+import("./Components/Orders");
 
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";

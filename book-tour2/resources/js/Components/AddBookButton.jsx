@@ -36,7 +36,7 @@ export default function AddBookButton() {
             formData.append("image", imageInput.files[0]);
         }
         axios
-            .post(`http://127.0.0.1:8000/api/addbook`, formData, {
+            .post(`/api/addbook`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
