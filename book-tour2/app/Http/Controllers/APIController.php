@@ -174,9 +174,13 @@ class APIController extends Controller
     }
 
     $imagePath = public_path('images/' . $book->file);
-    if (file_exists($imagePath)) {
-        @unlink($imagePath);
+    $orders = OrderItem::where('Book_ID',$id);
+    if (!$orders) {
+        if (file_exists($imagePath)) {
+            @unlink($imagePath);
+        }
     }
+    
     $book->users()->detach();
     $book->delete();
 
