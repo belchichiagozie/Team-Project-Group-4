@@ -24,6 +24,7 @@ Route::middleware('web')->group(function () {
 
 
 Route::middleware('auth:sanctum')->group(function () {
+Route::post('/addbook',[APIController::class,'store']);
 Route::put('/updatebook/{id}', [APIController::class, 'update']);
 Route::get('/admin/products',[APIController::class, 'getBooks']);
 Route::get('/admin/orders',[APIController::class, 'getOrders']);
@@ -35,7 +36,7 @@ Route::get('/admin/users-growth', [APIController::class, 'getUsersGrowth']);
 
 
 });
-Route::post('/addbook',[APIController::class,'store']);
+
 Route::delete('/admin/products/{id}', [APIController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
