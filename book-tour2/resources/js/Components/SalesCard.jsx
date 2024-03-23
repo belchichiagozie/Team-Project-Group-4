@@ -24,9 +24,9 @@ export default function SalesCard() {
     return (
         <Card className="max-w-sm xl:p-2" horizontal>
             <h5 className="text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Total Sales Amount:
+                Sales (£):
             </h5>
-            <p className="font-normal text-gray-700 text-4xl dark:text-gray-400">
+            <p className="font-normal hover:text-base text-gray-700 text-3xl dark:text-gray-400">
                 £{totalSales.toFixed(2)}
             </p>
         </Card>

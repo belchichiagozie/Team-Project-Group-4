@@ -20,10 +20,10 @@ import { AuthProvider } from "../AuthContext";
 const header_text = "text-xl border border-solid bg-teal-200";
 const page = "bg-neutral-100 overflow-x-hidden w-full h-screen flex flex-col";
 const chartsize =
-    "h-64 w-96 min-w-0 border rounded-lg border-solid mx-2 sm:mx-4 md:mx-6 lg:mx-8";
+    "h-64 w-96 min-w-0 border rounded-lg border-solid border-black dark:border-white mx-2 sm:mx-4 md:mx-6 lg:mx-8";
+const outerchart = "gap-y-4 sm:gap-y-0";
 const loginpage =
     "bg-neutral-100 overflow-x-hidden w-full h-full flex grow items-center justify-center dark:bg-slate-50 dark:text-white";
-const pageCenter = " flex justify-center w-max border border-solid border-4 ";
 
 export default function Layout() {
     const loc = window.location.href;
@@ -98,11 +98,11 @@ export default function Layout() {
                                 <div className={chartsize}>
                                     <BookSalesChart isLightMode={isLightMode} />
                                 </div>
-                                <div>
-                                    <button onClick={toggleLightMode}>
-                                        <DarkThemeToggle />
-                                    </button>
-                                </div>
+                            </div>
+                            <div>
+                                <button onClick={toggleLightMode}>
+                                    <DarkThemeToggle />
+                                </button>
                             </div>
                             <div className="flex flex-col xl:flex-row p-2 items-center justify-center">
                                 <div className="shadow w-max max-w-4xl xl:px-2 pb-4">
@@ -119,12 +119,26 @@ export default function Layout() {
         );
     } else if (loc.includes("customers")) {
         return (
-            <div className={page}>
-                <Sidebarr />
-                <div className={page}>
-                    <div className={header_text}>Customers</div>
+            <AuthProvider>
+                <div className="flex justify-between flex-row overflow-x-hidden">
+                    <Flowbite>
+                        <div className="hidden md:block not(justify-between)">
+                            <Sidebarr />
+                        </div>
+                        <div className={pageStyle} id="prods">
+                            <div className="">
+                                <Header />
+                            </div>
+                            <div className="p-1 sm:p-4 md:p-8 w-max max-w-3xl shadow dark:text-white">
+                                <Users />
+                            </div>
+                            <div>
+                                <DarkThemeToggle />
+                            </div>
+                        </div>
+                    </Flowbite>
                 </div>
-            </div>
+            </AuthProvider>
         );
     } else if (loc.includes("admin/orders")) {
         return (

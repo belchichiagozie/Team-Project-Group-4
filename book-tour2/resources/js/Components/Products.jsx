@@ -74,8 +74,8 @@ export default function Products() {
     }, []);
     return (
         <div className="border border-solid rounded-lg">
-            <div className="w-max">
-                <thead className="dark:text-white dark:bg-cyan-950 text-blue-900 font-bold w-full">
+            <table className="w-max">
+                <thead className="text-white bg-cyan-950 text-blue-900 font-bold w-full">
                     <tr className="">
                         <th onClick={() => requestSort("Title")}>
                             Title{" "}
@@ -168,7 +168,7 @@ export default function Products() {
                             </tr>
                         ))}
                 </tbody>
-            </div>
+            </table>
             <div>
                 <ul>
                     {favourite &&

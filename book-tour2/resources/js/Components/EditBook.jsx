@@ -7,6 +7,8 @@ import { HiOutlinePencilAlt } from "react-icons/hi";
 import axios from "axios";
 
 export default function EditBookButton({ bookObj }) {
+    const token = localStorage.getItem("token");
+    console.log(bookObj);
     const imgfile = bookObj.file;
     const [newFile, setNewFile] = useState(null);
     const [openModal, setOpenModal] = useState(false);
@@ -35,15 +37,17 @@ export default function EditBookButton({ bookObj }) {
     const saveBook = async (e) => {
         e.preventDefault();
         const formData = new FormData();
+        formData.append("_method", "PUT");
         Object.keys(book).forEach((key) => formData.append(key, book[key]));
         const imageInput = document.querySelector("#image");
         if (newFile) {
-            formData.append("image", file);
+            formData.append("image", newFile);
         }
         axios
-            .put(`/api/updatebook/${book.id}`, formData, {
+            .post(`/api/updatebook/${book.id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`,
                 },
             })
             .then(() => {

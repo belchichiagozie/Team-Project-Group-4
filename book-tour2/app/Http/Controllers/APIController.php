@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Book;
+use App\Models\Basket;
 use App\Models\Readinglist;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -25,7 +26,9 @@ class APIController extends Controller
     }
 
     public function getOrders(){
-        $orders = Order::with(['items.book', 'customer'])->get()->map(function ($order) {
+        $orders = Order::with(['items.book' => function ($query) {
+            $query->withTrashed();
+        }, 'customer'])->get()->map(function ($order) {
             $order->userName = $order->customer->name; 
             $order->items->each(function ($item) {
                 $item->totalAmountSpent = $item->Quantity * $item->book->Price;
@@ -54,24 +57,20 @@ class APIController extends Controller
     }
 
     public function getUsers(){
-        $users= User::get();
-        return response()->json(['user'=>$users],200);
+        $users= User::select('id','name','email','created_at')->get();
+        return response()->json(['users'=>$users],200);
     }
 
     public function getUsersGrowth() {
         $users = User::all(['created_at']);
     
         $usersGrowth = $users->groupBy(function($date) {
-            return Carbon::parse($date->created_at)->format('Y-m'); 
-        })->map(function($group) {
-            return $group->count();
+            return Carbon::parse($date->created_at)->format('Y-m-d');
+        })->map(function($group, $date) {
+            return ['date' => $date, 'count' => $group->count()];
         });
     
-        $formattedGrowth = $usersGrowth->mapWithKeys(function ($count, $month) {
-            return [$month => ['month' => $month, 'count' => $count]];
-        })->values();
-    
-        return response()->json($formattedGrowth, 200);
+        return response()->json($usersGrowth->values(), 200);
     }
 
 
@@ -139,6 +138,10 @@ class APIController extends Controller
     
 
         if($request->hasFile('image')){
+            $oldImagePath = public_path('images/' . $book->file);
+            if (file_exists($oldImagePath)) {
+                @unlink($oldImagePath);
+            }
             $newImageName = time() . '-' . $request->title . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $newImageName);
 
@@ -174,7 +177,7 @@ class APIController extends Controller
     if (file_exists($imagePath)) {
         @unlink($imagePath);
     }
-
+    $book->users()->detach();
     $book->delete();
 
     return response()->json([

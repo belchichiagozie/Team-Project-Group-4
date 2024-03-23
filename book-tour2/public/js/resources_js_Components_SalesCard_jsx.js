@@ -49,9 +49,9 @@ function SalesCard() {
     horizontal: true,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
       className: "text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-bold tracking-tight text-gray-900 dark:text-white",
-      children: "Total Sales Amount:"
+      children: "Sales (\xA3):"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("p", {
-      className: "font-normal text-gray-700 text-4xl dark:text-gray-400",
+      className: "font-normal hover:text-base text-gray-700 text-3xl dark:text-gray-400",
       children: ["\xA3", totalSales.toFixed(2)]
     })]
   });

@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Book
@@ -29,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Book extends Model
 {
+	use SoftDeletes;
 	protected $table = 'books';
 	protected $primaryKey = 'Book_ID';
 	public $timestamps = false;

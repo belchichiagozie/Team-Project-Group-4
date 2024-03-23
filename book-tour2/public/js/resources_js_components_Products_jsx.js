@@ -42,6 +42,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AddBookButton() {
+  var token = localStorage.getItem("token");
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     openModal = _useState2[0],
@@ -84,7 +85,8 @@ function AddBookButton() {
             }
             axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/addbook", formData, {
               headers: {
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                Authorization: "Bearer ".concat(token)
               }
             }).then(function () {
               window.location.href = "/admin/products";
@@ -129,118 +131,7 @@ function AddBookButton() {
       initialFocus: bookTitleRef,
       popup: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Modal.Header, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Modal.Body, {
-        children:
-        /*#__PURE__*/
-        /* <div className="space-y-6">
-        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-            Book Details
-        </h3>
-        <form
-            onSubmit={saveBook}
-            action="/admin/products"
-            method="post"
-            id="addBookForm"
-            encType="multipart/form-data"
-        >
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="title" value="Book Title" />
-                </div>
-                <TextInput
-                    id="title"
-                    name="title"
-                    ref={bookTitleRef}
-                    placeholder="Title"
-                    value={book.title}
-                    onChange={handleInput}
-                    required
-                />
-                <span>{inputErrorList.title}</span>
-            </div>
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="author" value="Author" />
-                </div>
-                <TextInput
-                    id="author"
-                    name="author"
-                    placeholder="Author"
-                    value={book.author}
-                    onChange={handleInput}
-                    required
-                />
-                <span>{inputErrorList.author}</span>
-            </div>
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="genre" value="Genre" />
-                </div>
-                <TextInput
-                    id="genre"
-                    name="genre"
-                    type="text"
-                    placeholder="Genre"
-                    value={book.genre}
-                    onChange={handleInput}
-                    required
-                />
-                <span>{inputErrorList.genre}</span>
-            </div>
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="price" value="Price" />
-                </div>
-                <TextInput
-                    id="price"
-                    type="number"
-                    name="price"
-                    placeholder="Price per Book"
-                    value={book.price}
-                    onChange={handleInput}
-                    required
-                />
-                <span>{inputErrorList.price}</span>
-            </div>
-            <div>
-                <div className="mb-2 block">
-                    <Label htmlFor="stock" value="Stock" />
-                </div>
-                <TextInput
-                    id="stock"
-                    name="stock"
-                    type="number"
-                    placeholder="Stock Amount"
-                    value={book.stock}
-                    onChange={handleInput}
-                    required
-                />
-                <span>{inputErrorList.price}</span>
-            </div>
-            <div class="form-group">
-                <label for="image">Upload Image</label>
-                <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    onChange={handleInput}
-                    accept="image/*"
-                    required
-                />
-            </div>
-            <div className="w-full">
-                <Button
-                    type="submit"
-                    onClick={() => setOpenModal(false)}
-                >
-                    Add Book
-                </Button>
-                <Button onClick={() => setOpenModal(false)}>
-                    Cancel
-                </Button>
-            </div>
-        </form>
-        </div> */
-        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "space-y-6",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
             className: "text-xl font-medium text-gray-900 dark:text-white",
@@ -524,6 +415,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function EditBookButton(_ref) {
   var bookObj = _ref.bookObj;
+  var token = localStorage.getItem("token");
+  console.log(bookObj);
   var imgfile = bookObj.file;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
@@ -565,16 +458,18 @@ function EditBookButton(_ref) {
           case 0:
             e.preventDefault();
             formData = new FormData();
+            formData.append("_method", "PUT");
             Object.keys(book).forEach(function (key) {
               return formData.append(key, book[key]);
             });
             imageInput = document.querySelector("#image");
             if (newFile) {
-              formData.append("image", file);
+              formData.append("image", newFile);
             }
-            axios__WEBPACK_IMPORTED_MODULE_3__["default"].put("/api/updatebook/".concat(book.id), formData, {
+            axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/updatebook/".concat(book.id), formData, {
               headers: {
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                Authorization: "Bearer ".concat(token)
               }
             }).then(function () {
               window.location.href = "/admin/products";
@@ -587,7 +482,7 @@ function EditBookButton(_ref) {
                 }
               }
             });
-          case 6:
+          case 7:
           case "end":
             return _context.stop();
         }
@@ -931,10 +826,10 @@ function Products() {
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "border border-solid rounded-lg",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
       className: "w-max",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
-        className: "dark:text-white dark:bg-cyan-950 text-blue-900 font-bold w-full",
+        className: "text-white bg-cyan-950 text-blue-900 font-bold w-full",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
           className: "",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {

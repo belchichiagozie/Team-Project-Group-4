@@ -1204,6 +1204,8 @@ video {
   height: 0.625rem;
 }.h-20 {
   height: 5rem;
+}.h-24 {
+  height: 6rem;
 }.h-3 {
   height: 0.75rem;
 }.h-3\.5 {
@@ -1243,8 +1245,6 @@ video {
   height: 1px;
 }.h-screen {
   height: 100vh;
-}.h-24 {
-  height: 6rem;
 }.max-h-\[90vh\] {
   max-height: 90vh;
 }.min-h-screen {
@@ -1311,8 +1311,6 @@ video {
   width: 100vw;
 }.min-w-0 {
   min-width: 0px;
-}.min-w-full {
-  min-width: 100%;
 }.max-w-2xl {
   max-width: 42rem;
 }.max-w-3xl {
@@ -1464,6 +1462,8 @@ video {
   gap: 1rem;
 }.gap-6 {
   gap: 1.5rem;
+}.gap-y-4 {
+  row-gap: 1rem;
 }.-space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(-1rem * var(--tw-space-x-reverse));
@@ -1530,8 +1530,6 @@ video {
   overflow: hidden;
 }.overflow-clip {
   overflow: clip;
-}.overflow-x-auto {
-  overflow-x: auto;
 }.overflow-y-auto {
   overflow-y: auto;
 }.overflow-x-hidden {
@@ -1737,6 +1735,9 @@ video {
 }.border-yellow-600 {
   --tw-border-opacity: 1;
   border-color: rgb(159 88 10 / var(--tw-border-opacity));
+}.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }.bg-\[\#106582\] {
   --tw-bg-opacity: 1;
   background-color: rgb(16 101 130 / var(--tw-bg-opacity));
@@ -2138,9 +2139,6 @@ video {
 }.py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }.pb-1 {
   padding-bottom: 0.25rem;
 }.pb-2 {
@@ -2695,9 +2693,6 @@ video {
 }.even\:bg-gray-50:nth-child(even) {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}.even\:bg-gray-100:nth-child(even) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }.hover\:cursor-not-allowed:hover {
   cursor: not-allowed;
 }.hover\:border-gray-300:hover {
@@ -2765,6 +2760,9 @@ video {
   background-color: rgb(252 233 106 / var(--tw-bg-opacity));
 }.hover\:bg-gradient-to-br:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}.hover\:text-base:hover {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }.hover\:text-cyan-700:hover {
   --tw-text-opacity: 1;
   color: rgb(14 116 144 / var(--tw-text-opacity));
@@ -4016,18 +4014,16 @@ video {
     margin-right: auto;
   }.sm\:mb-0 {
     margin-bottom: 0px;
+  }.sm\:mr-2 {
+    margin-right: 0.5rem;
   }.sm\:ms-0 {
     margin-inline-start: 0px;
   }.sm\:ms-10 {
     margin-inline-start: 2.5rem;
   }.sm\:ms-6 {
     margin-inline-start: 1.5rem;
-  }.sm\:mr-2 {
-    margin-right: 0.5rem;
   }.sm\:block {
     display: block;
-  }.sm\:inline-block {
-    display: inline-block;
   }.sm\:flex {
     display: flex;
   }.sm\:table-cell {
@@ -4087,6 +4083,10 @@ video {
     justify-content: center;
   }.sm\:justify-between {
     justify-content: space-between;
+  }.sm\:gap-0 {
+    gap: 0px;
+  }.sm\:gap-y-0 {
+    row-gap: 0px;
   }.sm\:rounded-lg {
     border-radius: 0.5rem;
   }.sm\:p-10 {
@@ -4095,8 +4095,6 @@ video {
     padding: 1rem;
   }.sm\:p-8 {
     padding: 2rem;
-  }.sm\:p-2 {
-    padding: 0.5rem;
   }.sm\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -4106,10 +4104,15 @@ video {
   }.sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }.sm\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }.sm\:pr-8 {
     padding-right: 2rem;
   }.sm\:pt-0 {
     padding-top: 0px;
+  }.sm\:pb-0 {
+    padding-bottom: 0px;
   }.sm\:text-center {
     text-align: center;
   }.sm\:text-start {
@@ -4137,8 +4140,6 @@ video {
     margin-top: 0px;
   }.md\:block {
     display: block;
-  }.md\:inline-block {
-    display: inline-block;
   }.md\:flex {
     display: flex;
   }.md\:table-cell {
@@ -4188,8 +4189,6 @@ video {
     padding: 3rem;
   }.md\:p-6 {
     padding: 1.5rem;
-  }.md\:p-4 {
-    padding: 1rem;
   }.md\:p-8 {
     padding: 2rem;
   }.md\:text-sm {
@@ -4217,8 +4216,6 @@ video {
   }.lg\:my-8 {
     margin-top: 2rem;
     margin-bottom: 2rem;
-  }.lg\:inline-block {
-    display: inline-block;
   }.lg\:table-cell {
     display: table-cell;
   }.lg\:hidden {
@@ -4242,11 +4239,7 @@ video {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
-}@media (min-width: 1280px) {.xl\:inline-block {
-    display: inline-block;
-  }.xl\:table-cell {
-    display: table-cell;
-  }.xl\:flex-row {
+}@media (min-width: 1280px) {.xl\:flex-row {
     flex-direction: row;
   }.xl\:justify-between {
     justify-content: space-between;

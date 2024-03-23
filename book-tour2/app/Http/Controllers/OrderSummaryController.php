@@ -27,7 +27,6 @@ class OrderSummaryController extends Controller
             }
         }
     
-        // Assuming you need to do something specific with books separate from the order items
         $books = Book::whereIn('Book_ID', $bookIds)->get();
     
         return view('Basket.ordersview', ['orderItems' => $orderItems, 'books' => $books]);
