@@ -39,17 +39,24 @@ class APIController extends Controller
     }
 
     public function getTotalSales(){
-        $orders = Order::with('items.book')->get();
-
+        $orders = Order::with(['items' => function ($query) {
+            $query->with(['book' => function ($query) {
+                $query->withTrashed();
+            }]);
+        }])->get();
+    
         $totalSales = $orders->reduce(function ($carry, $order) {
             foreach ($order->items as $item) {
-                $carry += $item->Quantity * $item->book->Price;
+                if ($item->book !== null) {
+                    $carry += $item->Quantity * $item->book->Price;
+                }
             }
             return $carry;
         }, 0);
     
         return response()->json(['totalSales' => $totalSales], 200);
     }
+    
 
     public function getTotalUsers() {
         $totalUsers = User::count();
