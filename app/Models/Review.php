@@ -17,24 +17,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $Body
  * 
  * @property Book $book
- * @property Customer|null $customer
- *
+ * 
  * @package App\Models
  */
 class Review extends Model
 {
 	protected $table = 'reviews';
-	protected $primaryKey = 'Book_ID';
-	public $timestamps = false;
+	public $timestamps = true;
+
+	public $incrementing = false;
 
 	protected $casts = [
-		'Customer_ID' => 'int'
+		'User_ID' => 'int'
 	];
 
 	protected $fillable = [
-		'Customer_ID',
+		'User_ID',
 		'Title',
-		'Body'
+		'Body',
+		'Customer_Name',
 	];
 
 	public function book()
@@ -44,6 +45,6 @@ class Review extends Model
 
 	public function customer()
 	{
-		return $this->belongsTo(Customer::class, 'Customer_ID');
+		return $this->belongsTo(User::class, 'User_ID');
 	}
 }

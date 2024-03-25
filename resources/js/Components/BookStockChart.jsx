@@ -3,65 +3,103 @@ import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
-export default function BookStockChart({ isLightMode }) {
+export default function BookStockChart() {
     const [book, setBook] = useState([]);
+    const token = localStorage.getItem("token");
+
+    const isDarkMode = () =>
+        document.documentElement.classList.contains("dark");
 
     useEffect(() => {
         axios
-            .get("http://127.0.0.1:8000/api/admin/products")
+            .get("/api/admin/products", {
+                headers: { Authorization: `Bearer ${token}` },
+            })
             .then((response) => setBook(response.data["books"]));
     }, []);
+
+    const themeStyles = {
+        light: {
+            backgroundColor1: "#4D89FF",
+            backgroundColor2: "#FFC658",
+            gridColor: "rgba(0, 0, 0, 0.1)",
+            tickColor: "black",
+        },
+        dark: {
+            backgroundColor1: "#1E40AF",
+            backgroundColor2: "#F59E0B",
+            gridColor: "rgba(255, 255, 255, 0.1)",
+            tickColor: "white",
+        },
+    };
+
+    const currentTheme = isDarkMode() ? themeStyles.dark : themeStyles.light;
 
     const options = {
         scales: {
             x: {
                 ticks: {
-                    color: isLightMode ? "black" : "white",
+                    color: currentTheme.tickColor,
                 },
                 grid: {
-                    color: "rgba(255, 255, 255, 0.1)",
+                    color: currentTheme.gridColor,
                 },
             },
             y: {
+                beginAtZero: true,
                 ticks: {
-                    color: isLightMode ? "black" : "white",
+                    color: currentTheme.tickColor,
                 },
                 grid: {
-                    color: "rgba(255, 255, 255, 0.1)",
+                    color: currentTheme.gridColor,
                 },
             },
         },
         plugins: {
             legend: {
                 labels: {
-                    color: isLightMode ? "black" : "white",
+                    color: currentTheme.tickColor,
                 },
             },
+            tooltip: {
+                mode: "index",
+                intersect: false,
+                bodySpacing: 8,
+                titleMarginBottom: 10,
+                titleColor: isDarkMode() ? "black" : "white",
+                bodyColor: isDarkMode() ? "black" : "white",
+                backgroundColor: isDarkMode()
+                    ? "rgba(255,255,255,0.8)"
+                    : "rgba(0,0,0,0.8)",
+                borderColor: isDarkMode()
+                    ? "rgba(255,255,255,0.9)"
+                    : "rgba(0,0,0,0.9)",
+                borderWidth: 1,
+            },
         },
+        responsive: true,
+        maintainAspectRatio: false,
     };
+
     const newData = {
         labels: book.map((item) => item.Title),
         datasets: [
             {
-                label: "Stock of each book",
+                label: "Amount In Stock",
                 data: book.map((item) => item.Stock),
-                fill: true,
-                responsive: true,
-                backgroundColor: isLightMode ? "#106586" : "#a5f3fc",
-                borderColor: "#a5f3fc",
+                backgroundColor: currentTheme.backgroundColor1,
+                borderColor: currentTheme.tickColor,
+                borderWidth: 2,
             },
             {
-                label: "Price of each book",
+                label: "Price (£)",
                 data: book.map((item) => item.Price),
-                fill: true,
-                responsive: true,
-                backgroundColor: isLightMode ? "#183ddc" : "#51fdf0",
+                backgroundColor: currentTheme.backgroundColor2,
+                borderColor: currentTheme.tickColor,
+                borderWidth: 2,
             },
         ],
     };
-    return <Bar data={newData} options={options} />;
-}
 
-if (document.getElementById("bschart")) {
-    ReactDOM.render(<BookStockChart />, document.getElementById("bschart"));
+    return <Bar data={newData} options={options} />;
 }

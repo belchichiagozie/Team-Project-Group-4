@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_BookSalesChart_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_BookSalesChart_jsx"],{
 
-/***/ "./resources/js/components/BookSalesChart.jsx":
+/***/ "./resources/js/Components/BookSalesChart.jsx":
 /*!****************************************************!*\
-  !*** ./resources/js/components/BookSalesChart.jsx ***!
+  !*** ./resources/js/Components/BookSalesChart.jsx ***!
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -28,28 +28,35 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function BookSalesChart(_ref) {
-  var isLightMode = _ref.isLightMode;
+function BookSalesChart() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     book = _useState2[0],
     setBook = _useState2[1];
+  var token = localStorage.getItem("token");
+  var isDarkMode = function isDarkMode() {
+    return document.documentElement.classList.contains("dark");
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products").then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("/api/admin/products", {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function (response) {
       return setBook(response.data["books"]);
     });
   }, []);
-  var colours = {
-    light: {
-      backgroundColour: ["rgba(255, 99, 132, 0.4)", "rgba(54, 162, 235, 0.4)", "rgba(255, 206, 86, 0.4)"],
-      borderColour: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)"]
-    },
-    dark: {
-      backgroundColour: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)"],
-      borderColour: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)"]
+  var generateColors = function generateColors(count, alpha) {
+    var colors = [];
+    var step = 360 / count;
+    for (var i = 0; i < count; i++) {
+      var hue = i * step;
+      colors.push("hsla(".concat(hue, ", 100%, 50%, ").concat(alpha, ")"));
     }
+    return colors;
   };
-  var themeColors = isLightMode ? colours.light : colours.dark;
+  var bookCount = book.length;
+  var themeColors = isDarkMode() ? generateColors(bookCount, 0.4) : generateColors(bookCount, 0.6);
   var data = {
     labels: book.map(function (book) {
       return book.Title;
@@ -59,24 +66,45 @@ function BookSalesChart(_ref) {
       data: book.map(function (book) {
         return book.Stock;
       }),
-      responsive: true,
-      backgroundColor: themeColors.backgroundColour,
-      borderColor: themeColors.borderColour,
-      borderWidth: 1
+      backgroundColor: themeColors,
+      borderColor: themeColors.map(function (color) {
+        return color.replace("0.4", "1").replace("0.6", "1");
+      }),
+      borderWidth: 2,
+      hoverOffset: 8
     }]
   };
   var options = {
+    responsive: true,
     plugins: {
       legend: {
         position: "top",
         labels: {
-          color: isLightMode ? "black" : "white"
+          color: isDarkMode() ? "white" : "black",
+          padding: 20,
+          font: {
+            size: 10
+          }
         }
+      },
+      tooltip: {
+        usePointStyle: true,
+        boxPadding: 6,
+        caretPadding: 4,
+        bodySpacing: 4,
+        backgroundColor: isDarkMode() ? "rgba(255,255,255,0.87)" : "rgba(0,0,0,0.87)",
+        titleColor: isDarkMode() ? "#000" : "#fff",
+        bodyColor: isDarkMode() ? "#000" : "#fff",
+        borderColor: "rgba(0,0,0,0)",
+        borderWidth: 1
       },
       title: {
         display: true,
         text: "Book Stock Distribution",
-        color: isLightMode ? "black" : "white"
+        color: isDarkMode() ? "white" : "black",
+        font: {
+          size: 12
+        }
       }
     }
   };

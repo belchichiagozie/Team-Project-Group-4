@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_BooksCard_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_BooksCard_jsx"],{
 
-/***/ "./resources/js/components/BooksCard.jsx":
+/***/ "./resources/js/Components/BooksCard.jsx":
 /*!***********************************************!*\
-  !*** ./resources/js/components/BooksCard.jsx ***!
+  !*** ./resources/js/Components/BooksCard.jsx ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -22,32 +22,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-// "use client";
-
-// import { Card } from "flowbite-react";
-// import axios from "axios";
-// import React, { useState, useEffect } from "react";
-
-// export default function BooksCard() {
-//     const [book, setBook] = useState([]);
-//     let count = 0;
-//     useEffect(() => {
-//         axios
-//             .get("http://127.0.0.1:8000/api/admin/products")
-//             .then((response) => setBook(response.data["books"]));
-//     }, []);
-//     return (
-//         <Card className="max-w-sm" imgSrc="/images/blog/image-4.jpg" horizontal>
-//             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-//                 Amount of Books
-//             </h5>
-//             <p className="font-normal text-gray-700 dark:text-gray-400">
-//                 {book ? book.Title.length : "Loading ..."}
-//             </p>
-//         </Card>
-//     );
-// }
-
 
 
 
@@ -56,27 +30,30 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function BooksCard() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
-    book = _useState2[0],
-    setBook = _useState2[1]; // Initialize as null or appropriate initial value
-
+    bookCount = _useState2[0],
+    setBookCount = _useState2[1];
+  var token = localStorage.getItem("token");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products").then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("/api/admin/products", {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function (response) {
       var booksData = response.data["books"];
-      if (booksData && booksData.length > 0) {
-        // Assuming the first book or adjust according to your data structure
-        setBook(booksData[0]);
+      if (booksData) {
+        setBookCount(booksData.length);
       }
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Card, {
-    className: "max-w-sm p-4",
+    className: "max-w-sm xl:p-2",
     horizontal: true,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
-      className: "text-2xl font-bold tracking-tight text-gray-900 dark:text-white",
+      className: "text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-bold tracking-tight text-gray-900 dark:text-white",
       children: "Amount of Books"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
       className: "font-normal text-gray-700 text-4xl dark:text-gray-400",
-      children: book ? book.Title.length : "Loading..."
+      children: bookCount !== null ? bookCount : "Loading..."
     })]
   });
 }

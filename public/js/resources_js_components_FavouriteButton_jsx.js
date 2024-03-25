@@ -1,8 +1,8 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_FavouriteButton_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_FavouriteButton_jsx"],{
 
-/***/ "./resources/js/components/FavouriteButton.jsx":
+/***/ "./resources/js/Components/FavouriteButton.jsx":
 /*!*****************************************************!*\
-  !*** ./resources/js/components/FavouriteButton.jsx ***!
+  !*** ./resources/js/Components/FavouriteButton.jsx ***!
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

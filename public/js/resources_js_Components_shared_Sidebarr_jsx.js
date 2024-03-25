@@ -1,9 +1,65 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_shared_Sidebarr_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_shared_Sidebarr_jsx"],{
 
-/***/ "./resources/js/components/shared/Sidebarr.jsx":
+/***/ "./resources/js/Components/AuthContext.jsx":
+/*!*************************************************!*\
+  !*** ./resources/js/Components/AuthContext.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AuthProvider: () => (/* binding */ AuthProvider),
+/* harmony export */   useAuth: () => (/* binding */ useAuth)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var AuthContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
+function useAuth() {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(AuthContext);
+}
+var AuthProvider = function AuthProvider(_ref) {
+  var children = _ref.children;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isAuthenticated = _useState2[0],
+    setIsAuthenticated = _useState2[1];
+  var login = function login() {
+    return setIsAuthenticated(true);
+  };
+  var logout = function logout() {
+    return setIsAuthenticated(false);
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(AuthContext.Provider, {
+    value: {
+      isAuthenticated: isAuthenticated,
+      login: login,
+      logout: logout
+    },
+    children: children
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/Components/shared/Sidebarr.jsx":
 /*!*****************************************************!*\
-  !*** ./resources/js/components/shared/Sidebarr.jsx ***!
+  !*** ./resources/js/Components/shared/Sidebarr.jsx ***!
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -13,10 +69,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_hi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/hi */ "./node_modules/react-icons/hi/index.mjs");
-/* harmony import */ var flowbite_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flowbite-react */ "./node_modules/flowbite-react/lib/esm/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _AuthContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AuthContext */ "./resources/js/Components/AuthContext.jsx");
+/* harmony import */ var react_icons_hi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/hi */ "./node_modules/react-icons/hi/index.mjs");
+/* harmony import */ var flowbite_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flowbite-react */ "./node_modules/flowbite-react/lib/esm/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 "use client";
+
 
 
 
@@ -27,99 +85,53 @@ __webpack_require__.r(__webpack_exports__);
 var sideItem = "flex items-center text-xl gap-2 font-light px-3 py-2 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base whitespace-nowrap overflow-clip";
 var bottoms = "flex flex-col gap-0.5 pt-2 border-t border-neutral-700 shrink-0";
 function Sidebarr() {
-  return (
-    /*#__PURE__*/
-    // <div className="h-screen flex gap-10 flex-col bg-neutral-900 w-1/6 p-3 text-white">
-    //     <div className="flex items-center gap-2 px-1 py-3">
-    //         <FcBullish />
-    //         <span className="text-neutral-100 text-lg">Book-Tour</span>
-    //     </div>
-    //     <div className="flex flex-col flex-1 gap-2">
-    //         <a href="/admin/dashboard">
-    //             <div className={sideItem}>
-    //                 Dashboard
-    //                 <span>
-    //                     <HiOutlineViewGrid />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //         <a href="/admin/products">
-    //             <div className={sideItem}>
-    //                 Products
-    //                 <span>
-    //                     <HiOutlineCube />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //         <a href="/admin/customers">
-    //             <div className={sideItem}>
-    //                 Customers
-    //                 <span>
-    //                     <HiOutlineUsers />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //         <a href="/admin/orders">
-    //             <div className={sideItem}>
-    //                 Orders
-    //                 <span>
-    //                     <HiOutlineShoppingCart />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //         <a href="/admin/dashboard">
-    //             <div className={sideItem}>
-    //                 Analytics
-    //                 <span>
-    //                     <HiChartPie />
-    //                 </span>
-    //             </div>
-    //         </a>
-    //     </div>
-    //     <div>
-    //         <div className={bottoms}>Settings</div>
-    //         <div className={bottoms}>Help & Support</div>
-    //         <div className={bottoms}>Logout</div>
-    //     </div>
-    // </div>
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar, {
-      "aria-label": "Sidebar with logo branding example",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Logo, {
-        href: "#",
-        img: "/logo.svg",
-        imgAlt: "BookTour Logo",
-        children: "Book-Tour"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Items, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.ItemGroup, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/dashboard",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiChartPie,
-            children: "Dashboard"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/products",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiOutlineBookOpen,
-            children: "Books"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/customers",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiInbox,
-            children: "Customers"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/orders",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiOutlineShoppingCart,
-            children: "Orders"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "/admin/login",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiArrowSmRight,
-            children: "Sign In"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Sidebar.Item, {
-            href: "#",
-            icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_3__.HiTable,
-            children: "Sign Up"
-          })]
+  var _useAuth = (0,_AuthContext__WEBPACK_IMPORTED_MODULE_1__.useAuth)(),
+    isAuthenticated = _useAuth.isAuthenticated,
+    setIsAuthenticated = _useAuth.setIsAuthenticated;
+  var handleSignOut = function handleSignOut() {
+    localStorage.removeItem("token");
+    window.location.href = "/admin/login";
+    setIsAuthenticated(false);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar, {
+    "aria-label": "Sidebar with logo branding example",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.Logo, {
+      href: "#",
+      img: "/logotr.svg",
+      imgAlt: "BookTour Logo",
+      children: "Book-Tour"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.Items, {
+      children: [isAuthenticated === true && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.ItemGroup, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.Item, {
+          href: "/admin/dashboard",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_4__.HiChartPie,
+          children: "Dashboard"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.Item, {
+          href: "/admin/products",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_4__.HiOutlineBookOpen,
+          children: "Books"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.Item, {
+          href: "/admin/customers",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_4__.HiInbox,
+          children: "Customers"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.Item, {
+          href: "/admin/orders",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_4__.HiOutlineShoppingCart,
+          children: "Orders"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.ItemGroup, {
+        children: isAuthenticated ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.Item, {
+          onClick: handleSignOut,
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_4__.HiArrowSmRight,
+          children: "Sign Out"
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_2__.Sidebar.Item, {
+          href: "/admin/login",
+          icon: react_icons_hi__WEBPACK_IMPORTED_MODULE_4__.HiArrowSmRight,
+          children: "Sign In"
         })
       })]
-    })
-  );
+    })]
+  });
 }
 
 /***/ }),

@@ -8,7 +8,12 @@ import {
 import { IconButton } from "rsuite";
 import { Button, Modal } from "flowbite-react";
 
-export default function BinButton() {
+export default function BinButton({ Book_ID, onRemove }) {
+    const handleClick = () => {
+        onRemove(Book_ID);
+        setOpenModal(false);
+    };
+
     const [openModal, setOpenModal] = useState(false);
     return (
         <>
@@ -30,10 +35,7 @@ export default function BinButton() {
                             Are you sure you want to delete this product?
                         </h3>
                         <div className="flex justify-center gap-4">
-                            <Button
-                                color="failure"
-                                onClick={() => setOpenModal(false)}
-                            >
+                            <Button color="failure" onClick={handleClick}>
                                 {"Yes, I'm sure"}
                             </Button>
                             <Button

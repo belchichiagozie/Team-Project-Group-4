@@ -7,6 +7,7 @@ import { HiOutlinePlus } from "react-icons/hi";
 import axios from "axios";
 
 export default function AddBookButton() {
+    const token = localStorage.getItem("token");
     const [openModal, setOpenModal] = useState(false);
     const [inputErrorList, setInputErrorList] = useState({});
     const [book, setBook] = useState({
@@ -36,9 +37,10 @@ export default function AddBookButton() {
             formData.append("image", imageInput.files[0]);
         }
         axios
-            .post(`http://127.0.0.1:8000/api/addbook`, formData, {
+            .post(`/api/addbook`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`,
                 },
             })
             .then(() => {
@@ -78,115 +80,6 @@ export default function AddBookButton() {
                 <Modal.Header />
                 <Modal.Body>
                     {
-                        /* <div className="space-y-6">
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-                            Book Details
-                        </h3>
-                        <form
-                            onSubmit={saveBook}
-                            action="/admin/products"
-                            method="post"
-                            id="addBookForm"
-                            encType="multipart/form-data"
-                        >
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label htmlFor="title" value="Book Title" />
-                                </div>
-                                <TextInput
-                                    id="title"
-                                    name="title"
-                                    ref={bookTitleRef}
-                                    placeholder="Title"
-                                    value={book.title}
-                                    onChange={handleInput}
-                                    required
-                                />
-                                <span>{inputErrorList.title}</span>
-                            </div>
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label htmlFor="author" value="Author" />
-                                </div>
-                                <TextInput
-                                    id="author"
-                                    name="author"
-                                    placeholder="Author"
-                                    value={book.author}
-                                    onChange={handleInput}
-                                    required
-                                />
-                                <span>{inputErrorList.author}</span>
-                            </div>
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label htmlFor="genre" value="Genre" />
-                                </div>
-                                <TextInput
-                                    id="genre"
-                                    name="genre"
-                                    type="text"
-                                    placeholder="Genre"
-                                    value={book.genre}
-                                    onChange={handleInput}
-                                    required
-                                />
-                                <span>{inputErrorList.genre}</span>
-                            </div>
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label htmlFor="price" value="Price" />
-                                </div>
-                                <TextInput
-                                    id="price"
-                                    type="number"
-                                    name="price"
-                                    placeholder="Price per Book"
-                                    value={book.price}
-                                    onChange={handleInput}
-                                    required
-                                />
-                                <span>{inputErrorList.price}</span>
-                            </div>
-                            <div>
-                                <div className="mb-2 block">
-                                    <Label htmlFor="stock" value="Stock" />
-                                </div>
-                                <TextInput
-                                    id="stock"
-                                    name="stock"
-                                    type="number"
-                                    placeholder="Stock Amount"
-                                    value={book.stock}
-                                    onChange={handleInput}
-                                    required
-                                />
-                                <span>{inputErrorList.price}</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="image">Upload Image</label>
-                                <input
-                                    type="file"
-                                    id="image"
-                                    name="image"
-                                    onChange={handleInput}
-                                    accept="image/*"
-                                    required
-                                />
-                            </div>
-                            <div className="w-full">
-                                <Button
-                                    type="submit"
-                                    onClick={() => setOpenModal(false)}
-                                >
-                                    Add Book
-                                </Button>
-                                <Button onClick={() => setOpenModal(false)}>
-                                    Cancel
-                                </Button>
-                            </div>
-                        </form>
-                    </div> */
                         <div className="space-y-6">
                             <h3 className="text-xl font-medium text-gray-900 dark:text-white">
                                 Book Details
@@ -315,17 +208,17 @@ export default function AddBookButton() {
                                         required
                                     />
                                 </div>
-                                <div className="w-full">
+                                <div className="w-full flex flex-row">
                                     <button
                                         type="submit"
                                         id="submit"
-                                        className="btn dark:text-white"
+                                        className="btn text-white border border-solid flex-1 bg-green-500"
                                     >
                                         Add Book
                                     </button>
                                     <button
                                         type="button"
-                                        className="btn dark:text-white"
+                                        className="btn text-white border border-solid p-2 bg-red-500"
                                         onClick={() => setOpenModal(false)}
                                     >
                                         Cancel

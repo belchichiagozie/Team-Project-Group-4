@@ -23,24 +23,23 @@ use Illuminate\Database\Eloquent\Model;
 class Basket extends Model
 {
 	protected $table = 'basket';
-	protected $primaryKey = ['Customer_ID', 'Book_ID'];
 	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'Customer_ID' => 'int',
+		'user_id' => 'int',
 		'Book_ID' => 'int'
 	];
 
 	protected $fillable = [
-		'Customer_ID',
+		'user_id',
 		'Book_ID',
 		'Quantity'
 	];
 
 	public function customer()
 	{
-		return $this->belongsTo(Customer::class, 'Customer_ID');
+		return $this->belongsTo(User::class, 'user_id');
 	}
 
 	public function book()

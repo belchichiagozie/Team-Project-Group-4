@@ -1,8 +1,8 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_EditBook_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_EditBook_jsx"],{
 
-/***/ "./resources/js/components/EditBook.jsx":
+/***/ "./resources/js/Components/EditBook.jsx":
 /*!**********************************************!*\
-  !*** ./resources/js/components/EditBook.jsx ***!
+  !*** ./resources/js/Components/EditBook.jsx ***!
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -45,6 +45,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function EditBookButton(_ref) {
   var bookObj = _ref.bookObj;
+  var token = localStorage.getItem("token");
+  console.log(bookObj);
   var imgfile = bookObj.file;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
@@ -86,16 +88,18 @@ function EditBookButton(_ref) {
           case 0:
             e.preventDefault();
             formData = new FormData();
+            formData.append("_method", "PUT");
             Object.keys(book).forEach(function (key) {
               return formData.append(key, book[key]);
             });
             imageInput = document.querySelector("#image");
             if (newFile) {
-              formData.append("image", file);
+              formData.append("image", newFile);
             }
-            axios__WEBPACK_IMPORTED_MODULE_3__["default"].put("http://127.0.0.1:8000/api/updatebook/".concat(book.id), formData, {
+            axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/updatebook/".concat(book.id), formData, {
               headers: {
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                Authorization: "Bearer ".concat(token)
               }
             }).then(function () {
               window.location.href = "/admin/products";
@@ -108,7 +112,7 @@ function EditBookButton(_ref) {
                 }
               }
             });
-          case 6:
+          case 7:
           case "end":
             return _context.stop();
         }

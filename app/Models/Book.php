@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Book
@@ -29,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Book extends Model
 {
+	use SoftDeletes;
 	protected $table = 'books';
 	protected $primaryKey = 'Book_ID';
 	public $timestamps = false;
@@ -43,20 +45,20 @@ class Book extends Model
 		'Genre',
 		'Price',
 		'Stock',
-		'Favourite',
 		'file'
 	];
 
 	public function basket()
 	{
-		return $this->hasOne(Basket::class, 'Book_ID');
+		return $this->hasMany(Basket::class, 'Book_ID');
 	}
 
 	public function orders()
-	{
-		return $this->belongsToMany(Order::class, 'orderbooks', 'Book_ID', 'OrderID')
-					->withPivot('Quantity');
-	}
+{
+    return $this->belongsToMany(Order::class, 'order_items', 'Book_ID', 'User_ID')->withPivot('Quantity');
+}
+
+
 
 	public function readinglist()
 	{
@@ -67,4 +69,9 @@ class Book extends Model
 	{
 		return $this->hasOne(Review::class, 'Book_ID');
 	}
+
+	public function users()
+    {
+        return $this->belongsToMany(User::class, 'basket', 'Book_ID', 'user_id')->withPivot('Quantity');
+    }
 }

@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $Customer_ID
  * @property string $Status
  * 
- * @property Customer $customer
+ * 
  * @property Collection|Book[] $books
  *
  * @package App\Models
@@ -25,25 +25,30 @@ class Order extends Model
 {
 	protected $table = 'orders';
 	protected $primaryKey = 'Order_ID';
-	public $timestamps = false;
+	public $timestamps = true;
 
 	protected $casts = [
-		'Customer_ID' => 'int'
+		'User_ID' => 'int',
+		'Book_ID' => 'int'
 	];
 
 	protected $fillable = [
-		'Customer_ID',
-		'Status'
-	];
+        'User_ID',
+        'Shipping_First_Name',
+        'Shipping_Last_Name',
+        'Shipping_Address',
+        'Shipping_City',
+        'Order_Total',
+    ];
 
 	public function customer()
 	{
-		return $this->belongsTo(Customer::class, 'Customer_ID');
+		return $this->belongsTo(User::class, 'User_ID');
 	}
 
-	public function books()
-	{
-		return $this->belongsToMany(Book::class, 'orderbooks', 'OrderID', 'Book_ID')
-					->withPivot('Quantity');
-	}
+	public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'Order_ID');
+    }
+
 }

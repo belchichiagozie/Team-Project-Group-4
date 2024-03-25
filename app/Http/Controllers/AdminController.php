@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
-use App\Models\Customer;
+use App\Models\User;
 use Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider;
 
 
@@ -13,7 +13,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $customers = Customer::all();
+        $customers = User::all();
         $books = Book::all();
         $service = app()->chartjs
         ->name('lineChartTest')

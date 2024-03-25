@@ -11,11 +11,19 @@ import Login from "../Login";
 import BookSalesChart from "../BookSalesChart";
 import BooksCard from "../BooksCard";
 import UsersCard from "../UsersCard";
+import OrdersCard from "../OrdersCard";
+import SalesCard from "../SalesCard";
 import Users from "../Users";
+import Orders from "../Orders";
+import { AuthProvider } from "../AuthContext";
 
 const header_text = "text-xl border border-solid bg-teal-200";
 const page = "bg-neutral-100 overflow-x-hidden w-full h-screen flex flex-col";
-const chartsize = "relative h-64 w-96 min-w-0 border rounded-lg border-solid";
+const chartsize =
+    "h-64 w-96 min-w-0 border rounded-lg border-solid border-black dark:border-white mx-2 sm:mx-4 md:mx-6 lg:mx-8";
+const outerchart = "gap-y-4 sm:gap-y-0";
+const loginpage =
+    "bg-neutral-100 overflow-x-hidden w-full h-full flex grow items-center justify-center dark:bg-slate-50 dark:text-white";
 
 export default function Layout() {
     const loc = window.location.href;
@@ -28,104 +36,152 @@ export default function Layout() {
     const pageStyle = `${page} dark:bg-cyan-700 dark:text-white`;
     if (loc.includes("admin/products")) {
         return (
-            <div className="flex justify-between flex-row overflow-x-hidden">
-                <Flowbite>
-                    <div className="not(justify-between)">
-                        <Sidebarr />
-                    </div>
-                    <div className={pageStyle} id="prods">
-                        <div>
-                            <Header />
+            <AuthProvider>
+                <div className="flex justify-between flex-row overflow-x-hidden">
+                    <Flowbite>
+                        <div className="hidden md:block not(justify-between)">
+                            <Sidebarr />
                         </div>
+                        <div className={pageStyle} id="prods">
+                            <div className="">
+                                <Header />
+                            </div>
+                            <div className="p-1 sm:p-4 md:p-8 w-max max-w-3xl shadow dark:text-white">
+                                <Products />
 
-                        <div className="p-4 w-max max-w-3xl shadow dark:text-white">
-                            <Products />
-
-                            <AddBookButton />
+                                <AddBookButton />
+                            </div>
+                            <div>
+                                <DarkThemeToggle />
+                            </div>
                         </div>
-                        <div>
-                            <DarkThemeToggle />
-                        </div>
-                    </div>
-                </Flowbite>
-            </div>
+                    </Flowbite>
+                </div>
+            </AuthProvider>
         );
     } else if (loc.includes("dashboard")) {
         return (
-            <div className="flex justify-between flex-row">
-                <Flowbite>
-                    <div className="not(justify-between)">
-                        <Sidebarr />
-                    </div>
-                    <div className={pageStyle}>
-                        <div>
-                            <Header />
+            <AuthProvider>
+                <div className="flex justify-between flex-row">
+                    <Flowbite>
+                        <div className="hidden md:block not(justify-between)">
+                            <Sidebarr />
                         </div>
-                        <div className="flex flex-row justify-between">
-                            <div className="p-2">
-                                <BooksCard />
+                        <div className={pageStyle}>
+                            <div className="">
+                                <Header />
                             </div>
-                            <div className="p-2">
-                                <UsersCard />
+                            <div className="flex flex-row flex-wrap items-center justify-center xl:justify-between">
+                                <div className="py-2 pl-4 xl:pl-8 px-4">
+                                    <BooksCard />
+                                </div>
+                                <div className="py-2 xs:pl-20 px-4">
+                                    <UsersCard />
+                                </div>
+
+                                <div className="py-2 xs:pl-20 px-4">
+                                    <OrdersCard />
+                                </div>
+                                <div className="py-2 pr-4 xl:pr-8 px-4">
+                                    <SalesCard />
+                                </div>
                             </div>
-                            <div className="p-2">
-                                <BooksCard />
-                            </div>
-                            <div className="p-2">
-                                <UsersCard />
-                            </div>
-                        </div>
-                        <div className="flex flex-row justify-between p-2">
-                            <div className={chartsize}>
-                                <BookStockChart isLightMode={isLightMode} />
-                            </div>
-                            <div className={chartsize}>
-                                <LineChartComponent isLightMode={isLightMode} />
-                            </div>
-                            <div className={chartsize}>
-                                <BookSalesChart isLightMode={isLightMode} />
+                            <div className="flex min-w-0 flex-row flex-wrap items-center justify-center p-2">
+                                <div className={chartsize}>
+                                    <BookStockChart isLightMode={isLightMode} />
+                                </div>
+                                <div className={chartsize}>
+                                    <LineChartComponent
+                                        isLightMode={isLightMode}
+                                    />
+                                </div>
+                                <div className={chartsize}>
+                                    <BookSalesChart isLightMode={isLightMode} />
+                                </div>
                             </div>
                             <div>
                                 <button onClick={toggleLightMode}>
                                     <DarkThemeToggle />
                                 </button>
                             </div>
-                        </div>
-                        <div className="flex flex-row p-2">
-                            <div className="shadow max-w-4xl p-2">
-                                <Products />
+                            <div className="flex flex-col xl:flex-row p-2 items-center justify-center">
+                                <div className="shadow w-max max-w-4xl xl:px-2 pb-4">
+                                    <Products />
+                                </div>
+                                <div className="shadow w-max max-w-4xl xl:px-2">
+                                    <Orders />
+                                </div>
                             </div>
-                            <div className="shadow max-w-4xl p-2">
-                                <Users />
-                            </div>
                         </div>
-                    </div>
-                </Flowbite>
-            </div>
+                    </Flowbite>
+                </div>
+            </AuthProvider>
         );
     } else if (loc.includes("customers")) {
         return (
-            <div className={page}>
-                <Sidebarr />
-                <div className={page}>
-                    <div className={header_text}>Customers</div>
+            <AuthProvider>
+                <div className="flex justify-between flex-row overflow-x-hidden">
+                    <Flowbite>
+                        <div className="hidden md:block not(justify-between)">
+                            <Sidebarr />
+                        </div>
+                        <div className={pageStyle} id="prods">
+                            <div className="">
+                                <Header />
+                            </div>
+                            <div className="p-1 sm:p-4 md:p-8 w-max max-w-3xl shadow dark:text-white">
+                                <Users />
+                            </div>
+                            <div>
+                                <DarkThemeToggle />
+                            </div>
+                        </div>
+                    </Flowbite>
                 </div>
-            </div>
+            </AuthProvider>
+        );
+    } else if (loc.includes("admin/orders")) {
+        return (
+            <AuthProvider>
+                <div className="flex justify-between flex-row overflow-x-hidden">
+                    <Flowbite>
+                        <div className="hidden md:block not(justify-between)">
+                            <Sidebarr />
+                        </div>
+                        <div className={pageStyle} id="prods">
+                            <div className="">
+                                <Header />
+                            </div>
+                            <div className="p-1 sm:p-4 md:p-8 w-max max-w-3xl shadow dark:text-white">
+                                <Orders />
+                            </div>
+                            <div>
+                                <DarkThemeToggle />
+                            </div>
+                        </div>
+                    </Flowbite>
+                </div>
+            </AuthProvider>
         );
     } else if (loc.includes("/admin/login")) {
         return (
-            <div className="flex justify-between flex-row">
-                <Flowbite>
-                    <div className="not(justify-between)">
-                        <Sidebarr />
-                    </div>
-                    <div className={pageStyle} id="prods">
-                        <div>
-                            <Login />
+            <AuthProvider>
+                <div className="flex justify-between flex-row">
+                    <Flowbite>
+                        <div className="hidden md:block not(justify-between)">
+                            <Sidebarr />
                         </div>
-                    </div>
-                </Flowbite>
-            </div>
+                        <div className={pageStyle} id="prods">
+                            <div>
+                                <Header />
+                            </div>
+                            <div className={loginpage}>
+                                <Login />
+                            </div>
+                        </div>
+                    </Flowbite>
+                </div>
+            </AuthProvider>
         );
     }
 }

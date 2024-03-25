@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_UsersCard_jsx"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Components_UsersCard_jsx"],{
 
-/***/ "./resources/js/components/UsersCard.jsx":
+/***/ "./resources/js/Components/UsersCard.jsx":
 /*!***********************************************!*\
-  !*** ./resources/js/components/UsersCard.jsx ***!
+  !*** ./resources/js/Components/UsersCard.jsx ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -28,29 +28,31 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function UsersCard() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
     _useState2 = _slicedToArray(_useState, 2),
-    book = _useState2[0],
-    setBook = _useState2[1]; // Initialize as null or appropriate initial value
-
+    totalUsers = _useState2[0],
+    setTotalUsers = _useState2[1];
+  var token = localStorage.getItem("token");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products").then(function (response) {
-      var booksData = response.data["books"];
-      if (booksData && booksData.length > 0) {
-        // Assuming the first book or adjust according to your data structure
-        setBook(booksData[0]);
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("/api/admin/total-users", {
+      headers: {
+        Authorization: "Bearer ".concat(token)
       }
+    }).then(function (response) {
+      setTotalUsers(response.data.totalUsers);
+    })["catch"](function (error) {
+      console.error("There was an error fetching the total number of users: ", error);
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(flowbite_react__WEBPACK_IMPORTED_MODULE_1__.Card, {
-    className: "max-w-sm p-4",
+    className: "max-w-sm xl:p-2",
     horizontal: true,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
-      className: "text-2xl font-bold tracking-tight text-gray-900 dark:text-white",
-      children: "Amount of Users"
+      className: "text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl font-bold tracking-tight text-gray-900 dark:text-white",
+      children: "Registered Users"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
       className: "font-normal text-gray-700 text-4xl dark:text-gray-400",
-      children: "10"
+      children: totalUsers
     })]
   });
 }

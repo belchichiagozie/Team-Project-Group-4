@@ -12,7 +12,15 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\AdminLoginController;
-use App\Http\Controllers\MailController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ReadingListController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderSummaryController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +32,6 @@ use App\Http\Controllers\MailController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -46,6 +51,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+// Routes for Reviews
+Route::get("/add-review/{id}", [ReviewController::class, "add"])->name('reviews.add');
+Route::post("/add-review/{id}", [ReviewController::class, "create"])->name('reviews.create');
+Route::post("/delete-review/{id}", [ReviewController::class, "delete"])->name('reviews.delete');
+
 //Routes for main Products page
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::redirect('/', '/products');
@@ -55,10 +68,21 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
 //Routes for Basket page
-Route::get('/basket/view', [BasketController::class, 'viewBasket'])->name('basket.view');
+Route::get('/basket/view', [BasketController::class, 'index'])->name('basket.view');
 Route::post('/basket/add', [BasketController::class, 'addToBasket'])->name('basket.add');
 Route::post('/basket/remove', [BasketController::class, 'removeFromBasket'])->name('basket.remove');
-Route::get('/basket/total', [BasketController::class, 'calculateTotal'])->name('basket.total');
+Route::get('/checkout', [BasketController::class,'checkout'])->name('basket.checkout');
+
+//Routes for Checkout function
+Route::post('/checkout/submit', [OrderController::class, 'checkout'])->name('checkout.submit');
+
+Route::get('/ordersummary', [OrderSummaryController::class,'index']);
+
+//Routes for ReadingList page
+Route::get('/readinglist',[ReadingListController::class, 'index'])->middleware('auth');;
+Route::post('/reading-list/add', [ReadingListController::class, 'addToReadingList'])->name('addrl');
+Route::post('/reading-list/remove', [ReadingListController::class, 'removeFromReadingList'])->name('removerl');
+Route::get('/reading-list', [ReadingListController::class, 'getReadingList']);
 
 //Routes for Admin Panel page
 Route::prefix('admin/')->group(function() {
@@ -69,16 +93,21 @@ Route::prefix('admin/')->group(function() {
     Route::get('addproducts', [AdminProductController::class, 'add_index']);
     Route::get('customers', [AdminCustomerController::class, 'index']);
     Route::get('orders', [AdminOrderController::class, 'index']);
-    Route::get('login',[AdminLoginController::class, 'index']);
+    Route::get('login', [AdminLoginController::class, 'index'])->name('admin.login');
+Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
+Route::post('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 });
 
+Route::get('/mainlogin', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
+Route::post('/mainlogin', [LoginController::class, 'login']);
+Route::get('/mainregister',[RegisterController::class, 'showRegistrationForm'])->name('showRegistrationForm');
+Route::post('/mainregister', [RegisterController::class, 'register']);
+Route::redirect("/login", "/mainlogin");
 
 
 
-Route::redirect('/admin','/admin/dashboard');
 
-Route::post('/send-mail', [MailController::class, 'sendMail'])->name('send.mail');
-
+Route::redirect('/admin','/admin/login');
 
 
 require __DIR__.'/auth.php';

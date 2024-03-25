@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import BinButton from "./BinButton";
 import EditBookButton from "./EditBook";
@@ -6,13 +6,57 @@ import FavouriteButton from "./FavouriteButton";
 import AddBookButton from "./AddBookButton";
 
 export default function Products() {
-    // user variable used to fetch user data from database via Axios
     const [book, setBook] = useState([]);
     const imgprefix = "/images/";
     const fetchData = () => {
+        const token = localStorage.getItem("token");
         return axios
-            .get("http://127.0.0.1:8000/api/admin/products")
-            .then((response) => setBook(response.data["books"]));
+            .get("/api/admin/products", {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((response) => setBook(response.data["books"] || []));
+    };
+    const [sortConfig, setSortConfig] = useState({
+        key: null,
+        direction: "ascending",
+    });
+    const sortedBooks = useMemo(() => {
+        let sortableBooks = [...(book ?? [])];
+        if (sortConfig !== null) {
+            sortableBooks.sort((a, b) => {
+                if (a[sortConfig.key] < b[sortConfig.key]) {
+                    return sortConfig.direction === "ascending" ? -1 : 1;
+                }
+                if (a[sortConfig.key] > b[sortConfig.key]) {
+                    return sortConfig.direction === "ascending" ? 1 : -1;
+                }
+                return 0;
+            });
+        }
+        return sortableBooks;
+    }, [book, sortConfig]);
+    const requestSort = (key) => {
+        let direction = "ascending";
+        if (sortConfig.key === key && sortConfig.direction === "ascending") {
+            direction = "descending";
+        }
+        setSortConfig({ key, direction });
+    };
+    const removeBook = (Book_ID) => {
+        const token = localStorage.getItem("token");
+        axios
+            .delete(`/api/admin/products/${Book_ID}`, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then(() => {
+                const updatedBooks = book.filter(
+                    (bookObj) => bookObj.Book_ID !== Book_ID,
+                );
+                setBook(updatedBooks);
+            })
+            .catch((error) => {
+                console.error("There was an error removing the book: ", error);
+            });
     };
 
     useEffect(() => {
@@ -21,7 +65,7 @@ export default function Products() {
     const [favourite, setFavourite] = useState([]);
     const fetchMore = () => {
         return axios
-            .get("http://127.0.0.1:8000/api/admin/favouritebooks")
+            .get("/api/admin/favouritebooks")
             .then((response) => setFavourite(response.data["favourites"]));
     };
 
@@ -30,49 +74,101 @@ export default function Products() {
     }, []);
     return (
         <div className="border border-solid rounded-lg">
-            <div className="w-max">
-                <thead className="dark:text-white dark:bg-cyan-950 text-blue-900 font-bold w-full">
+            <table className="w-max">
+                <thead className="text-white bg-cyan-950 text-blue-900 font-bold w-full">
                     <tr className="">
-                        <td>Book Title</td>
-                        <td>Author</td>
-                        <td>Genre</td>
-                        <td>Price</td>
-                        <td>Stock</td>
-                        <td>Image</td>
-                        <td colspan="3">Action</td>
+                        <th onClick={() => requestSort("Title")}>
+                            Title{" "}
+                            {sortConfig.key === "Title"
+                                ? sortConfig.direction === "ascending"
+                                    ? "🔼"
+                                    : "🔽"
+                                : ""}
+                        </th>
+                        <th
+                            onClick={() => requestSort("Author")}
+                            className="hidden sm:table-cell"
+                        >
+                            Author{" "}
+                            {sortConfig.key === "Author"
+                                ? sortConfig.direction === "ascending"
+                                    ? "🔼"
+                                    : "🔽"
+                                : ""}
+                        </th>
+                        <th
+                            onClick={() => requestSort("Genre")}
+                            className="md:table-cell hidden"
+                        >
+                            Genre{" "}
+                            {sortConfig.key === "Genre"
+                                ? sortConfig.direction === "ascending"
+                                    ? "🔼"
+                                    : "🔽"
+                                : ""}
+                        </th>
+                        <th onClick={() => requestSort("Price")}>
+                            Price{" "}
+                            {sortConfig.key === "Price"
+                                ? sortConfig.direction === "ascending"
+                                    ? "🔼"
+                                    : "🔽"
+                                : ""}
+                        </th>
+                        <th onClick={() => requestSort("Stock")}>
+                            Stock{" "}
+                            {sortConfig.key === "Stock"
+                                ? sortConfig.direction === "ascending"
+                                    ? "🔼"
+                                    : "🔽"
+                                : ""}
+                        </th>
+                        <th className="table-cell md:hidden lg:table-cell">
+                            Book
+                        </th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {book &&
-                        book.length > 0 &&
-                        book.map((bookObj, index) => (
-                            <tr>
-                                <td key={index} className="font-bold">
-                                    {bookObj.Title}
+                    {sortedBooks &&
+                        sortedBooks.length > 0 &&
+                        sortedBooks.map((bookObj) => (
+                            <tr key={bookObj.Book_ID}>
+                                <td className="font-bold">{bookObj.Title}</td>
+                                <td className="hidden sm:table-cell">
+                                    {bookObj.Author}
                                 </td>
-                                <td key={index}>{bookObj.Author}</td>
-                                <td key={index}>{bookObj.Genre}</td>
-                                <td key={index}>{bookObj.Price}</td>
-                                <td key={index}>{bookObj.Stock}</td>
-                                <td key={index}>
+                                <td className="md:table-cell hidden">
+                                    {bookObj.Genre}
+                                </td>
+                                <td>{bookObj.Price}</td>
+                                <td>{bookObj.Stock}</td>
+                                <td className="table-cell md:hidden lg:table-cell">
                                     <img
                                         className="w-20 h-32"
                                         src={imgprefix + bookObj.file}
                                     ></img>
                                 </td>
-                                <td key={index}>
-                                    <BinButton />
-                                </td>
-                                <td key={index}>
-                                    <EditBookButton bookObj={bookObj} />
-                                </td>
-                                <td key={index}>
-                                    <FavouriteButton id={bookObj.Favourite} />
+                                <td className="flex flex-col justify-around sm:flex-row h-full py-6">
+                                    <div className="mb-6 sm:mb-0 sm:mr-2">
+                                        <BinButton
+                                            Book_ID={bookObj.Book_ID}
+                                            onRemove={removeBook}
+                                        />
+                                    </div>
+                                    <div className="mb-6 sm:mb-0 sm:mr-2">
+                                        <EditBookButton bookObj={bookObj} />
+                                    </div>
+                                    <div>
+                                        <FavouriteButton
+                                            id={bookObj.Favourite}
+                                        />
+                                    </div>
                                 </td>
                             </tr>
                         ))}
                 </tbody>
-            </div>
+            </table>
             <div>
                 <ul>
                     {favourite &&

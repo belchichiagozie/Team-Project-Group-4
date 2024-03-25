@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Readinglist
  * 
- * @property int $Customer_ID
+ * @property int $User_ID
  * @property int $Book_ID
  * 
- * @property Customer $customer
+ * @property User $user
  * @property Book $book
  *
  * @package App\Models
@@ -26,18 +26,18 @@ class Readinglist extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'Customer_ID' => 'int',
+		'User_ID' => 'int',
 		'Book_ID' => 'int'
 	];
 
 	protected $fillable = [
-		'Customer_ID',
+		'User_ID',
 		'Book_ID'
 	];
 
 	public function customer()
 	{
-		return $this->belongsTo(Customer::class, 'Customer_ID');
+		return $this->belongsTo(User::class, 'User_ID');
 	}
 
 	public function book()
