@@ -42,7 +42,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AddBookButton() {
-  var token = localStorage.getItem("token");
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     openModal = _useState2[0],
@@ -83,10 +82,9 @@ function AddBookButton() {
             if (imageInput.files[0]) {
               formData.append("image", imageInput.files[0]);
             }
-            axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/addbook", formData, {
+            axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("http://127.0.0.1:8000/api/addbook", formData, {
               headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: "Bearer ".concat(token)
+                "Content-Type": "multipart/form-data"
               }
             }).then(function () {
               window.location.href = "/admin/products";
@@ -131,7 +129,118 @@ function AddBookButton() {
       initialFocus: bookTitleRef,
       popup: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Modal.Header, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(flowbite_react__WEBPACK_IMPORTED_MODULE_0__.Modal.Body, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        children:
+        /*#__PURE__*/
+        /* <div className="space-y-6">
+        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
+            Book Details
+        </h3>
+        <form
+            onSubmit={saveBook}
+            action="/admin/products"
+            method="post"
+            id="addBookForm"
+            encType="multipart/form-data"
+        >
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="title" value="Book Title" />
+                </div>
+                <TextInput
+                    id="title"
+                    name="title"
+                    ref={bookTitleRef}
+                    placeholder="Title"
+                    value={book.title}
+                    onChange={handleInput}
+                    required
+                />
+                <span>{inputErrorList.title}</span>
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="author" value="Author" />
+                </div>
+                <TextInput
+                    id="author"
+                    name="author"
+                    placeholder="Author"
+                    value={book.author}
+                    onChange={handleInput}
+                    required
+                />
+                <span>{inputErrorList.author}</span>
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="genre" value="Genre" />
+                </div>
+                <TextInput
+                    id="genre"
+                    name="genre"
+                    type="text"
+                    placeholder="Genre"
+                    value={book.genre}
+                    onChange={handleInput}
+                    required
+                />
+                <span>{inputErrorList.genre}</span>
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="price" value="Price" />
+                </div>
+                <TextInput
+                    id="price"
+                    type="number"
+                    name="price"
+                    placeholder="Price per Book"
+                    value={book.price}
+                    onChange={handleInput}
+                    required
+                />
+                <span>{inputErrorList.price}</span>
+            </div>
+            <div>
+                <div className="mb-2 block">
+                    <Label htmlFor="stock" value="Stock" />
+                </div>
+                <TextInput
+                    id="stock"
+                    name="stock"
+                    type="number"
+                    placeholder="Stock Amount"
+                    value={book.stock}
+                    onChange={handleInput}
+                    required
+                />
+                <span>{inputErrorList.price}</span>
+            </div>
+            <div class="form-group">
+                <label for="image">Upload Image</label>
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    onChange={handleInput}
+                    accept="image/*"
+                    required
+                />
+            </div>
+            <div className="w-full">
+                <Button
+                    type="submit"
+                    onClick={() => setOpenModal(false)}
+                >
+                    Add Book
+                </Button>
+                <Button onClick={() => setOpenModal(false)}>
+                    Cancel
+                </Button>
+            </div>
+        </form>
+        </div> */
+        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "space-y-6",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
             className: "text-xl font-medium text-gray-900 dark:text-white",
@@ -415,8 +524,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function EditBookButton(_ref) {
   var bookObj = _ref.bookObj;
-  var token = localStorage.getItem("token");
-  console.log(bookObj);
   var imgfile = bookObj.file;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
@@ -458,18 +565,16 @@ function EditBookButton(_ref) {
           case 0:
             e.preventDefault();
             formData = new FormData();
-            formData.append("_method", "PUT");
             Object.keys(book).forEach(function (key) {
               return formData.append(key, book[key]);
             });
             imageInput = document.querySelector("#image");
             if (newFile) {
-              formData.append("image", newFile);
+              formData.append("image", file);
             }
-            axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/api/updatebook/".concat(book.id), formData, {
+            axios__WEBPACK_IMPORTED_MODULE_3__["default"].put("http://127.0.0.1:8000/api/updatebook/".concat(book.id), formData, {
               headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: "Bearer ".concat(token)
+                "Content-Type": "multipart/form-data"
               }
             }).then(function () {
               window.location.href = "/admin/products";
@@ -482,7 +587,7 @@ function EditBookButton(_ref) {
                 }
               }
             });
-          case 7:
+          case 6:
           case "end":
             return _context.stop();
         }
@@ -728,10 +833,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FavouriteButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FavouriteButton */ "./resources/js/Components/FavouriteButton.jsx");
 /* harmony import */ var _AddBookButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddBookButton */ "./resources/js/Components/AddBookButton.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -747,56 +848,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Products() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState2 = _slicedToArray(_useState, 2),
-    book = _useState2[0],
-    setBook = _useState2[1];
-  var imgprefix = "/images/";
-  var fetchData = function fetchData() {
-    var token = localStorage.getItem("token");
-    return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("/api/admin/products", {
-      headers: {
-        Authorization: "Bearer ".concat(token)
-      }
-    }).then(function (response) {
-      return setBook(response.data["books"] || []);
-    });
-  };
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-      key: null,
-      direction: "ascending"
-    }),
-    _useState4 = _slicedToArray(_useState3, 2),
-    sortConfig = _useState4[0],
-    setSortConfig = _useState4[1];
-  var sortedBooks = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    var sortableBooks = _toConsumableArray(book !== null && book !== void 0 ? book : []);
-    if (sortConfig !== null) {
-      sortableBooks.sort(function (a, b) {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? -1 : 1;
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-    return sortableBooks;
-  }, [book, sortConfig]);
-  var requestSort = function requestSort(key) {
-    var direction = "ascending";
-    if (sortConfig.key === key && sortConfig.direction === "ascending") {
-      direction = "descending";
-    }
-    setSortConfig({
-      key: key,
-      direction: direction
-    });
-  };
+  // user variable used to fetch user data from database via Axios
   var removeBook = function removeBook(Book_ID) {
     var token = localStorage.getItem("token");
-    axios__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("/api/admin/products/".concat(Book_ID), {
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("http://127.0.0.1:8000/api/admin/products/".concat(Book_ID), {
       headers: {
         Authorization: "Bearer ".concat(token)
       }
@@ -809,15 +864,30 @@ function Products() {
       console.error("There was an error removing the book: ", error);
     });
   };
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    book = _useState2[0],
+    setBook = _useState2[1];
+  var imgprefix = "/images/";
+  var fetchData = function fetchData() {
+    var token = localStorage.getItem("token");
+    return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/admin/products", {
+      headers: {
+        Authorization: "Bearer ".concat(token)
+      }
+    }).then(function (response) {
+      return setBook(response.data["books"]);
+    });
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchData();
   }, []);
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState6 = _slicedToArray(_useState5, 2),
-    favourite = _useState6[0],
-    setFavourite = _useState6[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    favourite = _useState4[0],
+    setFavourite = _useState4[1];
   var fetchMore = function fetchMore() {
-    return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("/api/admin/favouritebooks").then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://127.0.0.1:8000/api/admin/favouritebooks").then(function (response) {
       return setFavourite(response.data["favourites"]);
     });
   };
@@ -826,86 +896,65 @@ function Products() {
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "border border-solid rounded-lg",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "w-max",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
-        className: "text-white bg-cyan-950 text-blue-900 font-bold w-full",
+        className: "dark:text-white dark:bg-cyan-950 text-blue-900 font-bold w-full",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
           className: "",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
-            onClick: function onClick() {
-              return requestSort("Title");
-            },
-            children: ["Title", " ", sortConfig.key === "Title" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
-            onClick: function onClick() {
-              return requestSort("Author");
-            },
-            className: "hidden sm:table-cell",
-            children: ["Author", " ", sortConfig.key === "Author" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
-            onClick: function onClick() {
-              return requestSort("Genre");
-            },
-            className: "md:table-cell hidden",
-            children: ["Genre", " ", sortConfig.key === "Genre" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
-            onClick: function onClick() {
-              return requestSort("Price");
-            },
-            children: ["Price", " ", sortConfig.key === "Price" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("th", {
-            onClick: function onClick() {
-              return requestSort("Stock");
-            },
-            children: ["Stock", " ", sortConfig.key === "Stock" ? sortConfig.direction === "ascending" ? "🔼" : "🔽" : ""]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-            className: "table-cell md:hidden lg:table-cell",
-            children: "Book"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            children: "Book Title"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            children: "Author"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            className: "md:inline-block hidden",
+            children: "Genre"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            children: "Price"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            children: "Stock"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            className: "lg:inline-block hidden",
+            children: "Image"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            colspan: "3",
             children: "Action"
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-        children: sortedBooks && sortedBooks.length > 0 && sortedBooks.map(function (bookObj) {
+        children: book && book.length > 0 && book.map(function (bookObj) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               className: "font-bold",
               children: bookObj.Title
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              className: "hidden sm:table-cell",
               children: bookObj.Author
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              className: "md:table-cell hidden",
+              className: "",
               children: bookObj.Genre
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: bookObj.Price
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               children: bookObj.Stock
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              className: "table-cell md:hidden lg:table-cell",
+              className: "lg:inline-block hidden",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
                 className: "w-20 h-32",
                 src: imgprefix + bookObj.file
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
-              className: "flex flex-col justify-around sm:flex-row h-full py-6",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "mb-6 sm:mb-0 sm:mr-2",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_BinButton__WEBPACK_IMPORTED_MODULE_1__["default"], {
-                  Book_ID: bookObj.Book_ID,
-                  onRemove: removeBook
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                className: "mb-6 sm:mb-0 sm:mr-2",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditBook__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                  bookObj: bookObj
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FavouriteButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  id: bookObj.Favourite
-                })
-              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_BinButton__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                Book_ID: bookObj.Book_ID,
+                onRemove: removeBook
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditBook__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                bookObj: bookObj
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_FavouriteButton__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                id: bookObj.Favourite
+              })
             })]
           }, bookObj.Book_ID);
         })
@@ -2052,6 +2101,39 @@ function getUTCDayOfYear(dirtyDate) {
 
 /***/ }),
 
+/***/ "./node_modules/date-fns/esm/_lib/getUTCISOWeek/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/date-fns/esm/_lib/getUTCISOWeek/index.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ getUTCISOWeek)
+/* harmony export */ });
+/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
+/* harmony import */ var _startOfUTCISOWeek_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../startOfUTCISOWeek/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCISOWeek/index.js");
+/* harmony import */ var _startOfUTCISOWeekYear_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../startOfUTCISOWeekYear/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCISOWeekYear/index.js");
+/* harmony import */ var _requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+
+
+var MILLISECONDS_IN_WEEK = 604800000;
+function getUTCISOWeek(dirtyDate) {
+  (0,_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate);
+  var diff = (0,_startOfUTCISOWeek_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(date).getTime() - (0,_startOfUTCISOWeekYear_index_js__WEBPACK_IMPORTED_MODULE_3__["default"])(date).getTime();
+
+  // Round the number of days to the nearest integer
+  // because the number of milliseconds in a week is not constant
+  // (e.g. it's different in the week of the daylight saving time clock shift)
+  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1;
+}
+
+/***/ }),
+
 /***/ "./node_modules/date-fns/esm/_lib/getUTCISOWeekYear/index.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/date-fns/esm/_lib/getUTCISOWeekYear/index.js ***!
@@ -2092,30 +2174,30 @@ function getUTCISOWeekYear(dirtyDate) {
 
 /***/ }),
 
-/***/ "./node_modules/date-fns/esm/_lib/getUTCISOWeek/index.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/date-fns/esm/_lib/getUTCISOWeek/index.js ***!
-  \***************************************************************/
+/***/ "./node_modules/date-fns/esm/_lib/getUTCWeek/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/date-fns/esm/_lib/getUTCWeek/index.js ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ getUTCISOWeek)
+/* harmony export */   "default": () => (/* binding */ getUTCWeek)
 /* harmony export */ });
 /* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
-/* harmony import */ var _startOfUTCISOWeek_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../startOfUTCISOWeek/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCISOWeek/index.js");
-/* harmony import */ var _startOfUTCISOWeekYear_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../startOfUTCISOWeekYear/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCISOWeekYear/index.js");
+/* harmony import */ var _startOfUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../startOfUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCWeek/index.js");
+/* harmony import */ var _startOfUTCWeekYear_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../startOfUTCWeekYear/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCWeekYear/index.js");
 /* harmony import */ var _requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
 
 
 
 
 var MILLISECONDS_IN_WEEK = 604800000;
-function getUTCISOWeek(dirtyDate) {
+function getUTCWeek(dirtyDate, options) {
   (0,_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
   var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate);
-  var diff = (0,_startOfUTCISOWeek_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(date).getTime() - (0,_startOfUTCISOWeekYear_index_js__WEBPACK_IMPORTED_MODULE_3__["default"])(date).getTime();
+  var diff = (0,_startOfUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(date, options).getTime() - (0,_startOfUTCWeekYear_index_js__WEBPACK_IMPORTED_MODULE_3__["default"])(date, options).getTime();
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
@@ -2173,39 +2255,6 @@ function getUTCWeekYear(dirtyDate, options) {
   } else {
     return year - 1;
   }
-}
-
-/***/ }),
-
-/***/ "./node_modules/date-fns/esm/_lib/getUTCWeek/index.js":
-/*!************************************************************!*\
-  !*** ./node_modules/date-fns/esm/_lib/getUTCWeek/index.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ getUTCWeek)
-/* harmony export */ });
-/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
-/* harmony import */ var _startOfUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../startOfUTCWeek/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCWeek/index.js");
-/* harmony import */ var _startOfUTCWeekYear_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../startOfUTCWeekYear/index.js */ "./node_modules/date-fns/esm/_lib/startOfUTCWeekYear/index.js");
-/* harmony import */ var _requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
-
-
-
-
-var MILLISECONDS_IN_WEEK = 604800000;
-function getUTCWeek(dirtyDate, options) {
-  (0,_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
-  var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate);
-  var diff = (0,_startOfUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])(date, options).getTime() - (0,_startOfUTCWeekYear_index_js__WEBPACK_IMPORTED_MODULE_3__["default"])(date, options).getTime();
-
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / MILLISECONDS_IN_WEEK) + 1;
 }
 
 /***/ }),
@@ -2400,6 +2449,34 @@ function setUTCWeek(dirtyDate, dirtyWeek, options) {
 
 /***/ }),
 
+/***/ "./node_modules/date-fns/esm/_lib/startOfUTCISOWeek/index.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/date-fns/esm/_lib/startOfUTCISOWeek/index.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ startOfUTCISOWeek)
+/* harmony export */ });
+/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
+/* harmony import */ var _requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+
+
+function startOfUTCISOWeek(dirtyDate) {
+  (0,_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
+  var weekStartsOn = 1;
+  var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate);
+  var day = date.getUTCDay();
+  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+  date.setUTCDate(date.getUTCDate() - diff);
+  date.setUTCHours(0, 0, 0, 0);
+  return date;
+}
+
+/***/ }),
+
 /***/ "./node_modules/date-fns/esm/_lib/startOfUTCISOWeekYear/index.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/date-fns/esm/_lib/startOfUTCISOWeekYear/index.js ***!
@@ -2429,25 +2506,36 @@ function startOfUTCISOWeekYear(dirtyDate) {
 
 /***/ }),
 
-/***/ "./node_modules/date-fns/esm/_lib/startOfUTCISOWeek/index.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/date-fns/esm/_lib/startOfUTCISOWeek/index.js ***!
-  \*******************************************************************/
+/***/ "./node_modules/date-fns/esm/_lib/startOfUTCWeek/index.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/date-fns/esm/_lib/startOfUTCWeek/index.js ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ startOfUTCISOWeek)
+/* harmony export */   "default": () => (/* binding */ startOfUTCWeek)
 /* harmony export */ });
-/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
+/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
 /* harmony import */ var _requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
+/* harmony import */ var _toInteger_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../toInteger/index.js */ "./node_modules/date-fns/esm/_lib/toInteger/index.js");
+/* harmony import */ var _defaultOptions_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../defaultOptions/index.js */ "./node_modules/date-fns/esm/_lib/defaultOptions/index.js");
 
 
-function startOfUTCISOWeek(dirtyDate) {
+
+
+function startOfUTCWeek(dirtyDate, options) {
+  var _ref, _ref2, _ref3, _options$weekStartsOn, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
   (0,_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
-  var weekStartsOn = 1;
-  var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_1__["default"])(dirtyDate);
+  var defaultOptions = (0,_defaultOptions_index_js__WEBPACK_IMPORTED_MODULE_1__.getDefaultOptions)();
+  var weekStartsOn = (0,_toInteger_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])((_ref = (_ref2 = (_ref3 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.weekStartsOn) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.weekStartsOn) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.weekStartsOn) !== null && _ref !== void 0 ? _ref : 0);
+
+  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
+  }
+  var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_3__["default"])(dirtyDate);
   var day = date.getUTCDay();
   var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
   date.setUTCDate(date.getUTCDate() - diff);
@@ -2488,45 +2576,6 @@ function startOfUTCWeekYear(dirtyDate, options) {
   firstWeek.setUTCFullYear(year, 0, firstWeekContainsDate);
   firstWeek.setUTCHours(0, 0, 0, 0);
   var date = (0,_startOfUTCWeek_index_js__WEBPACK_IMPORTED_MODULE_4__["default"])(firstWeek, options);
-  return date;
-}
-
-/***/ }),
-
-/***/ "./node_modules/date-fns/esm/_lib/startOfUTCWeek/index.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/date-fns/esm/_lib/startOfUTCWeek/index.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ startOfUTCWeek)
-/* harmony export */ });
-/* harmony import */ var _toDate_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../toDate/index.js */ "./node_modules/date-fns/esm/toDate/index.js");
-/* harmony import */ var _requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../requiredArgs/index.js */ "./node_modules/date-fns/esm/_lib/requiredArgs/index.js");
-/* harmony import */ var _toInteger_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../toInteger/index.js */ "./node_modules/date-fns/esm/_lib/toInteger/index.js");
-/* harmony import */ var _defaultOptions_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../defaultOptions/index.js */ "./node_modules/date-fns/esm/_lib/defaultOptions/index.js");
-
-
-
-
-function startOfUTCWeek(dirtyDate, options) {
-  var _ref, _ref2, _ref3, _options$weekStartsOn, _options$locale, _options$locale$optio, _defaultOptions$local, _defaultOptions$local2;
-  (0,_requiredArgs_index_js__WEBPACK_IMPORTED_MODULE_0__["default"])(1, arguments);
-  var defaultOptions = (0,_defaultOptions_index_js__WEBPACK_IMPORTED_MODULE_1__.getDefaultOptions)();
-  var weekStartsOn = (0,_toInteger_index_js__WEBPACK_IMPORTED_MODULE_2__["default"])((_ref = (_ref2 = (_ref3 = (_options$weekStartsOn = options === null || options === void 0 ? void 0 : options.weekStartsOn) !== null && _options$weekStartsOn !== void 0 ? _options$weekStartsOn : options === null || options === void 0 ? void 0 : (_options$locale = options.locale) === null || _options$locale === void 0 ? void 0 : (_options$locale$optio = _options$locale.options) === null || _options$locale$optio === void 0 ? void 0 : _options$locale$optio.weekStartsOn) !== null && _ref3 !== void 0 ? _ref3 : defaultOptions.weekStartsOn) !== null && _ref2 !== void 0 ? _ref2 : (_defaultOptions$local = defaultOptions.locale) === null || _defaultOptions$local === void 0 ? void 0 : (_defaultOptions$local2 = _defaultOptions$local.options) === null || _defaultOptions$local2 === void 0 ? void 0 : _defaultOptions$local2.weekStartsOn) !== null && _ref !== void 0 ? _ref : 0);
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
-  }
-  var date = (0,_toDate_index_js__WEBPACK_IMPORTED_MODULE_3__["default"])(dirtyDate);
-  var day = date.getUTCDay();
-  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
-  date.setUTCDate(date.getUTCDate() - diff);
-  date.setUTCHours(0, 0, 0, 0);
   return date;
 }
 
@@ -13093,6 +13142,140 @@ const fileInputTheme = {
 
 /***/ }),
 
+/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Floating: () => (/* binding */ Floating)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
+/* harmony import */ var _hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/use-floating */ "./node_modules/flowbite-react/lib/esm/hooks/use-floating.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js");
+'use client';
+
+
+
+
+
+
+/**
+ * @see https://floating-ui.com/docs/react-dom-interactions
+ */
+const Floating = ({ animation = 'duration-300', arrow = true, children, className, content, placement = 'top', style = 'dark', theme, trigger = 'hover', minWidth, ...props }) => {
+    const arrowRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const floatingProperties = (0,_hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__.useBaseFLoating)({
+        open,
+        placement,
+        arrowRef,
+        setOpen,
+    });
+    const { context, middlewareData: { arrow: { x: arrowX, y: arrowY } = {} }, refs, strategy, update, x, y, } = floatingProperties;
+    const focus = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_4__.useFocus)(context);
+    const { getFloatingProps, getReferenceProps } = (0,_hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__.useFloatingInteractions)({
+        context,
+        role: 'tooltip',
+        trigger,
+        interactions: [focus],
+    });
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        if (refs.reference.current && refs.floating.current && open) {
+            return (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.autoUpdate)(refs.reference.current, refs.floating.current, update);
+        }
+    }, [open, refs.floating, refs.reference, update]);
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { ref: refs.setReference, className: theme.target, "data-testid": "flowbite-tooltip-target", ...getReferenceProps(), children: children }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { ref: refs.setFloating, "data-testid": "flowbite-tooltip", ...getFloatingProps({
+                    className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_6__.twMerge)(theme.base, animation && `${theme.animation} ${animation}`, !open && theme.hidden, theme.style[style], className),
+                    style: {
+                        position: strategy,
+                        top: y ?? ' ',
+                        left: x ?? ' ',
+                        minWidth,
+                    },
+                    ...props,
+                }), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: theme.content, children: content }), arrow && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_6__.twMerge)(theme.arrow.base, style === 'dark' && theme.arrow.style.dark, style === 'light' && theme.arrow.style.light, style === 'auto' && theme.arrow.style.auto), "data-testid": "flowbite-tooltip-arrow", ref: arrowRef, style: {
+                            top: arrowY ?? ' ',
+                            left: arrowX ?? ' ',
+                            right: ' ',
+                            bottom: ' ',
+                            [(0,_helpers__WEBPACK_IMPORTED_MODULE_3__.getArrowPlacement)({ placement: floatingProperties.placement })]: theme.arrow.placement,
+                        }, children: "\u00A0" }))] })] }));
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getArrowPlacement: () => (/* binding */ getArrowPlacement),
+/* harmony export */   getMiddleware: () => (/* binding */ getMiddleware),
+/* harmony export */   getPlacement: () => (/* binding */ getPlacement)
+/* harmony export */ });
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/core/dist/floating-ui.core.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs");
+/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs");
+
+/**
+ * @see https://floating-ui.com/docs/middleware
+ */
+const getMiddleware = ({ arrowRef, placement, }) => {
+    const middleware = [];
+    middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_0__.offset)(8));
+    middleware.push(placement === 'auto' ? (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.autoPlacement)() : (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.flip)());
+    middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.shift)({ padding: 8 }));
+    if (arrowRef?.current) {
+        middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_2__.arrow)({ element: arrowRef.current }));
+    }
+    return middleware;
+};
+const getPlacement = ({ placement }) => {
+    return placement === 'auto' ? undefined : placement;
+};
+const getArrowPlacement = ({ placement }) => {
+    return {
+        top: 'bottom',
+        right: 'left',
+        bottom: 'top',
+        left: 'right',
+    }[placement.split('-')[0]];
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/index.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Floating: () => (/* reexport safe */ _Floating__WEBPACK_IMPORTED_MODULE_0__.Floating)
+/* harmony export */ });
+/* harmony import */ var _Floating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Floating */ "./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js");
+
+
+
+/***/ }),
+
 /***/ "./node_modules/flowbite-react/lib/esm/components/FloatingLabel/FloatingLabel.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/flowbite-react/lib/esm/components/FloatingLabel/FloatingLabel.js ***!
@@ -13248,140 +13431,6 @@ const floatingLabelTheme = {
         error: 'mt-2 text-xs text-red-600 dark:text-red-400',
     },
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js ***!
-  \*****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Floating: () => (/* binding */ Floating)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react/dist/floating-ui.react.mjs");
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
-/* harmony import */ var _hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/use-floating */ "./node_modules/flowbite-react/lib/esm/hooks/use-floating.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js");
-'use client';
-
-
-
-
-
-
-/**
- * @see https://floating-ui.com/docs/react-dom-interactions
- */
-const Floating = ({ animation = 'duration-300', arrow = true, children, className, content, placement = 'top', style = 'dark', theme, trigger = 'hover', minWidth, ...props }) => {
-    const arrowRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-    const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const floatingProperties = (0,_hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__.useBaseFLoating)({
-        open,
-        placement,
-        arrowRef,
-        setOpen,
-    });
-    const { context, middlewareData: { arrow: { x: arrowX, y: arrowY } = {} }, refs, strategy, update, x, y, } = floatingProperties;
-    const focus = (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_4__.useFocus)(context);
-    const { getFloatingProps, getReferenceProps } = (0,_hooks_use_floating__WEBPACK_IMPORTED_MODULE_2__.useFloatingInteractions)({
-        context,
-        role: 'tooltip',
-        trigger,
-        interactions: [focus],
-    });
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-        if (refs.reference.current && refs.floating.current && open) {
-            return (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_5__.autoUpdate)(refs.reference.current, refs.floating.current, update);
-        }
-    }, [open, refs.floating, refs.reference, update]);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { ref: refs.setReference, className: theme.target, "data-testid": "flowbite-tooltip-target", ...getReferenceProps(), children: children }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { ref: refs.setFloating, "data-testid": "flowbite-tooltip", ...getFloatingProps({
-                    className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_6__.twMerge)(theme.base, animation && `${theme.animation} ${animation}`, !open && theme.hidden, theme.style[style], className),
-                    style: {
-                        position: strategy,
-                        top: y ?? ' ',
-                        left: x ?? ' ',
-                        minWidth,
-                    },
-                    ...props,
-                }), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: theme.content, children: content }), arrow && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_6__.twMerge)(theme.arrow.base, style === 'dark' && theme.arrow.style.dark, style === 'light' && theme.arrow.style.light, style === 'auto' && theme.arrow.style.auto), "data-testid": "flowbite-tooltip-arrow", ref: arrowRef, style: {
-                            top: arrowY ?? ' ',
-                            left: arrowX ?? ' ',
-                            right: ' ',
-                            bottom: ' ',
-                            [(0,_helpers__WEBPACK_IMPORTED_MODULE_3__.getArrowPlacement)({ placement: floatingProperties.placement })]: theme.arrow.placement,
-                        }, children: "\u00A0" }))] })] }));
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/helpers.js ***!
-  \****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getArrowPlacement: () => (/* binding */ getArrowPlacement),
-/* harmony export */   getMiddleware: () => (/* binding */ getMiddleware),
-/* harmony export */   getPlacement: () => (/* binding */ getPlacement)
-/* harmony export */ });
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/core/dist/floating-ui.core.mjs");
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs");
-/* harmony import */ var _floating_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @floating-ui/react */ "./node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs");
-
-/**
- * @see https://floating-ui.com/docs/middleware
- */
-const getMiddleware = ({ arrowRef, placement, }) => {
-    const middleware = [];
-    middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_0__.offset)(8));
-    middleware.push(placement === 'auto' ? (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.autoPlacement)() : (0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.flip)());
-    middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_1__.shift)({ padding: 8 }));
-    if (arrowRef?.current) {
-        middleware.push((0,_floating_ui_react__WEBPACK_IMPORTED_MODULE_2__.arrow)({ element: arrowRef.current }));
-    }
-    return middleware;
-};
-const getPlacement = ({ placement }) => {
-    return placement === 'auto' ? undefined : placement;
-};
-const getArrowPlacement = ({ placement }) => {
-    return {
-        top: 'bottom',
-        right: 'left',
-        bottom: 'top',
-        left: 'right',
-    }[placement.split('-')[0]];
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/Floating/index.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/Floating/index.js ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Floating: () => (/* reexport safe */ _Floating__WEBPACK_IMPORTED_MODULE_0__.Floating)
-/* harmony export */ });
-/* harmony import */ var _Floating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Floating */ "./node_modules/flowbite-react/lib/esm/components/Floating/Floating.js");
-
 
 
 /***/ }),
@@ -13973,6 +14022,113 @@ const labelTheme = {
 
 /***/ }),
 
+/***/ "./node_modules/flowbite-react/lib/esm/components/List/List.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/List/List.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   List: () => (/* binding */ List)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
+/* harmony import */ var _helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/merge-deep */ "./node_modules/flowbite-react/lib/esm/helpers/merge-deep.js");
+/* harmony import */ var _theme_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme-store */ "./node_modules/flowbite-react/lib/esm/theme-store/index.js");
+/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ListItem */ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js");
+
+
+
+
+
+const ListComponent = ({ children, className, unstyled, nested, ordered, horizontal, theme: customTheme = {}, ...props }) => {
+    const theme = (0,_helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__.mergeDeep)((0,_theme_store__WEBPACK_IMPORTED_MODULE_2__.getTheme)().list, customTheme);
+    const Component = ordered ? 'ol' : 'ul';
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Component, { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_4__.twMerge)(theme.root.base, theme.root.ordered[ordered ? 'on' : 'off'], unstyled && theme.root.unstyled, nested && theme.root.nested, horizontal && theme.root.horizontal, className), ...props, children: children }));
+};
+ListComponent.displayName = 'List';
+_ListItem__WEBPACK_IMPORTED_MODULE_3__.ListItem.displayName = 'List.Item';
+const List = Object.assign(ListComponent, { Item: _ListItem__WEBPACK_IMPORTED_MODULE_3__.ListItem });
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/List/ListItem.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListItem: () => (/* binding */ ListItem)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
+/* harmony import */ var _helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/merge-deep */ "./node_modules/flowbite-react/lib/esm/helpers/merge-deep.js");
+/* harmony import */ var _theme_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme-store */ "./node_modules/flowbite-react/lib/esm/theme-store/index.js");
+
+
+
+
+const ListItem = ({ children, className, theme: customTheme = {} }) => {
+    const theme = (0,_helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__.mergeDeep)((0,_theme_store__WEBPACK_IMPORTED_MODULE_2__.getTheme)().listGroup.item, customTheme);
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_3__.twMerge)(theme.base, className), children: children });
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/List/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/List/index.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   List: () => (/* reexport safe */ _List__WEBPACK_IMPORTED_MODULE_0__.List),
+/* harmony export */   ListItem: () => (/* reexport safe */ _ListItem__WEBPACK_IMPORTED_MODULE_1__.ListItem)
+/* harmony export */ });
+/* harmony import */ var _List__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./List */ "./node_modules/flowbite-react/lib/esm/components/List/List.js");
+/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListItem */ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js");
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/flowbite-react/lib/esm/components/List/theme.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/flowbite-react/lib/esm/components/List/theme.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   listTheme: () => (/* binding */ listTheme)
+/* harmony export */ });
+const listTheme = {
+    root: {
+        base: 'space-y-1 text-gray-500 list-inside dark:text-gray-400',
+        ordered: {
+            off: 'list-disc',
+            on: 'list-decimal',
+        },
+        horizontal: 'flex flex-wrap items-center space-x-4 space-y-0 justify-center list-none',
+        unstyled: 'list-none',
+        nested: 'ps-5 mt-2',
+    },
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/flowbite-react/lib/esm/components/ListGroup/ListGroup.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/flowbite-react/lib/esm/components/ListGroup/ListGroup.js ***!
@@ -14089,113 +14245,6 @@ const listGroupTheme = {
             },
             icon: 'mr-2 h-4 w-4 fill-current',
         },
-    },
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/List/List.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/List/List.js ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   List: () => (/* binding */ List)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
-/* harmony import */ var _helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/merge-deep */ "./node_modules/flowbite-react/lib/esm/helpers/merge-deep.js");
-/* harmony import */ var _theme_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme-store */ "./node_modules/flowbite-react/lib/esm/theme-store/index.js");
-/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ListItem */ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js");
-
-
-
-
-
-const ListComponent = ({ children, className, unstyled, nested, ordered, horizontal, theme: customTheme = {}, ...props }) => {
-    const theme = (0,_helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__.mergeDeep)((0,_theme_store__WEBPACK_IMPORTED_MODULE_2__.getTheme)().list, customTheme);
-    const Component = ordered ? 'ol' : 'ul';
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Component, { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_4__.twMerge)(theme.root.base, theme.root.ordered[ordered ? 'on' : 'off'], unstyled && theme.root.unstyled, nested && theme.root.nested, horizontal && theme.root.horizontal, className), ...props, children: children }));
-};
-ListComponent.displayName = 'List';
-_ListItem__WEBPACK_IMPORTED_MODULE_3__.ListItem.displayName = 'List.Item';
-const List = Object.assign(ListComponent, { Item: _ListItem__WEBPACK_IMPORTED_MODULE_3__.ListItem });
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/List/ListItem.js ***!
-  \*************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ListItem: () => (/* binding */ ListItem)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var tailwind_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tailwind-merge */ "./node_modules/tailwind-merge/dist/bundle-mjs.mjs");
-/* harmony import */ var _helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/merge-deep */ "./node_modules/flowbite-react/lib/esm/helpers/merge-deep.js");
-/* harmony import */ var _theme_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme-store */ "./node_modules/flowbite-react/lib/esm/theme-store/index.js");
-
-
-
-
-const ListItem = ({ children, className, theme: customTheme = {} }) => {
-    const theme = (0,_helpers_merge_deep__WEBPACK_IMPORTED_MODULE_1__.mergeDeep)((0,_theme_store__WEBPACK_IMPORTED_MODULE_2__.getTheme)().listGroup.item, customTheme);
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: (0,tailwind_merge__WEBPACK_IMPORTED_MODULE_3__.twMerge)(theme.base, className), children: children });
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/List/index.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/List/index.js ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   List: () => (/* reexport safe */ _List__WEBPACK_IMPORTED_MODULE_0__.List),
-/* harmony export */   ListItem: () => (/* reexport safe */ _ListItem__WEBPACK_IMPORTED_MODULE_1__.ListItem)
-/* harmony export */ });
-/* harmony import */ var _List__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./List */ "./node_modules/flowbite-react/lib/esm/components/List/List.js");
-/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListItem */ "./node_modules/flowbite-react/lib/esm/components/List/ListItem.js");
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/flowbite-react/lib/esm/components/List/theme.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/flowbite-react/lib/esm/components/List/theme.js ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   listTheme: () => (/* binding */ listTheme)
-/* harmony export */ });
-const listTheme = {
-    root: {
-        base: 'space-y-1 text-gray-500 list-inside dark:text-gray-400',
-        ordered: {
-            off: 'list-disc',
-            on: 'list-decimal',
-        },
-        horizontal: 'flex flex-wrap items-center space-x-4 space-y-0 justify-center list-none',
-        unstyled: 'list-none',
-        nested: 'ps-5 mt-2',
     },
 };
 
@@ -35746,26 +35795,6 @@ var animationPropTypes = {
 
 /***/ }),
 
-/***/ "./node_modules/rsuite/esm/ButtonGroup/ButtonGroupContext.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/rsuite/esm/ButtonGroup/ButtonGroupContext.js ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-'use client';
-
-var ButtonGroupContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createContext(null);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ButtonGroupContext);
-
-/***/ }),
-
 /***/ "./node_modules/rsuite/esm/Button/Button.js":
 /*!**************************************************!*\
   !*** ./node_modules/rsuite/esm/Button/Button.js ***!
@@ -35904,6 +35933,26 @@ __webpack_require__.r(__webpack_exports__);
 'use client';
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Button__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
+/***/ "./node_modules/rsuite/esm/ButtonGroup/ButtonGroupContext.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/rsuite/esm/ButtonGroup/ButtonGroupContext.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+'use client';
+
+var ButtonGroupContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createContext(null);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ButtonGroupContext);
 
 /***/ }),
 

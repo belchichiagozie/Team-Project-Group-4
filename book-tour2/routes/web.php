@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ReadingListController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderSummaryController;
+use App\Http\Controllers\MailController;
 
 
 
@@ -98,6 +99,10 @@ Route::prefix('admin/')->group(function() {
 Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
 Route::post('logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 });
+
+//Routes for Contactus Page
+Route::get('/contactus',[MailController::class, 'index'])->name('contactus.index');
+Route::post('/send-mail', [MailController::class, 'sendMail'])->name('send.mail');
 
 Route::get('/mainlogin', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
 Route::post('/mainlogin', [LoginController::class, 'login']);

@@ -11,6 +11,7 @@ module.exports = {
         "./resources/views/adminp.blade.php",
         "./resources/views/Basket/ordersview.blade.php",
         "./resources/views/login.blade.php",
+        "./resources/views/mail.blade.php",
         "./resources/views/admin/login.blade.php",
         "./resources/js/**/*.jsx",
         "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",

@@ -28,17 +28,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function BookStockChart() {
+function BookStockChart(_ref) {
+  var isLightMode = _ref.isLightMode;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     book = _useState2[0],
     setBook = _useState2[1];
   var token = localStorage.getItem("token");
-  var isDarkMode = function isDarkMode() {
-    return document.documentElement.classList.contains("dark");
-  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("/api/admin/products", {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://127.0.0.1:8000/api/admin/products", {
       headers: {
         Authorization: "Bearer ".concat(token)
       }
@@ -46,88 +44,63 @@ function BookStockChart() {
       return setBook(response.data["books"]);
     });
   }, []);
-  var themeStyles = {
-    light: {
-      backgroundColor1: "#4D89FF",
-      backgroundColor2: "#FFC658",
-      gridColor: "rgba(0, 0, 0, 0.1)",
-      tickColor: "black"
-    },
-    dark: {
-      backgroundColor1: "#1E40AF",
-      backgroundColor2: "#F59E0B",
-      gridColor: "rgba(255, 255, 255, 0.1)",
-      tickColor: "white"
-    }
-  };
-  var currentTheme = isDarkMode() ? themeStyles.dark : themeStyles.light;
   var options = {
     scales: {
       x: {
         ticks: {
-          color: currentTheme.tickColor
+          color: isLightMode ? "black" : "white"
         },
         grid: {
-          color: currentTheme.gridColor
+          color: "rgba(255, 255, 255, 0.1)"
         }
       },
       y: {
-        beginAtZero: true,
         ticks: {
-          color: currentTheme.tickColor
+          color: isLightMode ? "black" : "white"
         },
         grid: {
-          color: currentTheme.gridColor
+          color: "rgba(255, 255, 255, 0.1)"
         }
       }
     },
     plugins: {
       legend: {
         labels: {
-          color: currentTheme.tickColor
+          color: isLightMode ? "black" : "white"
         }
-      },
-      tooltip: {
-        mode: "index",
-        intersect: false,
-        bodySpacing: 8,
-        titleMarginBottom: 10,
-        titleColor: isDarkMode() ? "black" : "white",
-        bodyColor: isDarkMode() ? "black" : "white",
-        backgroundColor: isDarkMode() ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.8)",
-        borderColor: isDarkMode() ? "rgba(255,255,255,0.9)" : "rgba(0,0,0,0.9)",
-        borderWidth: 1
       }
-    },
-    responsive: true,
-    maintainAspectRatio: false
+    }
   };
   var newData = {
     labels: book.map(function (item) {
       return item.Title;
     }),
     datasets: [{
-      label: "Amount In Stock",
+      label: "Stock of each book",
       data: book.map(function (item) {
         return item.Stock;
       }),
-      backgroundColor: currentTheme.backgroundColor1,
-      borderColor: currentTheme.tickColor,
-      borderWidth: 2
+      fill: true,
+      responsive: true,
+      backgroundColor: isLightMode ? "#106586" : "#a5f3fc",
+      borderColor: "#a5f3fc"
     }, {
-      label: "Price (£)",
+      label: "Price of each book",
       data: book.map(function (item) {
         return item.Price;
       }),
-      backgroundColor: currentTheme.backgroundColor2,
-      borderColor: currentTheme.tickColor,
-      borderWidth: 2
+      fill: true,
+      responsive: true,
+      backgroundColor: isLightMode ? "#183ddc" : "#51fdf0"
     }]
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__.Bar, {
     data: newData,
     options: options
   });
+}
+if (document.getElementById("bschart")) {
+  ReactDOM.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(BookStockChart, {}), document.getElementById("bschart"));
 }
 
 /***/ }),

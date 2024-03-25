@@ -63,6 +63,7 @@
                 <a href="#Best Sellers">Best Sellers</a>
                 <a href="/catalog">Catalogue</a>
                 <a href="#Special Offers">Special Offers</a>
+                <a href='/contactus'>Contact Us</a>
                 @auth
                 <a href="/readinglist">My Reading List</a>
                 <a href="/ordersummary">Past Orders</a>
