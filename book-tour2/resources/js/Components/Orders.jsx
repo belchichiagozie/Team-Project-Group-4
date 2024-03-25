@@ -289,7 +289,6 @@ export default function Orders() {
                                 <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Total Spent</th>
-                                <th>Status</th>
                                 <th>Date</th>
                             </tr>
                         </thead>
