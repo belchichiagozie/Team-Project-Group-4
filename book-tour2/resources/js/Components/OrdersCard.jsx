@@ -12,7 +12,6 @@ export default function OrdersCard() {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
-                console.log(response.data);
                 const ordersData = response.data.orders;
                 if (ordersData) {
                     setOrdersCount(ordersData.length);

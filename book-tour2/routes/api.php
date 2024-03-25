@@ -33,8 +33,7 @@ Route::get('/admin/get-users', [APIController::class, 'getUsers']);
 Route::get('/admin/total-sales', [APIController::class, 'getTotalSales']);
 Route::get('/admin/total-users', [APIController::class, 'getTotalUsers']);
 Route::get('/admin/users-growth', [APIController::class, 'getUsersGrowth']);
-
-
+Route::post('/orders/update-status/{order}', [APIController::class, 'updateStatus']);
 });
 
 Route::delete('/admin/products/{id}', [APIController::class, 'destroy']);

@@ -38,6 +38,23 @@ class APIController extends Controller
         return response()->json(['orders' => $orders], 200);
     }
 
+    public function updateStatus(Request $request, $orderId) {
+        $validated = $request->validate([
+            'status' => 'required|string|in:processing,accepted',
+        ]);
+
+        $order = Order::find($orderId);
+
+        if(!$order) {
+            return response()->json(['error' => 'Order not found.'], 404);
+        }
+    
+        $order->status = $validated['status'];
+        $order->save();
+    
+        return response()->json(['message' => 'Order status updated successfully.']);
+    }
+
     public function getTotalSales(){
         $orders = Order::with(['items' => function ($query) {
             $query->with(['book' => function ($query) {

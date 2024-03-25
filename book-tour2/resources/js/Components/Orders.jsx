@@ -199,6 +199,30 @@ export default function Orders() {
     const [users, setUsers] = useState([]);
     const [selectedUserId, setSelectedUserId] = useState("");
     const token = localStorage.getItem("token");
+    const updateOrderStatus = (orderId, newStatus) => {
+        axios
+            .post(
+                `/api/orders/update-status/${orderId}`,
+                {
+                    status: newStatus,
+                },
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                },
+            )
+            .then((response) => {
+                const updatedOrders = orders.map((order) => {
+                    if (order.Order_ID === orderId) {
+                        return { ...order, status: newStatus };
+                    }
+                    return order;
+                });
+                setOrders(updatedOrders);
+            })
+            .catch((error) =>
+                console.error("Error updating order status:", error),
+            );
+    };
 
     useEffect(() => {
         axios
@@ -261,17 +285,24 @@ export default function Orders() {
                     <table className="w-full text-xs sm:text-sm text-left text-black dark:text-white">
                         <thead className="text-white bg-cyan-950 text-blue-900 font-bold">
                             <tr>
-                                <th>Title</th>
+                                <th>Book</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Total Spent</th>
+                                <th>Status</th>
                                 <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             {order.items.map((item, itemIndex) => (
                                 <tr key={itemIndex}>
-                                    <td>{item.book.Title}</td>
+                                    <td>
+                                        <img
+                                            src={`/images/${item.book.file}`}
+                                            alt={item.book.Title}
+                                            className="w-16 h-16 object-cover rounded-lg"
+                                        />
+                                    </td>
                                     <td>{item.Quantity}</td>
                                     <td>£{item.book.Price.toFixed(2)}</td>
                                     <td>
@@ -284,6 +315,34 @@ export default function Orders() {
                                 </tr>
                             ))}
                         </tbody>
+                        <div key={index} className="mb-4">
+                            {order.status === "processing" && (
+                                <button
+                                    onClick={() =>
+                                        updateOrderStatus(
+                                            order.Order_ID,
+                                            "accepted",
+                                        )
+                                    }
+                                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-600 transition duration-300"
+                                >
+                                    Accept Order
+                                </button>
+                            )}
+                            {order.status === "accepted" && (
+                                <button
+                                    onClick={() =>
+                                        updateOrderStatus(
+                                            order.Order_ID,
+                                            "processing",
+                                        )
+                                    }
+                                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-blue-600 transition duration-300"
+                                >
+                                    Cancel Order
+                                </button>
+                            )}
+                        </div>
                     </table>
                 </div>
             ))}

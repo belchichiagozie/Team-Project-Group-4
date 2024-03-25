@@ -39,7 +39,6 @@ function OrdersCard() {
         Authorization: "Bearer ".concat(token)
       }
     }).then(function (response) {
-      console.log(response.data);
       var ordersData = response.data.orders;
       if (ordersData) {
         setOrdersCount(ordersData.length);
