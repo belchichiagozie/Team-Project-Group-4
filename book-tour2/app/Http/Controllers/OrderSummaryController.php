@@ -27,6 +27,7 @@ class OrderSummaryController extends Controller
         foreach ($orders as $order) {
             foreach ($order->items as $item) {
                 if ($item->book !== null) {
+                    $item->status = $order->status;
                     $orderItems[] = $item;
                     $bookIds[] = $item->book->Book_ID;
                 }

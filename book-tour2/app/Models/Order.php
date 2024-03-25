@@ -39,6 +39,7 @@ class Order extends Model
         'Shipping_Address',
         'Shipping_City',
         'Order_Total',
+		'status',
     ];
 
 	public function customer()

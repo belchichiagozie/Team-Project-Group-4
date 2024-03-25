@@ -13,6 +13,7 @@
                     <td>Quantity</td>
                     <td>Price per Book</td>
                     <td>Total Price</td>
+                    <td>Order Status</td>
                     <td>Order Date</td>
                 </tr>
             </thead>
@@ -26,6 +27,7 @@
                     <td class="text-black">{{ $orderItem->Quantity }}</td>                   
                     <td class="text-black">£{{ number_format($orderItem->book->Price, 2) }}</td>
                     <td class="text-black">£{{ number_format($orderItem->Quantity * $orderItem->book->Price, 2) + 5 }}</td>
+                    <td class="text-black">{{$orderItem->status}}</td>
                     <td class="text-black">{{ $orderItem->created_at }}</td>
                     <!-- Add other details as needed -->
                 </tr>
