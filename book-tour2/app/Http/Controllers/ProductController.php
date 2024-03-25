@@ -14,8 +14,7 @@ class ProductController extends Controller
     {
         $books = Book::all();
         $user = Auth::user();
-        //dd($books);
-        return view('/products', ['books' => $books, 'user' => $user]);
+        return view('products', ['books' => $books, 'user' => $user]);
     }
 
     public function show($id)

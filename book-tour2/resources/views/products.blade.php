@@ -37,8 +37,8 @@
                     <img src="/images/{{$book->file}}" alt="{{$book->Book_ID}}">
                 </div>
                 <div class="content">
-                    <h3>{{$book->Title}}</h3>
-                    <div class="price">£{{$book->Price}}<span>£12</span></div>
+                    <h3>{{ $book->Title }}</h3>
+                    <div class="price">£{{ $book->Price }}<span>£12</span></div>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -49,7 +49,6 @@
                 </div>
             </a>
             @endforeach
-
             <!-- <a href="#" class="swiper-slide box">
                 <div class="image">
                     <img src="/images/bookcover4.png" alt="">

@@ -264,11 +264,9 @@ section {
     text-align: left; /* Align dropdown items to the left */
 }
 
-
 .dropdown-container:hover .dropdown-content {
     display: block;
 }
-
 
 .Home .row {
     display: flex;
@@ -447,7 +445,6 @@ section {
     .header .header-20 {
         display: none;
     }
-
 
     #seach-btn {
         display: inline-block;
