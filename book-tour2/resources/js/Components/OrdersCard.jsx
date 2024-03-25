@@ -8,11 +8,12 @@ export default function OrdersCard() {
 
     useEffect(() => {
         axios
-            .get("/api/admin/orders", {
+            .get("/api/admin/get-orders", {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((response) => {
-                const ordersData = response.data["orders"];
+                console.log(response.data);
+                const ordersData = response.data.orders;
                 if (ordersData) {
                     setOrdersCount(ordersData.length);
                 }

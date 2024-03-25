@@ -34,12 +34,13 @@ function OrdersCard() {
     setOrdersCount = _useState2[1];
   var token = localStorage.getItem("token");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("/api/admin/orders", {
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("/api/admin/get-orders", {
       headers: {
         Authorization: "Bearer ".concat(token)
       }
     }).then(function (response) {
-      var ordersData = response.data["orders"];
+      console.log(response.data);
+      var ordersData = response.data.orders;
       if (ordersData) {
         setOrdersCount(ordersData.length);
       }

@@ -1053,6 +1053,8 @@ video {
   z-index: 50;
 }.z-auto {
   z-index: auto;
+}.m-4 {
+  margin: 1rem;
 }.m-40 {
   margin: 10rem;
 }.m-44 {
@@ -1091,6 +1093,9 @@ video {
 }.my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }.my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -1118,6 +1123,8 @@ video {
   margin-bottom: 1.25rem;
 }.mb-6 {
   margin-bottom: 1.5rem;
+}.mb-8 {
+  margin-bottom: 2rem;
 }.me-1 {
   margin-inline-end: 0.25rem;
 }.me-4 {
@@ -2199,10 +2206,14 @@ video {
   text-align: left;
 }.text-center {
   text-align: center;
+}.text-right {
+  text-align: right;
 }.text-start {
   text-align: start;
 }.text-end {
   text-align: end;
+}.font-sans {
+  font-family: Figtree, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }.text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
