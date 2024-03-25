@@ -49,5 +49,14 @@ class CatalogController extends Controller
         $books = $books->get();
         return view('catalog', ['books' => $books]);
     }
-    //
+
+    public function filterByGenre(Request $request)
+    {
+       
+        $genre = $request->input('genre');
+        $books = Book::where('Genre', $genre)->get();
+
+        
+        return view('catalog', ['books' => $books]);
+    }
 }

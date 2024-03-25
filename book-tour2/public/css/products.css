@@ -478,14 +478,21 @@ section {
 
 /*CATALOG CSS FILES */
 
+.catalog .arrivals-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
 .catalog .book-box {
     padding: 2rem 1rem;
     border: var(--border);
-    margin: 0rem 0;
     display: flex;
     background: #fff;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 0rem;
+    flex-direction: column;
 }
 
 .catalog .book-box:hover {
@@ -493,12 +500,15 @@ section {
 }
 
 .catalog .book-box .image img {
-    height: 15rem;
+    height: 550px;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 .catalog .book-box .content h3 {
     font-size: 2rem;
     color: var(--black);
+    margin-top: 1rem;
 }
 
 .catalog .book-box .content .price {
@@ -515,7 +525,6 @@ section {
 
 .catalog .book-box .content .stars i {
     color: var(--green);
-
     font-size: 1.5rem;
 }
 
@@ -524,6 +533,45 @@ section {
     margin-bottom: 1rem;
     color: #106585;
 }
+
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centered-container form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.centered-container form label,
+.centered-container form input[type="text"],
+.centered-container form select,
+.centered-container form button {
+    margin: 5px;
+    text-align: left; 
+}
+
+.centered-container input[type="text"],
+.centered-container select,
+.centered-container button {
+    max-width: none;
+}
+
+.form-inline label,
+.form-inline select,
+.form-inline input[type="text"],
+.form-inline button {
+    display: inline-block;
+}
+
 
 .add-to-favorites,
 .add-to-basket {
@@ -582,49 +630,50 @@ section {
     padding: 10px;
 }
 
-/* special offers styling */
-.offers-container {
-    background: #fff;
-    padding: 0.5rem 3rem;
-    margin-bottom: 2rem;
+/* genres styling */
+.genre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust the minimum width as needed */
 }
 
-.offers {
+.genre-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+}
+.genre-header h1 {
+    margin-bottom: 20px;
+    font-size: 3rem; 
 }
 
-.offers .content {
-    flex: 1 1 42rem;
+.genre-container {
+    padding: 20px;
+    width: 100%; 
 }
 
-.offers .image {
-    flex: 1 1 42rem;
+.genre {
+    text-align: center;
+    margin: 1rem;
+    overflow: hidden; 
+    display: inline-block; 
 }
 
-.offers .image img {
-    width: 100%;
+.genre button {
+    border: 1px solid #ccc;
+    background-color:#106585;
+    color:#fff;
+    cursor: pointer;
+    width: 100%; 
+    height: 100%;
+    padding: 1.5rem;
+    font-size: 16px; 
+    transition: border-color 0.3s;
 }
 
-.offers .content h3 {
-    color: #106585;
-    font-size: 2.5rem;
-    padding-bottom: 0.5rem;
+.genre button:hover {
+    border-color: black;
 }
 
-.offers .content h1 {
-    color: var(--black);
-    font-size: 4rem;
-}
-
-.offers .content p {
-    padding: 1rem 0;
-    color: var(--light-color);
-    font-size: 1.4rem;
-    line-height: 2;
-}
 
 /* best sellers section styling*/
 .bestsellers {

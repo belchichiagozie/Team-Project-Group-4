@@ -212,22 +212,71 @@
 
 </section>
 
-<!-- Products Page: Special Offers Section -->
-<section class="specialoffers" id="Special Offers">
-<div class="offers-container">
-    <section class="offers">
-        <div class="content">
-            <h3>BookTour Deals</h3>
-            <h1>50% off new arrivals!</h1>
-            <p>Half price on all best sellers!</p>
-            <a href="#" class="btn">shop special offers</a>
-        </div>
-
-        <div class="image">
-            <img src="/images/bookstore.png" alt="">
-        </div>
-    </section>
+<!-- Products Page: Genres Section -->
+<section class="genre-grid" id="Genre Grid">
+    <div class="genre-header">
+        <h1>Genres</h1>
+    <div class="genre-container">
+        <form action="{{ route('catalog.filterByGenre') }}" method="GET" id="genreForm">
+            <div class="genre">
+                <button type="submit" name="genre" value="Sci-Fi">Science Fiction</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Fantasy">Fantasy</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Mystery">Mystery</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Thriller">Thriller</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Horror">Horror</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Romance">Romance</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Adventure">Adventure</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Historical-Fiction">Historical Fiction</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Western">Western</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Dystopian">Dystopian</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Humor">Humor</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Crime">Crime</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Psychological-Thriller">Psychological Thriller</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Suspense">Suspense</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Paranormal">Paranormal</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Gothic">Gothic</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Satire">Satire</button>
+            </div>
+            <div class="genre">
+                <button type="submit" name="genre" value="Non-Fiction">Non-Fiction</button>
+            </div>
+        </form>
+    </div>
 </div>
+</section>
+
 
 <!-- Products Page: Best Sellers section -->
 <section class="bestsellers" id="Best Sellers">

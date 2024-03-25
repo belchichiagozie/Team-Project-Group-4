@@ -66,6 +66,7 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 
 //Routes for Catalog page
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+Route::get('/catalog/genre', [CatalogController::class, 'filterByGenre'])->name('catalog.filterByGenre');
 
 //Routes for Basket page
 Route::get('/basket/view', [BasketController::class, 'index'])->name('basket.view');
