@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2024 at 04:37 PM
+-- Generation Time: Mar 25, 2024 at 01:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `book-tourv3`
+-- Database: `book-tour`
 --
 
 -- --------------------------------------------------------
@@ -54,14 +54,6 @@ CREATE TABLE `basket` (
   `user_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `basket`
---
-
-INSERT INTO `basket` (`Book_ID`, `Quantity`, `user_id`) VALUES
-(1, 2, 1),
-(2, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -75,16 +67,22 @@ CREATE TABLE `books` (
   `Genre` varchar(255) NOT NULL,
   `Price` decimal(10,2) NOT NULL,
   `Stock` varchar(255) NOT NULL,
-  `file` varchar(255) NOT NULL
+  `file` varchar(255) NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`Book_ID`, `Title`, `Author`, `Genre`, `Price`, `Stock`, `file`) VALUES
-(1, 'rtyuio', 'Me', 'Fantasy', 75.00, '36', '1710932456-rtyuio.jpg'),
-(2, 'tvwbksm', 'Ashley', 'Sci-Fi', 35.00, '59', '1711030674-tvwbksm.jpg');
+INSERT INTO `books` (`Book_ID`, `Title`, `Author`, `Genre`, `Price`, `Stock`, `file`, `deleted_at`) VALUES
+(1, 'changeplz', 'Me', 'Fantasy', 75.00, '39', '1710932456-rtyuio.jpg', '2024-03-25 10:26:26'),
+(2, 'change', 'Zahid', 'Fiction', 30.00, '87', '1710937640-new book.png', '2024-03-23 15:24:22'),
+(3, 'other', 'Zahid', 'Non Fiction', 90.00, '148', '1710937679-other.png', '2024-03-23 14:22:57'),
+(6, 'Testing', 'Zahid', 'Non Fiction', 70.00, '179', '1710938783-Testing.png', NULL),
+(8, 'dsnfj', 'uisd', 'iuhd', 92.00, '281', '1711206799-dsnfj.png', NULL),
+(9, 'jkdsnf', 'jnfsk', 'kjnfs', 439.00, '981', '1711208519-jkdsnf.png', '2024-03-25 11:26:15'),
+(10, 'djkan', 'kjndakj', 'jknd', 89.00, '443', '1711330012-djkan.png', '2024-03-25 12:10:28');
 
 -- --------------------------------------------------------
 
@@ -121,7 +119,9 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_100000_create_password_reset_tokens_table', 1),
 (2, '2019_08_19_000000_create_failed_jobs_table', 1),
-(3, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(3, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(4, '2024_03_23_141113_add_soft_deletes_to_books_table', 2),
+(5, '2024_03_25_021519_add_status_to_orders_table', 3);
 
 -- --------------------------------------------------------
 
@@ -138,17 +138,21 @@ CREATE TABLE `orders` (
   `Shipping_City` varchar(255) NOT NULL,
   `Order_Total` decimal(10,2) NOT NULL,
   `Created_At` timestamp NOT NULL DEFAULT current_timestamp(),
-  `Updated_At` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `Updated_At` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` enum('accepted','processing','delivering','delivered') NOT NULL DEFAULT 'processing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`Order_ID`, `User_ID`, `Shipping_First_Name`, `Shipping_Last_Name`, `Shipping_Address`, `Shipping_City`, `Order_Total`, `Created_At`, `Updated_At`) VALUES
-(1, 1, 'Josiah', 'Fitton', '123 Aston Street', 'Birmingham', 150.00, '2024-03-21 13:58:52', '2024-03-21 13:58:52'),
-(2, 1, 'Josiah', 'Fitton', '123 Exeter Street', 'Exeter', 80.00, '2024-03-21 14:14:35', '2024-03-21 14:14:35'),
-(3, 1, 'Josiah', 'Fitton', '123 Brook Lane', 'London', 115.00, '2024-03-21 14:19:48', '2024-03-21 14:19:48');
+INSERT INTO `orders` (`Order_ID`, `User_ID`, `Shipping_First_Name`, `Shipping_Last_Name`, `Shipping_Address`, `Shipping_City`, `Order_Total`, `Created_At`, `Updated_At`, `status`) VALUES
+(1, 2, 'asndu', 'uadia', 'ubda', 'kjdna', 155.00, '2024-03-21 21:37:57', '2024-03-25 12:00:54', 'processing'),
+(2, 2, 'kjasdb', 'kjbdkjab', 'kjdbakjbd', 'kjbdakjb', 170.00, '2024-03-21 22:08:06', '2024-03-21 22:08:06', 'accepted'),
+(3, 3, 'vbhnj', 'vbhnm', 'dfghj', 'fvgbhn', 35.00, '2024-03-23 15:23:47', '2024-03-25 12:20:49', 'processing'),
+(4, 3, 'dfghj', 'fghj', 'fghj', 'fghj', 444.00, '2024-03-25 02:43:50', '2024-03-25 12:05:06', 'processing'),
+(5, 3, 'dfgh', 'fghjk', 'dfghjghj', 'fgh', 625.00, '2024-03-25 03:19:41', '2024-03-25 03:19:41', 'accepted'),
+(11, 4, 'fghjk', 'fghj', 'fghj', 'fghj', 167.00, '2024-03-25 11:55:13', '2024-03-25 12:08:13', 'accepted');
 
 -- --------------------------------------------------------
 
@@ -170,10 +174,17 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`Order_Item_ID`, `Order_ID`, `Book_ID`, `Quantity`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 2, '2024-03-21 13:58:52', '2024-03-21 13:58:52'),
-(2, 2, 1, 1, '2024-03-21 14:14:35', '2024-03-21 14:14:35'),
-(3, 3, 2, 1, '2024-03-21 14:19:48', '2024-03-21 14:19:48'),
-(4, 3, 1, 1, '2024-03-21 14:19:48', '2024-03-21 14:19:48');
+(1, 1, 2, 2, '2024-03-21 21:37:57', '2024-03-21 21:37:57'),
+(2, 1, 3, 1, '2024-03-21 21:37:57', '2024-03-21 21:37:57'),
+(3, 2, 3, 1, '2024-03-21 22:08:06', '2024-03-21 22:08:06'),
+(4, 2, 1, 1, '2024-03-21 22:08:06', '2024-03-21 22:08:06'),
+(5, 3, 2, 1, '2024-03-23 15:23:47', '2024-03-23 15:23:47'),
+(6, 4, 9, 1, '2024-03-25 02:43:50', '2024-03-25 02:43:50'),
+(7, 5, 10, 1, '2024-03-25 03:19:41', '2024-03-25 03:19:41'),
+(8, 5, 8, 1, '2024-03-25 03:19:41', '2024-03-25 03:19:41'),
+(9, 5, 9, 1, '2024-03-25 03:19:41', '2024-03-25 03:19:41'),
+(10, 11, 6, 1, '2024-03-25 11:55:13', '2024-03-25 11:55:13'),
+(11, 11, 8, 1, '2024-03-25 11:55:13', '2024-03-25 11:55:13');
 
 -- --------------------------------------------------------
 
@@ -211,7 +222,11 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Models\\Admin', 1, 'BookTourAdmin', 'd7778ccdc6cd798324f4a126be373dfd088ccc30c4a7f384de067e5c98029f04', '[\"*\"]', '2024-03-21 14:17:56', NULL, '2024-03-20 10:55:30', '2024-03-21 14:17:56');
+(1, 'App\\Models\\Admin', 1, 'BookTourAdmin', 'd7778ccdc6cd798324f4a126be373dfd088ccc30c4a7f384de067e5c98029f04', '[\"*\"]', '2024-03-20 11:00:58', NULL, '2024-03-20 10:55:30', '2024-03-20 11:00:58'),
+(2, 'App\\Models\\Admin', 1, 'BookTourAdmin', '0950ffab1e61e1c56cd5a7abd2534df90549ef6577d22b4ecd6b7ec051f0f54d', '[\"*\"]', '2024-03-21 22:21:46', NULL, '2024-03-20 12:26:35', '2024-03-21 22:21:46'),
+(3, 'App\\Models\\Admin', 1, 'BookTourAdmin', '94d1afc281ff9ab1905d49e8dcc410fde91a4831f71cd1195e96c20bf4faf856', '[\"*\"]', '2024-03-22 00:07:34', NULL, '2024-03-21 23:16:19', '2024-03-22 00:07:34'),
+(4, 'App\\Models\\Admin', 1, 'BookTourAdmin', '2d0c11921ddc09dfdf817f648ab13dd358b390f6ddcb5965a8e106998b8fd96e', '[\"*\"]', '2024-03-25 04:37:30', NULL, '2024-03-22 00:07:58', '2024-03-25 04:37:30'),
+(5, 'App\\Models\\Admin', 1, 'BookTourAdmin', 'a99a197e87034e649c1176f217cfff69202826d4619433f21f2a4702d1af8e57', '[\"*\"]', '2024-03-25 12:21:45', NULL, '2024-03-25 10:26:12', '2024-03-25 12:21:45');
 
 -- --------------------------------------------------------
 
@@ -229,7 +244,8 @@ CREATE TABLE `readinglist` (
 --
 
 INSERT INTO `readinglist` (`User_ID`, `Book_ID`) VALUES
-(1, 1);
+(1, 1),
+(4, 10);
 
 -- --------------------------------------------------------
 
@@ -252,7 +268,8 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`Book_ID`, `User_ID`, `Customer_Name`, `Title`, `Body`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Josiah', 'Best Book!', 'Testing review function pls work', '2024-03-20 11:03:43', '2024-03-20 11:03:43');
+(1, 1, 'Josiah', 'Best Book!', 'Testing review function pls work', '2024-03-20 11:03:43', '2024-03-20 11:03:43'),
+(1, 4, 'othertest2', 'very good', 'i liked this book', '2024-03-22 13:28:42', '2024-03-22 13:28:42');
 
 -- --------------------------------------------------------
 
@@ -276,7 +293,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Josiah', 'josiahfitton@gmail.com', NULL, '$2y$12$mt1sQlbcdncePC5Frv3tR.7Dhakguh/LJc3.425hmtXaxblIwq4kG', NULL, '2024-03-20 10:43:26', '2024-03-20 10:43:26');
+(1, 'Josiah', 'josiahfitton@gmail.com', NULL, '$2y$12$mt1sQlbcdncePC5Frv3tR.7Dhakguh/LJc3.425hmtXaxblIwq4kG', NULL, '2024-03-20 10:43:26', '2024-03-20 10:43:26'),
+(2, 'testing', 'test@test.com', NULL, '$2y$12$ltUpR9TUQ2Hc/bSBJslC9.B9geY88BzIVd8Cis.0/LujMPoOVlZ0.', NULL, '2024-03-21 21:36:58', '2024-03-21 21:36:58'),
+(3, 'othertest', 'other@test.com', NULL, '$2y$12$cX5EPlMPaNCSSeyxlRgNPeIs0r.d8EogfhqIJSaRDYAuO.VuaqcCe', NULL, '2024-03-22 12:43:57', '2024-03-22 12:43:57'),
+(4, 'othertest2', 'other2@test.com', NULL, '$2y$12$UTUtilQU2nUiiizt0oJDoO6Y6VQnEUGqOduhB2.Y7eFMBO32XsSK.', NULL, '2024-03-22 12:49:04', '2024-03-22 12:49:04');
 
 --
 -- Indexes for dumped tables
@@ -379,7 +399,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `Book_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Book_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -391,31 +411,31 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Order_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `Order_Item_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Order_Item_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
