@@ -12,11 +12,14 @@
                 <div class="list">
                 <h2>{{$book->Title}}</h2>
                 <h3>£{{$book->Price}}</h3>
-                <p class="addbtn">
-                            <span class="btn1">Add to basket</span>
-                        </p>
-                        <p class="likebtn">
-                        <form action="{{ route('removerl') }}" method="POST" style="display:inline;">
+                <form action="{{ route('basket.add') }}" method="POST" style="display:inline;">
+                    @csrf
+                    <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
+                    <input type="hidden" name="Quantity" value="1">
+                    <button type="submit" class="btn">
+                    <span class="fas fa-shopping-cart"></span>
+        </button>
+        </form>
             @csrf
             <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
             <button type="submit" class="btn">
