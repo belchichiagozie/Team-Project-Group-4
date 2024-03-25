@@ -228,7 +228,6 @@ section {
 }
 
 /*lower navbar styling*/
-
 .lower-navbar {
     text-align: center;
     background: #106585;
@@ -238,17 +237,38 @@ section {
     right: 0;
     z-index: 1000;
     display: none;
+    justify-content: center;
 }
 
 .lower-navbar a {
     font-size: 2.5rem;
     padding: 2rem;
     color: var(--black);
+    position: relative;
 }
 
 .lower-navbar a:hover {
     background: #aed0dd;
 }
+
+.lower-navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: left; /* Align dropdown items to the left */
+}
+
+
+.dropdown-container:hover .dropdown-content {
+    display: block;
+}
+
 
 .Home .row {
     display: flex;
@@ -428,9 +448,6 @@ section {
         display: none;
     }
 
-    .lower-navbar {
-        display: block;
-    }
 
     #seach-btn {
         display: inline-block;
@@ -450,6 +467,9 @@ section {
     }
     .header .header-1 .search-form.active {
         top: 115%;
+    }
+    .lower-navbar {
+        display: flex;
     }
 }
 
@@ -1061,9 +1081,6 @@ section {
     display: flex;
     flex-direction: row;
     padding: 20px;
-}
-
-.right-column {
 }
 
 .review-card-title {

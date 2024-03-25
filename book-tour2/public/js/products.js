@@ -1,8 +1,31 @@
-searchForm = document.querySelector(".search-form");
+
+const searchForm = document.querySelector(".search-form");
+
+
+const searchIcon = document.querySelector(".fa-search");
+
+
+searchIcon.addEventListener("click", toggleSearchForm);
+
 document.querySelector("#search-btn").onclick = () => {
     searchForm.classList.toggle("active");
 };
 
+
+function toggleSearchForm(event) {
+    event.preventDefault();
+    searchForm.classList.toggle("active");
+}
+
+function submitSearchForm() {
+    document.getElementById("searchForm").submit();
+}
+
+function toggleDropdown(event) {
+    event.preventDefault();
+    var dropdownContent = event.target.nextElementSibling;
+    dropdownContent.style.display === "block" ? dropdownContent.style.display = "none" : dropdownContent.style.display = "block";
+}
 //swiper functioning
 window.onscroll = () => {
     searchForm.classList.remove("active");

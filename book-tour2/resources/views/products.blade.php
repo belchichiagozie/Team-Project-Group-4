@@ -8,7 +8,7 @@
         <div class="content">
             <h3>Immerse yourself into a new world!</h3>
             <p>One page at a time...</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="/catalog" class="btn">shop now</a>
         </div>    
         
         <div class="books-slider">
@@ -254,7 +254,7 @@
             @csrf
             <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
             <button type="submit" class="btn">
-                    <a href="" class="fas fa-heart"></a>
+                    <span class="fas fa-heart"></span>
 </button>
 </form>
 
@@ -264,7 +264,7 @@
             <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
             <input type="hidden" name="Quantity" value="1">
             <button type="submit" class="btn">
-            <a href="" class="fas fa-shopping-cart"></a>
+            <span class="fas fa-shopping-cart"></span>
 </button>
 </form>
                     
@@ -274,7 +274,7 @@
                 </div>
                 <div class="content">
                     <h3>{{$book->Title}}</h3>
-                    <div class="price">£{{$book->Price}} <span> £30 </span></div>
+                    <div class="price">£{{$book->Price}}</div>
                     <form action="{{ route('basket.add') }}" method="POST" style="display:inline;">
                         @csrf
                         <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">

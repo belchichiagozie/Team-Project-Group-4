@@ -23,12 +23,10 @@ class OrderController extends Controller
         $shippingCity = $request->Shipping_City;
         $orderTotal = 5;
 
-        // Retrieve user information if authenticated
         if (auth()->check()) {
             $userId = auth()->user()->id;
         }
 
-        // Retrieve basket contents
         if (auth()->check()) {
             $user = User::find($userId);
             $basketItems = $user->books()->select('books.*', 'basket.Quantity')->get();
@@ -36,12 +34,10 @@ class OrderController extends Controller
             return Redirect::route('showRegistrationForm')->with('message', 'You need to register to checkout.');
         }
 
-        // Calculate order total
         foreach ($basketItems as $item) {
             $orderTotal += $item->Price * $item->pivot->Quantity;
         }
 
-        // Create order
         $order = new Order();
         $order->User_ID = $userId;
         $order->Shipping_First_Name = $shippingFirstName;
@@ -52,7 +48,6 @@ class OrderController extends Controller
         //dd($order);
         $order->save();
 
-        // Create order items
         foreach ($basketItems as $item) {
             $orderItem = new OrderItem();
             $orderItem->Order_ID = $order->Order_ID;
@@ -60,20 +55,18 @@ class OrderController extends Controller
             $orderItem->Quantity = $item->pivot->Quantity;
             $orderItem->save();
 
-            // Update book stock
             $book = Book::find($item->Book_ID);
             $book->Stock -= $item->pivot->Quantity;
             $book->save();
         }
 
-        // Clear user's basket
         if (auth()->check()) {
             $user->books()->detach();
         } else {
             session()->forget('basket');
         }
 
-        return view('Basket.checkout', ['order' => $order, 'basketItems' => $basketItems]);
+        return app(OrderSummaryController::class)->index();
     }
 
     }

@@ -25,19 +25,20 @@
 
             <form action="{{ route('catalog.index') }}" method="GET" id="searchForm" class="search-form">
                 <input type="search" name="searchInput" placeholder="What's your next adventure? Search here..." id="search-box">
-                <label for="search-box" class="fas fa-search"></label>
+                <label for="search-box" class="fas fa-search" id="search-icon" onclick="submitSearchForm()"></label>
                 
                 <input type="hidden" name="sort" value="title">
             </form>
 
         <div class="icons">
         <div id="search-btn" class="fas fa-search"></div>
-
-            <a href="#" class="fas fa-heart"></a>
+            @auth
+            <a href="/readinglist" class="fas fa-heart"></a>
+            @endauth
             <a href="/basket/view" class="fas fa-shopping-cart"></a>
             <div id="login-btn" class="fas fa-user dropdown">
                 <div class="dropdown-content">
-                    @auth
+                    @auth()
                     <a href="{{ route('logout') }}" id="xstext" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
        {{ __('Logout') }} </a>
@@ -47,7 +48,7 @@
     <a href="/admin" id="xstext">Visit Admin Panel</a>
     @endauth
     @guest
-    <a href="/home" id="xstext">Log In</a>
+    <a href="/mainlogin" id="xstext">Log In</a>
     <a href="/admin" id="xstext">Visit Admin Panel</a>
     @endguest
                     
@@ -58,41 +59,16 @@
         </div>
         <!--navbar-->
         <div class="header-2">
-            <nav class="navbar">
+        <nav class="navbar">
                 <a href="/products">Home</a>
                 <a href="#New Arrivals">New Arrivals</a>
                 <a href="#Best Sellers">Best Sellers</a>
-                <div class="genre-dropdown">
-                    <a href="#Genres">Genres &#9662; </a>
-                    <ul class="dropdown">
-                        <li class="dropdown-subsection"><a href="#">Fiction &#9656; </a>
-                        <ul class="subsection">
-                            <li><a href="#">Fantasy</a></li>
-                            <li><a href="#">Mystery & Thriller</a></li>
-                            <li><a href="#">Romance</a></li>
-                            <li><a href="#">Science Fiction</a></li>
-                            <li><a href="#">Horror</a></li>
-                            <li><a href="#">Children's</a></li>
-                            <li><a href="#">Myths & Legends</a></li>
-                            <li><a href="#">Manga</a></li>
-                        </ul>
-                        </li>
-                    <li class="dropdown-subsection"><a href="#">Non-Fiction &#9656; </a>
-                    <ul class="subsection">
-                            <li><a href="#">History</a></li>
-                            <li><a href="#">Biography & Autobiography</a></li>
-                            <li><a href="#">Science</a></li>
-                            <li><a href="#">True Crime</a></li>
-                            <li><a href="#">Philosophy</a></li>
-                            <li><a href="#">Self-Help</a></li>
-                            <li><a href="#">Business, Finance & Law</a></li>
-                            <li><a href="#">Health & Wellness</a></li>
-                        </ul>
-                        </li>
-                    </ul>
-                </div>
+                <a href="/catalog">Catalogue</a>
                 <a href="#Special Offers">Special Offers</a>
-                <a href="#Reviews">Reviews</a>
+                @auth
+                <a href="/readinglist">My Reading List</a>
+                <a href="/ordersummary">Past Orders</a>
+                @endauth
 
             </nav>
         </div>
@@ -102,14 +78,30 @@
 
     <!-- lower navbar -->
     <nav class="lower-navbar">
-        <a href="/products" class="fas fa-home"></a>
-        <a href="#Featured" class="fas fa-list"></a>
-        <a href="#New Arrivals" class="fas fa-tags"></a>
-        <a href="#Best Sellers" class="fas fa-heart"></a>
-        <a href="#Special Offers" class="fas fa-user"></a>
-        <a href="#Reviews" class="fas fa-comments"></a>
+    <a href="/products" class="fas fa-home"></a>
+    <a href="" class="fas fa-search" id="search-nav-icon" onclick="toggleSearchForm(event)"></a>
+    <a href="#New Arrivals" class="fas fa-tags"></a>
+    @auth
+    <a href="/readinglist" class="fas fa-heart"></a>
+    @endauth
+    <div class="dropdown-container">
+        <a href="#" class="fas fa-user" onclick="toggleDropdown(event)"></a>
+        <div class="dropdown-content">
+            @auth()
+            <a href="{{ route('logout') }}" id="xstext" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+            <a href="/admin" id="xstext">Visit Admin Panel</a>
+            @endauth
+            @guest
+            <a href="/mainlogin" id="xstext">Log In</a>
+            <a href="/admin" id="xstext">Visit Admin Panel</a>
+            @endguest
+        </div>
+    </div>
+</nav>
 
-    </nav>
     <script src="/js/products.js">
     </script>
     <!-- swiper functioning link -->

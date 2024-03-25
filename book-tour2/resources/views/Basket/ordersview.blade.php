@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($orderItems as $orderItem)
+                @foreach(array_reverse($orderItems) as $orderItem)
                 <tr>
                     <!-- Your order item details here -->
                     <td class="text-black">{{ $orderItem->book->Title }}</td>
@@ -25,7 +25,7 @@
                     <td class="text-black">{{ $orderItem->Order_ID }}</td>
                     <td class="text-black">{{ $orderItem->Quantity }}</td>                   
                     <td class="text-black">£{{ number_format($orderItem->book->Price, 2) }}</td>
-                    <td class="text-black">£{{ number_format($orderItem->Quantity * $orderItem->book->Price, 2) }}</td>
+                    <td class="text-black">£{{ number_format($orderItem->Quantity * $orderItem->book->Price, 2) + 5 }}</td>
                     <td class="text-black">{{ $orderItem->created_at }}</td>
                     <!-- Add other details as needed -->
                 </tr>

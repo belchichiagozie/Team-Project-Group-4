@@ -20,7 +20,7 @@
             @csrf
             <input type="hidden" name="Book_ID" value="{{ $book->Book_ID }}">
             <button type="submit" class="btn">
-                        <i class="fas fa-heart"></i>
+                        <i class="fa fa-trash"></i>
 </button>
 </form>
     <span class="btn2"></span>

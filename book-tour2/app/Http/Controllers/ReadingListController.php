@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Redirect;
 
 class ReadingListController extends Controller
 {
@@ -18,8 +18,8 @@ class ReadingListController extends Controller
     public function addToReadingList(Request $request)
 {
 
-    if (Auth::user() == null) {
-        return redirect()->route('login');
+    if (Auth::guest()) {
+        return redirect()->route('showLoginForm')->with('message', 'You need to login or register to use the reading list.');
     }
 
     $userId = auth()->user()->id; // Get authenticated user ID

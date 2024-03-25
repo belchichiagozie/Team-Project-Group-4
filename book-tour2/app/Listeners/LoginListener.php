@@ -28,8 +28,13 @@ class LoginListener
         $sessionBasket = session('basket', []);
 
         foreach ($sessionBasket as $bookId => $quantity) {
-            $book = Book::find($bookId);
-            $user->books()->attach($bookId, ['Quantity' => $quantity]);
+            $existingItem = $user->books()->wherePivot('Book_ID', $bookId)->first();
+
+            if ($existingItem) {
+                $user->books()->updateExistingPivot($bookId, ['Quantity' => $existingItem->pivot->Quantity + $quantity]);
+            } else {
+                $user->books()->attach($bookId, ['Quantity' => $quantity]);
+            }
         }
 
         session()->forget('basket');
